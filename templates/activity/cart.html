@@ -1,0 +1,69 @@
+{% extends 'base.html' %} 
+{% load activity_filters %}
+{% block content %}
+
+<div class="container my-5">
+  {%if cart%}
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <!-- <section>
+        <div class="row bg-light py-3 rounded">
+          <div class="col-1">
+            <input type="checkbox" name="" id="" />
+          </div>
+          <div class="col-1">All</div>
+          <div class="col-10">Delete selected activity</div>
+        </div>
+      </section> -->
+      <form method="POST" class="addtocartform">
+        <section>
+          {%for item in cart%}
+          <p class="mb-0">{{item.product.activity_name}}</p>
+          <div class="row py-3 bg-light mb-2">
+            <div class="col-1">
+              <!-- <input type="checkbox" name="" id="" /> -->
+            </div>
+            <div class="col-2">
+              <img
+                src="https://res.klook.com/image/upload/fl_lossy.progressive,q_65,f_auto/c_fill,w_180,h_180/activities/za3bmgwdeujp0uulr9lz.webp"
+                alt=""
+                width="50"
+                height="50"
+              />
+            </div>
+            <div class="col-9 col-lg-3 d-flex justify-content-center align-items-center">
+              <p class="text-center mb-0">{{item.product.package}}</p>
+            </div>
+            <div class="col-6 offset-1 col-lg-2 my-2 d-flex justify-content-center align-items-center item-total-{{ forloop.counter }}">
+              {{item.product.price |pricequantity:item.quantity }}
+            </div>
+            <div class="col-5 col-lg-3">
+              <small>{{item.product.name}}</small>
+              <div class="d-flex">
+                <button type="button" class="btn btn-primary py-2 px-3 btn-num-product-down" data-price="{{item.product.price}}" data-minusquantity="{{forloop.counter}}" >-</button>
+                <input type="number" class="form-control text-center" readonly value="{{item.quantity}}" name="{{item.product.id}}"/>
+                <button type="button" class="btn btn-primary py-2 px-3 btn-num-product-up" data-price="{{item.product.price}}" data-addquantity="{{forloop.counter}}">+</button>
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+          <button type="submit" class="btn btn-info">Update Cart</button>
+        </section>
+      </form>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card" style="position: sticky; top: 30px">
+        <div class="card-body">
+          <h5 class="card-title">Total:</h5>
+          <p class="card-text">₹ <span class="cart-total">{{carttotal}}</span></p>
+          <button type="button" class="btn btn-primary book-now">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {%else%}
+    <p class="text-info text-center">Cart is empty</p>
+  {%endif%}
+</div>
+
+{%endblock%}

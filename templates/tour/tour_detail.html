@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block title%}
+	{{product.name}}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-1 pt-5">
+      <div class="row tour-detail-row">
+        <div class="col-12 col-md-9">
+          <div>
+            <h3>
+              {{tour.tour_name}}
+            </h3>
+          </div>
+          <div class="mt-5">
+            <h5>Tour Highlights</h5>
+            <p>
+                {{tour.highlights | safe }}
+            </p>
+          </div>
+          <div class="mt-5">
+            <h5>Details</h5>
+            <div>
+              <div class="row my-2">
+                <div class="col col-md-3">Theme</div>
+                <div class="col">{{tour.category}}</div>
+              </div>
+              <div class="row my-2">
+                <div class="col col-md-3">Country</div>
+                <div class="col">{{tour.countries}}</div>
+              </div>
+              <div class="row my-2">
+                <div class="col col-md-3">Location Covered</div>
+                <div class="col">
+                  {{tour.cities}}
+                </div>
+              </div>
+              <div class="row my-2">
+                <div class="col col-md-3">Starting Point</div>
+                <div class="col">{{tour.departure}}</div>
+              </div>
+              <div class="row my-2">
+                <div class="col col-md-3">End Point</div>
+                <div class="col">{{tour.end}}</div>
+              </div>
+              <div class="row my-2">
+                <div class="col col-md-3">Flight</div>
+                <div class="col">{{tour.flight}}</div>
+              </div>
+              <div class="row my-2">
+                <div class="col col-md-3">Guide</div>
+                <div class="col">{{tour.guide}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5">
+            <h5>Days</h5>
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                {% for day in days %}
+                  <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-{{day.title}}">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#{{day.title}}"
+                    aria-expanded="false"
+                    aria-controls="{{day.title}}"
+                  >
+                    {{day}}
+                  </button>
+                </h2>
+                <div
+                  id="{{day.title}}"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="flush-{{day.title}}"
+                  data-mdb-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body">
+                   {{day.highlights | safe }}
+                  </div>
+                </div>
+              </div>
+                {% endfor %}
+            </div>
+          </div>
+          <div class="mt-5">
+            <h5>Prices and Conditions</h5>
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#flush-collapseOneprice"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseOneprice"
+                  >
+                    Price Includes
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseOneprice"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="flush-headingOne"
+                  data-mdb-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body">
+                    {{tour.price_includes | safe }}
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwoprice">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-mdb-toggle="collapse"
+                    data-mdb-target="#flush-collapseTwoprice"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseTwoprice"
+                  >
+                    Price Not Includes
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseTwoprice"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="flush-headingTwo"
+                  data-mdb-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body">
+                    {{tour.price_not_includes | safe }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Book Your Tickets</h5>
+              <p class="card-text">International Flight : Excluded</p>
+              <button type="button" class="btn btn-primary">
+                Send Request
+              </button>
+            </div>
+            <div class="card-footer">Duration : 8 days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

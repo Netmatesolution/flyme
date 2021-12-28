@@ -1,0 +1,191 @@
+.carousel-caption {
+  bottom: 30%;
+  z-index: 1000;
+}
+
+.carousel-item {
+  height: 60vh;
+}
+
+.carousel-item img {
+  height: 60vh;
+}
+
+.destination-carousel .carousel-item {
+  height: 100%;
+}
+
+.destination-carousel .carousel-item img {
+  height: 100%;
+}
+
+.card.map-card .living-coral {
+  background-color: #fa7268;
+}
+
+.card.map-card .living-coral-text {
+  color: #fa7268;
+}
+
+.card.map-card .table th {
+  width: 2rem;
+}
+
+.card.map-card .pt-3-5 {
+  padding-top: 1.25rem;
+}
+
+.card.map-card .card-body {
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  top: 20%;
+  overflow: hidden;
+  background-color: transparent;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  border-radius: 0 !important;
+}
+
+.card.map-card .card-body.closed {
+  top: 100%;
+  height: 7.5rem;
+  margin-top: -7.5rem;
+}
+
+.card.map-card .map-container {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.card.map-card .map-container iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.card.map-card .button .btn-floating {
+  margin-top: 1.5rem;
+}
+
+#wrapper {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin 0.25s ease-out;
+  transition: margin 0.25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+  margin-left: 0;
+}
+
+.staycation-img {
+  width: 100%;
+  height: 400px;
+}
+
+.login-form {
+  width: 100%;
+}
+
+.suggestion-box {
+  display: none;
+  z-index: 9999;
+  position: absolute;
+  width: 100%;
+  color: black;
+}
+
+.nav-search
+{
+  width: 60%;
+}
+
+.package-description
+{
+  height: 500px;
+  overflow-y: scroll;
+}
+
+
+/* tab  */
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+  body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+  .login-form {
+    width: 80%;
+  }
+  .carousel-search
+{
+  width: 75% !important;
+}
+
+}
+
+
+/* desktop */
+@media only screen and (min-width: 1200px) {
+  .carousel-item {
+    height: 80vh;
+  }
+  .carousel-item img {
+    height: 80vh;
+  }
+  .destination-carousel .carousel-item {
+    height: 100%;
+  }
+  .destination-carousel .carousel-item img {
+    height: 100%;
+  }
+  .card img {
+    height: 200px;
+  }
+  .destination img {
+    height: 300px;
+  }
+  .tour-detail-row {
+    position: relative;
+  }
+  .tour-detail-row .card {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 10%;
+  }
+  .staycation-img {
+    width: 100%;
+    height: 400px;
+  }
+  .login-form {
+    width: 50%;
+  }
+}
+/*# sourceMappingURL=style.css.map */

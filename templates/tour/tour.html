@@ -1,0 +1,616 @@
+{% extends 'base.html' %} {%block content%}
+
+<!-- Carousel wrapper -->
+<div
+  id="carouselBasicExample"
+  class="carousel slide carousel-fade mb-3"
+  data-mdb-ride="carousel"
+>
+  <!-- Indicators -->
+  <div class="carousel-indicators">
+    <button
+      type="button"
+      data-mdb-target="#carouselBasicExample"
+      data-mdb-slide-to="0"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 1"
+    ></button>
+    <button
+      type="button"
+      data-mdb-target="#carouselBasicExample"
+      data-mdb-slide-to="1"
+      aria-label="Slide 2"
+    ></button>
+    <button
+      type="button"
+      data-mdb-target="#carouselBasicExample"
+      data-mdb-slide-to="2"
+      aria-label="Slide 3"
+    ></button>
+  </div>
+
+  <!-- Inner -->
+  <div class="carousel-inner">
+    <!-- Single item -->
+    <div class="carousel-item active">
+      <img
+        src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
+        class="d-block"
+        alt="..."
+      />
+    </div>
+
+    <!-- Single item -->
+    <div class="carousel-item">
+      <img
+        src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
+        class="d-block"
+        alt="..."
+      />
+    </div>
+
+    <!-- Single item -->
+    <div class="carousel-item">
+      <img
+        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+        class="d-block"
+        alt="..."
+      />
+    </div>
+  </div>
+  <div class="carousel-caption d-md-block">
+    <h1>To the world of an incredible vacation.</h1>
+    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+    <div class="input-group d-flex justify-content-center align-items-center">
+      <div class="form-outline carousel-search">
+        <select class="form-select form-select-lg bg-light rounded-0">
+          <option selected>Indonesia</option>
+          <option value="1">China</option>
+          <option value="1">Seychells</option>
+          <option value="1">Japan</option>
+          <option value="1">Taiwan</option>
+          <option value="1">South Korea</option>
+        </select>
+      </div>
+      <button
+        id="search-button"
+        type="button"
+        class="btn btn-primary rounded-0"
+        style="height: 45px"
+      >
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
+  <!-- Inner -->
+
+  <!-- Controls -->
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-mdb-target="#carouselBasicExample"
+    data-mdb-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-mdb-target="#carouselBasicExample"
+    data-mdb-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!-- Carousel wrapper -->
+
+
+{% if Indonesia%}
+<div class="container px-4 py-2">
+  <h3 class="pb-2">Indonesia</h3>
+  <div class="row">
+    {% for item in Indonesia %}
+    <div class="col-12 col-md-3 my-2">
+      <div class="card">
+        <div
+          class="bg-image hover-overlay ripple"
+          data-mdb-ripple-color="light"
+        >
+          <img
+            src="/media/{{item.image}}"
+            class="img-fluid"
+          />
+          <a href="{{item.slug}}">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.15)"
+            ></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <p>
+            <span class="badge rounded-pill bg-light text-dark"
+              >{{item.category}}</span
+            >
+          </p>
+          <p class="card-title">
+            {{item.tour_name}}
+          </p>
+          <!-- <small class=""> -->
+          <p><span class="badge bg-secondary">India</span></p>
+          <!-- </small> -->
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <a
+    href="./tourtheme.html"
+    type="button"
+    class="btn btn-outline-info py-3 my-3"
+    data-mdb-ripple-color="dark"
+  >
+    View More From Indonesia
+  </a>
+</div>
+{%endif%}
+
+{% if Seychelles%}
+<div class="container px-4 py-2">
+  <h3 class="pb-2">Seychelles</h3>
+  <div class="row">
+    {% for item in Seychelles %}
+    <div class="col-12 col-md-3 my-2">
+      <div class="card">
+        <div
+          class="bg-image hover-overlay ripple"
+          data-mdb-ripple-color="light"
+        >
+          <img
+            src="/media/{{item.image}}"
+            class="img-fluid"
+          />
+          <a href="{{item.slug}}">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.15)"
+            ></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <p>
+           <span class="badge rounded-pill bg-light text-dark"
+              >{{item.category}}</span
+            >
+          </p>
+          <p class="card-title">
+            {{item.tour_name}}
+          </p>
+          <!-- <small class=""> -->
+          <p><span class="badge bg-secondary">India</span></p>
+          <!-- </small> -->
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <a
+    href="./tourtheme.html"
+    type="button"
+    class="btn btn-outline-info py-3 my-3"
+    data-mdb-ripple-color="dark"
+  >
+    View More From Seychelles
+  </a>
+</div>
+{%endif%}
+
+{% if SouthKorea %}
+<div class="container px-4 py-2">
+  <h3 class="pb-2">South Korea</h3>
+  <div class="row">
+    {% for item in SouthKorea %}
+    <div class="col-12 col-md-3 my-2">
+      <div class="card">
+        <div
+          class="bg-image hover-overlay ripple"
+          data-mdb-ripple-color="light"
+        >
+          <img
+            src="/media/{{item.image}}"
+            class="img-fluid"
+          />
+          <a href="{{item.slug}}">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.15)"
+            ></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <p>
+           <span class="badge rounded-pill bg-light text-dark"
+              >{{item.category}}</span
+            >
+          </p>
+          <p class="card-title">
+            {{item.tour_name}}
+          </p>
+          <!-- <small class=""> -->
+          <p><span class="badge bg-secondary">India</span></p>
+          <!-- </small> -->
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <a
+    href="./tourtheme.html"
+    type="button"
+    class="btn btn-outline-info py-3 my-3"
+    data-mdb-ripple-color="dark"
+  >
+    View More From South Korea
+  </a>
+</div>
+{%endif%}
+
+{% if Japan %}
+<div class="container px-4 py-2">
+  <h3 class="pb-2">Japan</h3>
+  <div class="row">
+    {% for item in Japan %}
+    <div class="col-12 col-md-3 my-2">
+      <div class="card">
+        <div
+          class="bg-image hover-overlay ripple"
+          data-mdb-ripple-color="light"
+        >
+          <img
+            src="/media/{{item.image}}"
+            class="img-fluid"
+          />
+         <a href="{{item.slug}}">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.15)"
+            ></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <p>
+           <span class="badge rounded-pill bg-light text-dark"
+              >{{item.category}}</span
+            >
+          </p>
+          <p class="card-title">
+            {{item.tour_name}}
+          </p>
+          <!-- <small class=""> -->
+          <p><span class="badge bg-secondary">India</span></p>
+          <!-- </small> -->
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <a
+    href="./tourtheme.html"
+    type="button"
+    class="btn btn-outline-info py-3 my-3"
+    data-mdb-ripple-color="dark"
+  >
+    View More From Japan
+  </a>
+</div>
+{%endif%}
+
+{% if China %}
+<div class="container px-4 py-2">
+  <h3 class="pb-2">China</h3>
+  <div class="row">
+    {% for item in China %}
+    <div class="col-12 col-md-3 my-2">
+      <div class="card">
+        <div
+          class="bg-image hover-overlay ripple"
+          data-mdb-ripple-color="light"
+        >
+          <img
+            src="/media/{{item.image}}"
+            class="img-fluid"
+          />
+         <a href="{{item.slug}}">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.15)"
+            ></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <p>
+           <span class="badge rounded-pill bg-light text-dark"
+              >{{item.category}}</span
+            >
+          </p>
+          <p class="card-title">
+            {{item.tour_name}}
+          </p>
+          <!-- <small class=""> -->
+          <p><span class="badge bg-secondary">India</span></p>
+          <!-- </small> -->
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <a
+    href="./tourtheme.html"
+    type="button"
+    class="btn btn-outline-info py-3 my-3"
+    data-mdb-ripple-color="dark"
+  >
+    View More From China
+  </a>
+</div>
+{%endif%}
+
+
+{% if Taiwan %}
+<div class="container px-4 py-2">
+  <h3 class="pb-2">Taiwan</h3>
+  <div class="row">
+    {% for item in Taiwan %}
+    <div class="col-12 col-md-3 my-2">
+      <div class="card">
+        <div
+          class="bg-image hover-overlay ripple"
+          data-mdb-ripple-color="light"
+        >
+          <img
+            src="/media/{{item.image}}"
+            class="img-fluid"
+          />
+          <a href="{{item.slug}}">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.15)"
+            ></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <p>
+            <span class="badge rounded-pill bg-light text-dark"
+              >{{item.category}}</span
+            >
+          </p>
+          <p class="card-title">
+            {{item.tour_name}}
+          </p>
+          <!-- <small class=""> -->
+          <p><span class="badge bg-secondary">India</span></p>
+          <!-- </small> -->
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <a
+    href="./tourtheme.html"
+    type="button"
+    class="btn btn-outline-info py-3 my-3"
+    data-mdb-ripple-color="dark"
+  >
+    View More From Taiwan
+  </a>
+</div>
+{%endif%}
+
+
+<!-- feature staycation -->
+<div class="container px-4 py-5">
+  <h2 class="pb-2">Stylish Staycations</h2>
+  <div class="row">
+    <div class="col-12 col-md-3 my-2">
+      <div class="card">
+        <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
+          <img
+            src="http://www.shangri-la.com/uploadedImages/Corporate/about-us/our-brands/SL-Our-Brand-Shangri-La-Hotels.jpg?width=720&height=283&mode=crop&quality=80"
+            class="img-fluid"
+          />
+          <a href="#!">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.15)"
+            ></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">
+            <a>La Sirena Hotel</a>
+          </h5>
+          <ul class="list-unstyled list-inline mb-0">
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"> </i>
+            </li>
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item">
+              <i class="fas fa-star-half-alt text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item">
+              <p class="text-muted">4.5 (413)</p>
+            </li>
+          </ul>
+          <p class="mb-2">$ • American, Restaurant</p>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <p><span class="badge bg-secondary">India</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-3 my-2">
+      <div class="card">
+        <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
+          <img
+            src="https://images.moneycontrol.com/static-mcnews/2019/09/Samhi_Hotels-770x433.jpg?impolicy=website&width=770&height=431"
+            class="img-fluid"
+          />
+          <a href="#!">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.15)"
+            ></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">
+            <a>Taj Lake Palace</a>
+          </h5>
+          <ul class="list-unstyled list-inline mb-0">
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"> </i>
+            </li>
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item">
+              <i class="fas fa-star-half-alt text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item">
+              <p class="text-muted">4.5 (413)</p>
+            </li>
+          </ul>
+          <p class="mb-2">$ • American, Restaurant</p>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <p><span class="badge bg-secondary">India</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-3 my-2">
+      <div class="card">
+        <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
+          <img
+            src="https://pix10.agoda.net/hotelImages/124/1246280/1246280_16061017110043391702.jpg?s=1024x768"
+            class="img-fluid"
+          />
+          <a href="#!">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.15)"
+            ></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">
+            <a>Umaid Bhavan</a>
+          </h5>
+          <ul class="list-unstyled list-inline mb-0">
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"> </i>
+            </li>
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item">
+              <i class="fas fa-star-half-alt text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item">
+              <p class="text-muted">4.5 (413)</p>
+            </li>
+          </ul>
+          <p class="mb-2">$ • American, Restaurant</p>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <p><span class="badge bg-secondary">India</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-3 my-2">
+      <div class="card">
+        <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
+          <img
+            src="https://cdn.britannica.com/96/115096-050-5AFDAF5D/Bellagio-Hotel-Casino-Las-Vegas.jpg"
+            class="img-fluid"
+          />
+          <a href="#!">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.15)"
+            ></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">
+            <a>Golden Tulip</a>
+          </h5>
+          <ul class="list-unstyled list-inline mb-0">
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"> </i>
+            </li>
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item">
+              <i class="fas fa-star-half-alt text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item">
+              <p class="text-muted">4.5 (413)</p>
+            </li>
+          </ul>
+          <p class="mb-2">$ • American, Restaurant</p>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <p><span class="badge bg-secondary">India</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    type="button"
+    class="btn btn-outline-info py-3 my-3 hover-ripple"
+    data-mdb-ripple-color="dark"
+  >
+    Discover All Staycation
+  </button>
+</div>
+<!-- feature Staycation -->
+
+{%endblock%}

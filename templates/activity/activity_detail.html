@@ -1,0 +1,153 @@
+{% extends 'base.html' %} {% block content %}
+<!-- carousel -->
+<div
+  id="carouselExampleCrossfade"
+  class="container carousel slide carousel-fade"
+  data-mdb-ride="carousel"
+>
+  <div class="carousel-indicators">
+    <button
+      type="button"
+      data-mdb-target="#carouselExampleCrossfade"
+      data-mdb-slide-to="0"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 1"
+    ></button>
+    <button
+      type="button"
+      data-mdb-target="#carouselExampleCrossfade"
+      data-mdb-slide-to="1"
+      aria-label="Slide 2"
+    ></button>
+    <button
+      type="button"
+      data-mdb-target="#carouselExampleCrossfade"
+      data-mdb-slide-to="2"
+      aria-label="Slide 3"
+    ></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img
+        src="https://mdbootstrap.com/img/new/standard/nature/100.jpg"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="https://mdbootstrap.com/img/new/standard/nature/101.jpg"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="https://mdbootstrap.com/img/new/standard/nature/103.jpg"
+        class="d-block w-100"
+        alt="..."
+      />
+    </div>
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-mdb-target="#carouselExampleCrossfade"
+    data-mdb-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-mdb-target="#carouselExampleCrossfade"
+    data-mdb-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!-- carousel -->
+
+<div class="container mt-5">
+  <div class="row position-relative">
+    <div class="col-12 col-md-8">
+      <div>
+        <h3>{{activity.activity_name}}</h3>
+      </div>
+      <hr />
+      <div style="font-size: 1.5rem">{{activity.overview | safe }}</div>
+      <hr />
+      <div>{{activity.highlights | safe }}</div>
+      <hr />
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="card text-center position-sticky top-0">
+        <div class="card-header">Best Price Guarantee</div>
+        <div class="card-body">
+          <!-- <h3 class="card-title initial-price">From 4,500</h3> -->
+          <a href="#" class="btn btn-primary">Select Options</a>
+        </div>
+        <div class="card-footer text-muted">Get rewards for exploring</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-2 mb-5">
+  <div>
+    <h4>Package options</h4>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <div class="p-3">
+        <!-- <p>Select date and package options</p> -->
+        <!-- <small>Please select a participation date</small>
+            <div class="my-3">
+              <input type="date" name="" id="" class="" />
+            </div> -->
+        <p>Package Type</p>
+        <div class="d-flex flex-row flex-wrap my-2">
+          {% for package in packages %}
+          <button
+            type="button"
+            class="btn m-1 package-btn"
+            data-mdb-ripple-color="primary"
+            data-package_id="{{package.id}}"
+          >
+            {{package.package_name}}
+          </button>
+          {%endfor%}
+        </div>
+        <p>Quantity</p>
+        <form method="POST" class="addtocartform">
+          <div class="my-2 quantity-list">
+            <!-- quantity comes here from js -->
+          </div>
+          <div class="row my-3 addtocart d-none">
+            <div class="col-md-6 d-flex align-items-center">
+              <p>Total Price: <span class="cart-total"></span></p>
+            </div>
+
+            {% if request.user.is_authenticated %}
+            <div class="col-md-6 d-flex justify-content-end align-items-center">
+              <button type="submit" class="btn btn-primary">Add to cart</button>
+            </div>
+            {% else %}
+            <div class="col-md-6 d-flex justify-content-end align-items-center cart-icon-nologin">
+              <button type="button" class="btn btn-primary">Add to cart</button>
+            </div>
+            {% endif %}
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 bg-light">
+      <span>Selected package details</span>
+      <div class="bg-light package-description"></div>
+    </div>
+  </div>
+</div>
+{%endblock%}

@@ -1,0 +1,111 @@
+{% extends 'base.html' %} {%block content%}
+
+<div class="container mt-5 py-5">
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <h4>{{staycation.staycation_name}}</h4>
+      <p>{{staycation.highlights | safe }}</p>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="container">
+         <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Book Your Tickets</h5>
+              <p class="card-text">International Flight : Excluded</p>
+              <button type="button" class="btn btn-primary">
+                Send Request
+              </button>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%for key,value in data.items %}
+<div class="bg-light py-5 my-4">
+  <div class="container package_options">
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <img
+          src="/media/{{value.room.feature_image}}"
+          class="img-thumbnail"
+          alt="Hollywood Sign on The Hill"
+        />
+      </div>
+      <div class="col-12 col-md-4">
+        <p><b>{{value.room.room_name}}</b></p>
+        <p>{{value.room.description | safe }}</p>
+        <p>Room Size: 62 m²</p>
+      </div>
+      <div class="col-12 col-md-4">
+        <!-- Tabs navs -->
+        <ul class="nav nav-tabs nav-fill mb-3" role="tablist">
+          {% for nights in value.price %}
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link "
+              data-mdb-toggle="tab"
+              role="tab"
+              href="#ex2-tabs-{{nights.number_of_nights}}-{{value.room.slug}}"
+              >{{nights.number_of_nights}} Nights</a
+            >
+          </li>
+          {%endfor%}
+        </ul>
+        <!-- Tabs navs -->
+
+        <!-- Tabs content -->
+        <div class="tab-content">
+          {% for price in value.price %}
+             <div
+            class="tab-pane fade show"
+            id="ex2-tabs-{{price.number_of_nights}}-{{value.room.slug}}"
+            role="tabpanel"
+          >
+            <p class="lh-sm">Total for {{price.number_of_nights}} nights from</p>
+            <p class="lh-sm"><b>${{price.price}}</b></p>
+            <small class="lh-sm">Includes taxes & fees</small>
+          </div>
+          {%endfor%}
+        </div>
+        <!-- Tabs content -->
+        <div>
+          <button class="btn btn-success w-100">Check</button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Buttons trigger collapse -->
+      <a
+        class="text-center"
+        data-mdb-toggle="collapse"
+        href="#{{value.room.slug}}"
+        role="button"
+        aria-expanded="false"
+        aria-controls="{{value.room.slug}}"
+      >
+        View all inclusions & details
+      </a>
+      <!-- Collapsed content -->
+      <div class="collapse mt-3" id="{{value.room.slug}}">
+        <div class="row">
+          <hr />
+          <div class="col-12 col-md-6">
+            <b>All package inclusions:</b>
+            {{value.room.inclusion | safe}}
+          </div>
+          <div class="col-12 col-md-6">
+            <b>Room facilities:</b>
+            {{value.room.roomfacilites | safe}}
+            <b>Room policies:</b>
+            {{value.room.roompolicies | safe}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%endfor%} 
+
+{% endblock %}
