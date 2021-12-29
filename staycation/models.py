@@ -53,17 +53,20 @@ class RoomPrice(models.Model):
 
 
 
+class StaycationRequest(models.Model):
+    host_id = models.ForeignKey(to=User, on_delete=CASCADE,blank=True , null=True)
+    staycation = models.ForeignKey(to=Staycation, on_delete=CASCADE)
+    full_name = models.CharField(max_length = 100,null=True, blank=True)
+    user_email = models.CharField(max_length = 100, null=True, blank=True)
+    user_number = models.CharField(max_length = 100, null=True, blank=True)
+    checkin=models.DateField(null=True, blank=True)
+    checkout=models.DateField(null=True, blank=True)
+    numberofnights=models.IntegerField(null=True,blank=True)
+    adult=models.IntegerField(null=True,blank=True)
+    child=models.IntegerField(null=True,blank=True)
+    room = models.ForeignKey(to=StaycationRoom, on_delete=CASCADE,blank=True , null=True)
+    occassion=models.CharField(max_length = 100, null=True, blank=True)
 
-
-
-
-
-# class Teacher(models.Model):
-#     name = models.CharField(max_length = 200)
-#     subject = models.CharField(max_length = 200)
-
-# class Student(models.Model):
-#     name = models.CharField(max_length = 200)
-#     classTeacher = models.ForeignKey(Teacher, on_delete = models.SET_NULL, null = True, related_name = "classTeacherOf")
-#     favouriteTeacher = models.ForeignKey(Teacher, on_delete = models.SET_NULL, null = True, related_name = "favouriteTeacherOf")
+    def __str__(self):
+        return  f"{self.user_email}"
 

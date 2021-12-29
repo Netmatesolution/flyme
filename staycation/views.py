@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Staycation, StaycationRoom,RoomPrice
+from .models import Staycation, StaycationRoom,RoomPrice,StaycationRequest
 from django.views.generic.detail import DetailView
 # Create your views here.
 
@@ -33,3 +33,32 @@ class StaycationDetailpage(DetailView):
             datadict[room.room_name]['price']=roomprice
         context['data']=datadict
         return context
+
+def staycationrequest(request):
+    ctx = {}
+    if request.method =='GET':  
+        staycation=request.GET.get('staycation',False)
+        msg=Staycation.objects.get(id=staycation)
+        ctx['staycationname']=msg
+        ctx['staycationid']=staycation
+        ctx['rooms']=StaycationRoom.objects.all().filter(staycation=msg)
+    else:
+        staycationid=request.POST.get('staycationid',False)
+        fullname=request.POST.get('fullname',False)
+        email=request.POST.get('email',False)
+        phonenumber=request.POST.get('phonenumber',False)
+        departure=request.POST.get('departure',False)
+        end=request.POST.get('end',False)
+        nights=request.POST.get('nights',False)
+        roomid=request.POST.get('room',False)
+        adult=request.POST.get('adult',False)
+        child=request.POST.get('child',False)
+        specialrequest=request.POST.get('specialrequest',False)
+
+        staycation=Staycation.objects.get(id=staycationid)
+        room=StaycationRoom.objects.get(id=roomid)
+        b = StaycationRequest(host_id=staycation.host_id,staycation=staycation,full_name=fullname,
+         user_email=email,user_number=phonenumber,checkin=departure,checkout=end,numberofnights=nights,room=room,adult=adult,child=child,occassion=specialrequest)
+        b.save()
+        ctx['msg']='Your message has been sent.'
+    return render(request, 'staycation/staycationrequest.html',ctx)

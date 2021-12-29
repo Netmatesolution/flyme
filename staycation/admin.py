@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db import models
-from .models import Staycation,StaycationRoom,RoomPrice
+from .models import Staycation,StaycationRoom,RoomPrice , StaycationRequest
 from django_summernote.admin import SummernoteModelAdmin
 from django import forms
 from django.db import IntegrityError
@@ -109,3 +109,6 @@ class RoomPriceAdmin(admin.ModelAdmin):
 
 
 admin.site.register(RoomPrice,RoomPriceAdmin)
+
+admin.site.register(StaycationRequest)
+

@@ -105,7 +105,7 @@ def booknow(request):
         addr=request.POST.get('address',False)    
         nation=request.POST.get('country',False)    
         area=request.POST.get('state',False)    
-        zip=request.POST.get('zipcode',False)    
+        zip=request.POST.get('zipcode',False)
         payment_type=request.POST.get('paymenttype',False)
         carttotal= Cart.objects.all().filter(customer=request.user,ordered=False).select_related().aggregate(total=Sum(F('product__price')*F('quantity')))['total']        
         msg=Order.objects.get_or_create(customer=request.user,firstname=first_name,lastname=last_name,email=mail,mobile=mob,address=addr,country=nation,state=area,zipcode=zip,paymenttype=payment_type,total=carttotal)

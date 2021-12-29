@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.db.models import fields
 from django.http import request
 from django import forms
-from .models import Category,Tour,Days,FeatureImages
+from .models import Category,Tour,Days,FeatureImages , TourRequest
 from django_summernote.admin import SummernoteModelAdmin
 # Register your models here.
 
@@ -67,3 +67,6 @@ admin.site.register(FeatureImages , FeatureImagesAdmin)
 admin.site.register(Tour,TourAdmin)
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(Days,DaysAdmin)
+
+
+admin.site.register(TourRequest)

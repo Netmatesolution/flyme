@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from .models import Tour,Days
+from .models import Tour,Days,TourRequest
 from django.views.generic.detail import DetailView
+from django.contrib.auth.models import User
 # Create your views here.
+
 # homepage
 def tourpage(request):
     ctx={}
@@ -25,6 +27,35 @@ class TourDetailpage(DetailView):
         # add extra field 
         tour=Tour.objects.get(slug=self.kwargs.get("slug"))
         context["days"] = Days.objects.all().filter(tour=tour.id) 
+        context["daycount"] = Days.objects.all().filter(tour=tour.id).count() 
         return context
     # def get_object(self, queryset=None):
     #     return Days.objects.get(tour=self.kwargs.get("slug"))
+
+
+def tourrequest(request):
+    ctx = {}
+    if request.method =='GET':  
+        tour=request.GET.get('tour',False)
+        msg=Tour.objects.get(id=tour)
+        ctx['tourname']=msg
+        ctx['tourid']=tour
+    else:
+        members=request.POST.get('members',False)
+        tourid=request.POST.get('tourid',False)
+        departure=request.POST.get('departure',False)
+        end=request.POST.get('end',False)
+        accomodation=request.POST.get('accomodation',False)
+        fullname=request.POST.get('fullname',False)
+        email=request.POST.get('email',False)
+        phonenumber=request.POST.get('phonenumber',False)
+        arrivalairport=request.POST.get('arrivalairport',False)
+        departureairport=request.POST.get('departureairport',False)
+        specialrequest=request.POST.get('specialrequest',False)
+
+        tour=Tour.objects.get(id=tourid)
+        b = TourRequest(host_id=tour.host_id,tour=tour,daparture_date=departure,end_date=end,participants=members,accomodation=accomodation,user_name=fullname,
+         user_email=email,user_number=phonenumber,arrival_airport=arrivalairport,departure_airport=departureairport,special_request=specialrequest)
+        b.save()
+        ctx['msg']='Your message has been sent.'
+    return render(request, 'tour/tourrequest.html',ctx)

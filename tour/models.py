@@ -47,3 +47,23 @@ class FeatureImages(models.Model):
 
     def __str__(self):
         return  f"{self.tour}"
+
+
+class TourRequest(models.Model):
+    tour = models.ForeignKey(to=Tour, on_delete=CASCADE)
+    host_id = models.ForeignKey(to=User, on_delete=CASCADE,blank=True , null=True)
+    participants=models.IntegerField(default=0)
+    daparture_date=models.DateField(null=True, blank=True)
+    end_date=models.DateField(null=True, blank=True)
+    accomodation = models.CharField(max_length = 100)
+    budget= models.DecimalField(max_digits=10,decimal_places=2, null=True, blank=True)
+    user_name = models.CharField(max_length = 100, null=True, blank=True)
+    user_email = models.CharField(max_length = 100, null=True, blank=True)
+    user_number = models.CharField(max_length = 100, null=True, blank=True)
+    arrival_airport=models.CharField(max_length = 100, null=True, blank=True)
+    departure_airport=models.CharField(max_length = 100, null=True, blank=True)
+    extension= models.TextField(null=True , blank=True)
+    special_request= models.TextField(null=True , blank=True)
+
+    def __str__(self):
+        return  f"{self.user_name}"
