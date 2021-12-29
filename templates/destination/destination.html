@@ -1,0 +1,240 @@
+{% extends 'base.html' %} {%block content%}
+
+<!-- Carousel wrapper -->
+<div
+  id="carouselBasicExample"
+  class="carousel slide carousel-fade mb-3"
+  data-mdb-ride="carousel"
+>
+  <!-- Indicators -->
+  <div class="carousel-indicators">
+    <button
+      type="button"
+      data-mdb-target="#carouselBasicExample"
+      data-mdb-slide-to="0"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 1"
+    ></button>
+    <button
+      type="button"
+      data-mdb-target="#carouselBasicExample"
+      data-mdb-slide-to="1"
+      aria-label="Slide 2"
+    ></button>
+    <button
+      type="button"
+      data-mdb-target="#carouselBasicExample"
+      data-mdb-slide-to="2"
+      aria-label="Slide 3"
+    ></button>
+  </div>
+
+  <!-- Inner -->
+  <div class="carousel-inner">
+    <!-- Single item -->
+    <div class="carousel-item active">
+      <img
+        src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
+        class="d-block"
+        alt="..."
+      />
+    </div>
+
+    <!-- Single item -->
+    <div class="carousel-item">
+      <img
+        src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
+        class="d-block"
+        alt="..."
+      />
+    </div>
+
+    <!-- Single item -->
+    <div class="carousel-item">
+      <img
+        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+        class="d-block"
+        alt="..."
+      />
+    </div>
+  </div>
+  <div class="carousel-caption d-md-block">
+    <h1>To the world of an incredible vacation.</h1>
+    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+    <div class="input-group d-flex justify-content-center align-items-center">
+      <div class="form-outline carousel-search">
+        <select class="form-select form-select-lg bg-light rounded-0">
+          <option selected>Indonesia</option>
+          <option value="1">China</option>
+          <option value="1">Seychells</option>
+          <option value="1">Japan</option>
+          <option value="1">Taiwan</option>
+          <option value="1">South Korea</option>
+        </select>
+      </div>
+      <button
+        id="search-button"
+        type="button"
+        class="btn btn-primary rounded-0"
+        style="height: 45px"
+      >
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
+  <!-- Inner -->
+
+  <!-- Controls -->
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-mdb-target="#carouselBasicExample"
+    data-mdb-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-mdb-target="#carouselBasicExample"
+    data-mdb-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!-- Carousel wrapper -->
+
+<!-- amazing Destinations -->
+<div class="container px-4 py-5 destination">
+  <!-- <h2 class="pb-2 mb-4">Decent Destinations</h2> -->
+  <div class="row">
+    <div class="col-lg-4 col-md-12 mb-lg-0 p-0">
+      <div class="bg-image hover-zoom" data-mdb-ripple-color="light">
+        <img
+          src="https://media.timeout.com/images/105240189/750/422/image.jpg"
+          class="w-100"
+        />
+        <a href="/destination/indonesia/">
+          <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <h1 class="text-white mb-0">INDONESIA</h1>
+            </div>
+          </div>
+          <div class="hover-overlay">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.2)"
+            ></div>
+          </div>
+        </a>
+      </div>
+
+      <div class="bg-image hover-zoom" data-mdb-ripple-color="light">
+        <img src="https://static.toiimg.com/photo/82974093.cms" class="w-100" />
+        <a href="/destination/japan/">
+          <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <h1 class="text-white mb-0">JAPAN</h1>
+            </div>
+          </div>
+          <div class="hover-overlay">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.2)"
+            ></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-lg-4 mb-lg-0 p-0">
+      <div class="bg-image hover-zoom" data-mdb-ripple-color="light">
+        <img
+          src="https://www.planetware.com/wpimages/2019/09/seychelles-in-pictures-most-beautiful-places-to-visit-anse-source-dargent-la-digue.jpg"
+          class="w-100"
+        />
+        <a href="/destination/seychelles/">
+          <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <h1 class="text-white mb-0">SEYCHELLES</h1>
+            </div>
+          </div>
+          <div class="hover-overlay">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.2)"
+            ></div>
+          </div>
+        </a>
+      </div>
+
+      <div class="bg-image hover-zoom" data-mdb-ripple-color="light">
+        <img
+          src="https://www.thespiritsbusiness.com/content/uploads/2019/03/Shanghai.jpg"
+          class="w-100"
+        />
+        <a href="/destination/china/">
+          <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <h1 class="text-white mb-0">CHINA</h1>
+            </div>
+          </div>
+          <div class="hover-overlay">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.2)"
+            ></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-lg-4 mb-lg-0 p-0">
+      <div class="bg-image hover-zoom" data-mdb-ripple-color="light">
+        <img
+          src="https://images.hindustantimes.com/img/2021/02/03/1600x900/hyangwonjeong-pavilion-5900902_1920_1612329095702_1612329102098.jpg"
+          class="w-100"
+        />
+        <a href="/destination/south-korea/">
+          <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <h1 class="text-white mb-0">SOUTH KOREA</h1>
+            </div>
+          </div>
+          <div class="hover-overlay">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.2)"
+            ></div>
+          </div>
+        </a>
+      </div>
+
+      <div class="bg-image hover-zoom" data-mdb-ripple-color="light">
+        <img
+          src="https://www.thoughtco.com/thmb/ZLrtgEGK8Ne9Ryx-b2TfDgp2FDQ=/4288x2848/filters:fill(auto,1)/Taiwan-58b9d0fb5f9b58af5ca84819.jpg"
+          class="w-100"
+        />
+        <a href="/destination/taiwan/">
+          <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)">
+            <div class="d-flex justify-content-center align-items-center h-100">
+              <h1 class="text-white mb-0">TAIWAN</h1>
+            </div>
+          </div>
+          <div class="hover-overlay">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.2)"
+            ></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- amaxing Destinations -->
+
+{%endblock%}

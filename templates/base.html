@@ -42,12 +42,11 @@
           ><i class="fab fa-linkedin fa-2x"></i
         ></a>
         <!-- Search form -->
+        <form class="" action="{% url 'search_results' %}" method="get">
         <input
-          type="search"
-          class="nav-search"
-          placeholder="search places,tour,activites"
-          aria-label="Search"
+          type="search" name="query" placeholder="Search..." required  pattern="[A-Za-z0-9_]{*}" title="query can't be empty. Can't contain any special character" class="form-control"
         />
+        </form>
         <!-- Toggle button -->
         <button
           class="navbar-toggler ms-auto"
@@ -105,7 +104,7 @@
               <a
                 class="nav-link d-flex flex-column text-center"
                 aria-current="page"
-                href="#"
+                href="/destination/"
               >
                 <span class="small">Destinations</span></a
               >

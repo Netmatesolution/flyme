@@ -6,8 +6,8 @@ from core.models import Country
 
 class Staycation(models.Model):
     category_list = [
-        ('Hotel & Resorts','Hotel & Resorts'),
-        ('Home & Villas','Home & Villas'),
+        ('Hotel-Resorts','Hotel & Resorts'),
+        ('Home-Villas','Home & Villas'),
     ]
     host_id = models.ForeignKey(to=User, on_delete=CASCADE,blank=True , null=True)
     staycation_name = models.CharField(max_length = 100 , unique=True)

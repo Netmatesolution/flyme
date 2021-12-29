@@ -7,14 +7,14 @@ def hotelresortpage(request):
     ctx={}
     ctx['title'] = 'Hotels & Resorts'
     ctx['description'] = 'HOME_PAGE_DESCRIPTION'
-    ctx['hotelsresort']=Staycation.objects.all().filter(verified=True,category='Hotel & Resorts').order_by('-id')
+    ctx['hotelsresort']=Staycation.objects.all().filter(verified=True,category='Hotel-Resorts').order_by('-id')
     return render(request, 'staycation/hotels-resort.html',ctx)
 
 def homesvillaspage(request):
     ctx={}
     ctx['title'] = 'Home & Villas'
     ctx['description'] = 'HOME_PAGE_DESCRIPTION'
-    ctx['homesvillas']=Staycation.objects.all().filter(verified=True,category='Home & Villas').order_by('-id')
+    ctx['homesvillas']=Staycation.objects.all().filter(verified=True,category='Home-Villas').order_by('-id')
     return render(request, 'staycation/homes-villas.html',ctx)
 
 

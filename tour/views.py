@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Tour,Days,TourRequest
 from django.views.generic.detail import DetailView
 from django.contrib.auth.models import User
+from staycation.models import Staycation
 # Create your views here.
 
 # homepage
@@ -15,6 +16,7 @@ def tourpage(request):
     ctx['Japan']=Tour.objects.all().filter(countries=4)
     ctx['China']=Tour.objects.all().filter(countries=5)
     ctx['Taiwan']=Tour.objects.all().filter(countries=6)
+    ctx['staycations']=Staycation.objects.all().filter(recommended=True,verified=True)[:4]
     return render(request, 'tour/tour.html',ctx)
 
 
