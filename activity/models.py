@@ -107,3 +107,10 @@ class Cart(models.Model):
         return  f"{self.id}"
 
 
+class FeatureImages(models.Model):
+    activity = models.ForeignKey(to=Activity, on_delete=CASCADE)
+    image = models.ImageField(upload_to = "activityimg", null=True , blank=True)
+
+    def __str__(self):
+        return  f"{self.activity}"
+

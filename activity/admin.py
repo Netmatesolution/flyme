@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Activity,Category,Package, Packageprice,Cart,Order
+from .models import Activity,Category,Package, Packageprice,Cart,Order,FeatureImages
 from django_summernote.admin import SummernoteModelAdmin
 from django import forms
 from django.db import IntegrityError
@@ -7,9 +7,31 @@ from django.db import transaction
 from django.contrib import messages
 # Register your models here.
 
+
+class ActivityChoiceField(forms.ModelChoiceField):
+     def label_from_instance(self, obj):
+         return obj
+
+class FeatureImagesAdmin(admin.ModelAdmin):
+    list_display=('activity',"image")
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if request.user.is_staff and not request.user.is_superuser:
+            if db_field.name == 'activity':
+                return ActivityChoiceField(queryset=Activity.objects.all().filter(host_id=request.user))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+
+class PageFileInline(admin.TabularInline):
+        model = FeatureImages
+
+
 class ActivityAdmin(SummernoteModelAdmin,admin.ModelAdmin):
     list_display=('id','activity_name','verified')
     summernote_fields = ('highlights','overview')
+    inlines = [PageFileInline,]
+    search_fields = ['activity_name']
 
     def get_form(self, request, obj=None, **kwargs):
         if request.user.is_staff and not request.user.is_superuser:
@@ -45,6 +67,7 @@ class ActivityChoiceField(forms.ModelChoiceField):
 class PackageAdmin(SummernoteModelAdmin,admin.ModelAdmin):
     list_display=('id','package_name','activity_name')
     summernote_fields = ('description','inclusions','requirements')
+    search_fields = ['activity_name__activity_name','package_name']
 
     def get_queryset(self, request):
         package_list=super().get_queryset(request)
@@ -80,6 +103,7 @@ class PackageChoiceField(forms.ModelChoiceField):
 
 class PackagepriceAdmin(admin.ModelAdmin):
     list_display=('id','activity_name','package','name','price',)
+    search_fields = ['activity_name__activity_name','package__package_name']
 
     def get_queryset(self, request):
         packageprice_list=super().get_queryset(request)
@@ -136,3 +160,6 @@ class CartAdmin(admin.ModelAdmin):
     search_fields=['id']
 
 admin.site.register(Cart,CartAdmin)
+
+
+# admin.site.register(FeatureImages,FeatureImagesAdmin)

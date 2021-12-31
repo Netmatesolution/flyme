@@ -59,8 +59,7 @@ class StaycationRequest(models.Model):
     full_name = models.CharField(max_length = 100,null=True, blank=True)
     user_email = models.CharField(max_length = 100, null=True, blank=True)
     user_number = models.CharField(max_length = 100, null=True, blank=True)
-    checkin=models.DateField(null=True, blank=True)
-    checkout=models.DateField(null=True, blank=True)
+    tour_dates=models.CharField(max_length=500,null=True, blank=True)
     numberofnights=models.IntegerField(null=True,blank=True)
     adult=models.IntegerField(null=True,blank=True)
     child=models.IntegerField(null=True,blank=True)
@@ -69,4 +68,11 @@ class StaycationRequest(models.Model):
 
     def __str__(self):
         return  f"{self.user_email}"
+
+class FeatureImages(models.Model):
+    staycation = models.ForeignKey(to=Staycation, on_delete=CASCADE)
+    image = models.ImageField(upload_to = "staycationimg", null=True , blank=True)
+
+    def __str__(self):
+        return  f"{self.staycation}"
 

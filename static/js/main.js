@@ -9,6 +9,7 @@ $(document).ready(function () {
   $(".package-btn").on("click", function (e) {
     $(this).siblings().removeClass("btn-secondary");
     $(this).addClass("btn-secondary");
+    $(".package-description").css("display", "block");
     $(".addtocart").removeClass("d-none");
     let id = $(this).attr("data-package_id");
     $.ajax({
@@ -30,13 +31,13 @@ $(document).ready(function () {
                 >
                   <span class="mx-1 item-total-${index}" >${item.price}</span>
 
-                  <button type="button" class="btn btn-outline-danger btn-num-product-down" data-price="${item.price}" data-minusquantity="${index}">
+                  <button type="button" class="btn btn-num-product-down" data-price="${item.price}" data-minusquantity="${index}">
                     <i class="fas fa-minus"></i>
                   </button>
 
                     <input class="mx-2 form-control" min="1" type="number" readonly value="1" name="${item.id}" style="width:60px;text-align:center;border:none"/>
 
-                  <button type="button" class="btn btn-outline-success btn-num-product-up" data-price="${item.price}" data-addquantity="${index}">
+                  <button type="button" class="btn btn-num-product-up" data-price="${item.price}" data-addquantity="${index}">
                     <i class="fas fa-plus"></i>
                   </button>
                 </div>
@@ -140,14 +141,87 @@ $(document).ready(function () {
     });
   });
 
-  $(".book-now").on('click',function(e){
-    res=$(".addtocartform").submit()
+  $(".book-now").on("click", function (e) {
+    res = $(".addtocartform").submit();
     window.location.replace("/activity/book-now/");
-  })
+  });
 
   // login before adding into cart
   $(".cart-icon-nologin").on("click", function (e) {
     e.preventDefault();
     swal("Please login before adding product into cart");
   });
+
+  $(".select-country").on("change", function () {
+    let country = this.value;
+    $(".tourcountry-search").attr("href", `/tour/theme/?country=${country}`);
+  });
+
+  $(".select-country-theme").on("change", function () {
+    let url_string = window.location.href;
+    let url = new URL(url_string);
+    let country = url.searchParams.get("country");
+    let category = this.value;
+    $(".tourtheme-search").attr(
+      "href",
+      `/tour/theme/?country=${country}&theme=${category}`
+    );
+  });
+
+  $(".staycation-select-country").on("change", function () {
+    let country = this.value;
+    $(".staycationcountry-search").attr(
+      "href",
+      `/staycation/theme/?country=${country}`
+    );
+  });
+
+  $(".select-staycation-theme").on("change", function () {
+    let url_string = window.location.href;
+    let url = new URL(url_string);
+    let country = url.searchParams.get("country");
+    let category = this.value;
+    $(".staycationtheme-search").attr(
+      "href",
+      `/staycation/theme/?country=${country}&theme=${category}`
+    );
+  });
+
+
+  $(".select-activity-country").on("change", function () {
+    let country = this.value;
+    $(".activitycountry-search").attr(
+      "href",
+      `/activity/theme/?country=${country}`
+    );
+  });
+
+   $(".select-activity-theme").on("change", function () {
+     let url_string = window.location.href;
+     let url = new URL(url_string);
+     let country = url.searchParams.get("country");
+     let category = this.value;
+     $(".activitytheme-search").attr(
+       "href",
+       `/activity/theme/?country=${country}&theme=${category}`
+     );
+   });
+
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, "0");
+        var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+        var yyyy = today.getFullYear();
+
+        // today = mm + "/" + dd + "/" + yyyy;
+        today = `${dd} + "/" + ${mm} + "/" + ${yyyy}`;
+
+      $('input[name="tourdates"]').daterangepicker({
+        minDate: today,
+        locale: {
+          cancelLabel: "Clear",
+          format: "DD/MM/YYYY",
+        },
+      });
+
 });

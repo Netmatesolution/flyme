@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from activity.models import Activity
 from tour.models import Tour
-from .models import Country
+from .models import Country,Customtrip
 from staycation.models import Staycation
 from django.db.models import Q
 # Create your views here.
@@ -24,6 +24,8 @@ def aboutpage(request):
 
 def destination(request):
     ctx={}
+    ctx['title'] = 'Destination'
+    ctx['description'] = 'HOME_PAGE_DESCRIPTION'  
     return render(request, 'destination/destination.html',ctx)
 
 
@@ -49,7 +51,23 @@ def searchresults(request):
     return render(request,'core/search.html',ctx)
 
 
+def customtrip(request):
+    ctx={}
+    if request.method =='POST':
+        country=request.POST.get('country',False)
+        budget=request.POST.get('budget',False)
+        tourdates=request.POST.get('tourdates',False)
+        fullname=request.POST.get('fullname',False)
+        email=request.POST.get('email',False)
+        phonenumber=request.POST.get('phonenumber',False)
+        arrivalairport=request.POST.get('arrivalairport',False)
+        departureairport=request.POST.get('departureairport',False)
+        whom=request.POST.get('whom',False)
+        adult=request.POST.get('adult',False)
+        child=request.POST.get('child',False)
+        specialrequest=request.POST.get('specialrequest',False)
 
-# Q(cities__icontains=query)| Q(category__icontains=query) | Q(country__icontains=query) |
-# Q(countries__icontains=query)| | Q(tour_cities__icontains=query)| Q(category__icontains=query)
-# | Q(country__icontains=query)| Q(category__icontains=query)
+        obj = Customtrip(country=country,budget=budget,tour_dates=tourdates,fullname=fullname,email=email,phonenumber=phonenumber,arrivalairport=arrivalairport,departureairport=departureairport,whom=whom,adult=adult,child=child,specialrequest=specialrequest)
+        obj.save()
+        ctx['msg']='Your message has been sent.'
+    return render(request,'customtrip.html',ctx)

@@ -1,0 +1,295 @@
+{% extends 'base.html' %} {%block content%}
+
+<div class="container">
+  {%if msg %}
+  <p class="text-success text-center">{{msg}}</p>
+  {%else%}
+  <div class="row">
+    <div class="col-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6 my-5 py-5">
+      <small
+        >Please inform us if you are willing to take kids or babies on this
+        trip. You can add their age in the notes. It will help us to give you a
+        more precise quote.</small
+      >
+      <form class="mt-3" action="/tailormade/" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="form-label">Where would you like to travel?</label>
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="country"
+                  value="Indonesia"
+                  id="Indonesia"
+                />
+                <label class="form-check-label" for="Indonesia"
+                  >Indonesia</label
+                >
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="country"
+                  value="Seychelles"
+                  id="Seychelles"
+                />
+                <label class="form-check-label" for="Seychelles"
+                  >Seychelles</label
+                >
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="country"
+                  value="South Korea"
+                  id="South-Korea"
+                />
+                <label class="form-check-label" for="South-Korea"
+                  >South Korea</label
+                >
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="country"
+                  value="Japan"
+                  id="Japan"
+                />
+                <label class="form-check-label" for="Japan">Japan</label>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="country"
+                  value="China"
+                  id="China"
+                />
+                <label class="form-check-label" for="China">China</label>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="country"
+                  value="Tiwan"
+                  id="Tiwan"
+                />
+                <label class="form-check-label" for="Tiwan">Tiwan</label>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="country"
+                  value="Not Sure"
+                  id="notsure"
+                />
+                <label class="form-check-label" for="notsure">Not Sure</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="form-label">What is your budget per person?</label>
+          <div class="row">
+            <div class="col-12 col-md-3">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="budget"
+                  value="2000-500"
+                  id="2000-500"
+                />
+                <label class="form-check-label" for="2000-500">2000-500</label>
+              </div>
+            </div>
+            <div class="col-12 col-md-3">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="budget"
+                  value="5000-7500"
+                  id="5000-7500"
+                />
+                <label class="form-check-label" for="5000-7500"
+                  >5000-7500</label
+                >
+              </div>
+            </div>
+            <div class="col-12 col-md-3">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="budget"
+                  value="7500+"
+                  id="7500"
+                />
+                <label class="form-check-label" for="7500">7500+</label>
+              </div>
+            </div>
+            <div class="col-12 col-md-3">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="budget"
+                  value="Not Sure"
+                  id="ns"
+                />
+                <label class="form-check-label" for="ns">Not Sure</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Departure Date - End Date</label>
+          <input
+            class="form-control"
+            type="text"
+            name="tourdates"
+            id="tourdates"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Full Name</label>
+          <input type="text" class="form-control" name="fullname" required pattern="[A-Za-z]{*}"/>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Business Email</label>
+          <input type="email" class="form-control" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Phone Number</label>
+          <input type="text" class="form-control" name="phonenumber" required pattern="[0-9]{10}"/>
+        </div>
+
+        <div class="mb-3">
+          <p>
+            Do you already know the arrival and departure airports in the
+            destination of your trip?
+          </p>
+
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <label class="form-label">Arrival Airport</label>
+              <input type="text" class="form-control" name="arrivalairport" />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label">Departure Airport</label>
+              <input type="text" class="form-control" name="departureairport" />
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="form-label">Who will you be travelling with?</label>
+          <div class="row">
+            <div class="col-12 col-md-3">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="whom"
+                  value="solo"
+                  id="solo"
+                />
+                <label class="form-check-label" for="solo">I travel solo</label>
+              </div>
+            </div>
+            <div class="col-12 col-md-3">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="whom"
+                  value="partner"
+                  id="partner"
+                />
+                <label class="form-check-label" for="partner">My partner</label>
+              </div>
+            </div>
+            <div class="col-12 col-md-3">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="whom"
+                  value="family"
+                  id="family"
+                />
+                <label class="form-check-label" for="family">My family</label>
+              </div>
+            </div>
+            <div class="col-12 col-md-3">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="whom"
+                  value="friends"
+                  id="friends"
+                />
+                <label class="form-check-label" for="friends">My friends</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <p>Number of members?</p>
+
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <label class="form-label">Adult</label>
+              <input type="number" class="form-control" name="adult" value="1" min="0"/>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label">Child</label>
+              <input type="number" class="form-control" name="child" value="1" min="0"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label"
+            >Do you have any special need or requests?</label
+          >
+          <textarea
+            cols="30"
+            rows="5"
+            class="form-control"
+            name="specialrequest"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <button type="submit" class="btn btn-info">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  {%endif%}
+</div>
+
+{%endblock%}

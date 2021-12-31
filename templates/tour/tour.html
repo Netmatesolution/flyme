@@ -64,23 +64,22 @@
     <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
     <div class="input-group d-flex justify-content-center align-items-center">
       <div class="form-outline carousel-search">
-        <select class="form-select form-select-lg bg-light rounded-0">
-          <option selected>Indonesia</option>
-          <option value="1">China</option>
-          <option value="1">Seychells</option>
-          <option value="1">Japan</option>
-          <option value="1">Taiwan</option>
-          <option value="1">South Korea</option>
+        <select class="form-select form-select-lg bg-light rounded-0 select-country">
+          <option value="indonesia">Indonesia</option>
+          <option value="china">China</option>
+          <option value="seychelles">Seychells</option>
+          <option value="japan">Japan</option>
+          <option value="taiwan">Taiwan</option>
+          <option value="south-korea">South Korea</option>
         </select>
       </div>
-      <button
+      <a href="/tour/theme/?country=indonesia"
         id="search-button"
-        type="button"
-        class="btn btn-primary rounded-0"
+        class="btn btn-primary rounded-0 tourcountry-search"
         style="height: 45px"
       >
         <i class="fas fa-search"></i>
-      </button>
+    </a>
     </div>
   </div>
   <!-- Inner -->
@@ -148,7 +147,7 @@
     {% endfor %}
   </div>
   <a
-    href="/destination/indonesia/"
+    href="/tour/theme/?country=indonesia"
     type="button"
     class="btn btn-outline-info py-3 my-3"
     data-mdb-ripple-color="dark"
@@ -198,7 +197,7 @@
     {% endfor %}
   </div>
   <a
-    href="/destination/seychelles/"
+    href="/tour/theme/?country=seychelles/"
     type="button"
     class="btn btn-outline-info py-3 my-3"
     data-mdb-ripple-color="dark"
@@ -248,7 +247,7 @@
     {% endfor %}
   </div>
   <a
-    href="/destination/south-korea/"
+    href="/tour/theme/?country=south-korea/"
     type="button"
     class="btn btn-outline-info py-3 my-3"
     data-mdb-ripple-color="dark"
@@ -298,7 +297,7 @@
     {% endfor %}
   </div>
   <a
-    href="/destination/japan/"
+    href="/tour/theme/?country=japan/"
     type="button"
     class="btn btn-outline-info py-3 my-3"
     data-mdb-ripple-color="dark"
@@ -348,7 +347,7 @@
     {% endfor %}
   </div>
   <a
-    href="/destination/china/"
+    href="/tour/theme/?country=china/"
     type="button"
     class="btn btn-outline-info py-3 my-3"
     data-mdb-ripple-color="dark"

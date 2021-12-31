@@ -1,59 +1,22 @@
 {% extends 'base.html' %} {% block content %}
 <!-- carousel -->
-<div
-  id="carouselExampleCrossfade"
-  class="container carousel slide carousel-fade"
-  data-mdb-ride="carousel"
->
-  <div class="carousel-indicators">
-    <button
-      type="button"
-      data-mdb-target="#carouselExampleCrossfade"
-      data-mdb-slide-to="0"
-      class="active"
-      aria-current="true"
-      aria-label="Slide 1"
-    ></button>
-    <button
-      type="button"
-      data-mdb-target="#carouselExampleCrossfade"
-      data-mdb-slide-to="1"
-      aria-label="Slide 2"
-    ></button>
-    <button
-      type="button"
-      data-mdb-target="#carouselExampleCrossfade"
-      data-mdb-slide-to="2"
-      aria-label="Slide 3"
-    ></button>
-  </div>
+<div class="p-0 m-0">
+  <div id="carouselExampleControls" class="carousel slide" data-mdb-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active">
+    {%for item in featureimages%}
+      <div class="carousel-item {%if forloop.first%}active{%endif%}">
       <img
-        src="https://mdbootstrap.com/img/new/standard/nature/100.jpg"
+        src="/media/{{item.image}}"
         class="d-block w-100"
-        alt="..."
+        alt="Wild Landscape"
       />
     </div>
-    <div class="carousel-item">
-      <img
-        src="https://mdbootstrap.com/img/new/standard/nature/101.jpg"
-        class="d-block w-100"
-        alt="..."
-      />
-    </div>
-    <div class="carousel-item">
-      <img
-        src="https://mdbootstrap.com/img/new/standard/nature/103.jpg"
-        class="d-block w-100"
-        alt="..."
-      />
-    </div>
+    {%endfor%}
   </div>
   <button
     class="carousel-control-prev"
     type="button"
-    data-mdb-target="#carouselExampleCrossfade"
+    data-mdb-target="#carouselExampleControls"
     data-mdb-slide="prev"
   >
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -62,12 +25,14 @@
   <button
     class="carousel-control-next"
     type="button"
-    data-mdb-target="#carouselExampleCrossfade"
+    data-mdb-target="#carouselExampleControls"
     data-mdb-slide="next"
   >
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
+</div>
+
 </div>
 <!-- carousel -->
 
@@ -88,7 +53,7 @@
         <div class="card-header">Best Price Guarantee</div>
         <div class="card-body">
           <!-- <h3 class="card-title initial-price">From 4,500</h3> -->
-          <a href="#" class="btn btn-primary">Select Options</a>
+          <a href="#packages" class="btn btn-primary">Select Options</a>
         </div>
         <div class="card-footer text-muted">Get rewards for exploring</div>
       </div>
@@ -96,7 +61,7 @@
   </div>
 </div>
 
-<div class="container mt-2 mb-5">
+<div class="container mt-2 mb-5" id="packages">
   <div>
     <h4>Package options</h4>
   </div>
@@ -121,7 +86,7 @@
           </button>
           {%endfor%}
         </div>
-        <p>Quantity</p>
+        <!-- <p>Quantity</p> -->
         <form method="POST" class="addtocartform">
           <div class="my-2 quantity-list">
             <!-- quantity comes here from js -->
@@ -146,7 +111,8 @@
     </div>
     <div class="col-12 col-md-4 bg-light">
       <span>Selected package details</span>
-      <div class="bg-light package-description"></div>
+      <div class="bg-light package-description">
+      </div>
     </div>
   </div>
 </div>

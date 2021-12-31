@@ -1,5 +1,41 @@
 {% extends 'base.html' %} {%block content%}
 
+<div class="p-0 m-0">
+  <div id="carouselExampleControls" class="carousel slide" data-mdb-ride="carousel">
+  <div class="carousel-inner">
+    {%for item in featureimages%}
+      <div class="carousel-item {%if forloop.first%}active{%endif%}">
+      <img
+        src="/media/{{item.image}}"
+        class="d-block w-100"
+        alt="Wild Landscape"
+      />
+    </div>
+    {%endfor%}
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-mdb-target="#carouselExampleControls"
+    data-mdb-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-mdb-target="#carouselExampleControls"
+    data-mdb-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+</div>
+
+
 <div class="container mt-5 py-5">
   <div class="row">
     <div class="col-12 col-md-8">
@@ -25,7 +61,7 @@
   </div>
 </div>
 {%for key,value in data.items %}
-<div class="bg-light py-5 my-4">
+<div class="shadow py-5 my-4">
   <div class="container package_options">
     <div class="row">
       <div class="col-12 col-md-4">
@@ -38,7 +74,6 @@
       <div class="col-12 col-md-4">
         <p><b>{{value.room.room_name}}</b></p>
         <p>{{value.room.description | safe }}</p>
-        <p>Room Size: 62 m²</p>
       </div>
       <div class="col-12 col-md-4">
         <!-- Tabs navs -->
@@ -65,16 +100,16 @@
             id="ex2-tabs-{{price.number_of_nights}}-{{value.room.slug}}"
             role="tabpanel"
           >
-            <p class="lh-sm">Total for {{price.number_of_nights}} nights from</p>
-            <p class="lh-sm"><b>${{price.price}}</b></p>
-            <small class="lh-sm">Includes taxes & fees</small>
+            <p class="mb-1">Total for {{price.number_of_nights}} nights from</p>
+            <p class="mb-1"><b>${{price.price}}</b></p>
+            <small class="mb-0">Includes taxes & fees</small>
           </div>
           {%endfor%}
         </div>
         <!-- Tabs content -->
-        <div>
+        <!-- <div>
           <button class="btn btn-success w-100">Check</button>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="row">

@@ -2,7 +2,9 @@
 
 <div class="container">
     {%if msg %}
+      <div class="container py-5 my-5">
         <p class="text-success text-center">{{msg}}</p>
+      </div>
     {%else%}
     <div class="row">
       <div class="col-12 offset-md-2 col-md-8 offset-lg-2 col-lg-6  my-5 py-5">
@@ -13,31 +15,25 @@
 
           <div class="mb-3">
             <label class="form-label">Full Name</label>
-            <input type="text" class="form-control" name="fullname"/>
+            <input type="text" class="form-control" name="fullname" required pattern="[A-Za-z]{*}"/>
           </div>
           <div class="mb-3">
             <label class="form-label">Business Email</label>
-            <input type="email" class="form-control" name="email"/>
+            <input type="email" class="form-control" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"/>
           </div>
           <div class="mb-3">
             <label class="form-label">Phone Number</label>
-            <input type="number" class="form-control" name="phonenumber"/>
+            <input type="text" class="form-control" name="phonenumber" required pattern="[0-9]{10}"/>
           </div>
 
-          <div class="mb-3">
-            <label class="form-label">Check In</label>
-            <input type="Date" class="form-control" name="departure"/>
+           <div class="mb-3">
+            <label class="form-label">Check In - Check Out</label>
+            <input class="form-control" type="text" name="tourdates" id="tourdates"/>
           </div>
-
-          <div class="mb-3">
-            <label class="form-label">Check Out</label>
-            <input type="Date" class="form-control" name="end"/>
-          </div>
-
 
           <div class="mb-3">
             <label class="form-label">Number of nights</label>
-            <input type="number" class="form-control" name="nights" />
+            <input type="number" class="form-control" name="nights" required />
           </div>
 
           <div class="mb-3">
@@ -56,11 +52,11 @@
               <div class="row">
                   <div class="col-12 col-md-6">
                       <label class="form-label">Adult</label>
-                      <input type="number" class="form-control" name="adult"/>
+                      <input type="number" class="form-control" name="adult" min="0" required/>
                   </div>
                   <div class="col-12 col-md-6">
                        <label class="form-label">Child</label>
-                      <input type="number" class="form-control" name="child"/>
+                      <input type="number" class="form-control" name="child" min="0" required/>
                   </div>
               </div>
           </div>
@@ -77,7 +73,14 @@
       </div>
       <div class="col-12 col-md-2 col-lg-4 my-5 py-5">
           <div class="card p-2">
-              <p>{{staycationname}}</p>
+            <img
+          src="/media/{{staycationname.feature_image}}"
+          class="img-thumbnail"
+          alt="Hollywood Sign on The Hill"
+        />
+              <p class="mb-1">{{staycationname}}</p>
+              <p class="mb-1">{{staycationname.category}}</p>
+              <p class="mb-1">{{staycationname.country}}</p>
           </div>
       </div>
     </div>

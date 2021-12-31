@@ -3,17 +3,17 @@
 <div
   class="p-5 text-center bg-image"
   style="
-    background-image: url('https://mdbootstrap.com/img/new/slides/052.jpg');
+    background-image: url('/media/{{country.image}}');
     height: 450px;
   "
 >
   <div class="mask" style="background:rgb(16 13 13 / 61%)">
     <div class="d-flex justify-content-center align-items-center h-100">
       <div class="text-white">
-        <h1 class="mb-3">Explore {{country}}</h1>
-        <h4 class="mb-3">Subheading</h4>
-        <a class="btn btn-outline-light btn-lg" href="#!" role="button">
-          Call to action
+        <h1 class="mb-3">{{country}}</h1>
+        <h4 class="mb-3">{{country.description}}</h4>
+        <a class="btn btn-outline-light btn-lg" href="/tailormade/" role="button">
+          Get your customized tour
         </a>
       </div>
     </div>

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Staycation, StaycationRoom,RoomPrice,StaycationRequest
+from .models import Staycation, StaycationRoom,RoomPrice,StaycationRequest,FeatureImages
 from django.views.generic.detail import DetailView
 # Create your views here.
 
@@ -32,6 +32,7 @@ class StaycationDetailpage(DetailView):
             datadict[room.room_name]['room']=room
             datadict[room.room_name]['price']=roomprice
         context['data']=datadict
+        context['featureimages']=FeatureImages.objects.all().filter(staycation=st.id)
         return context
 
 def staycationrequest(request):
@@ -47,8 +48,9 @@ def staycationrequest(request):
         fullname=request.POST.get('fullname',False)
         email=request.POST.get('email',False)
         phonenumber=request.POST.get('phonenumber',False)
-        departure=request.POST.get('departure',False)
-        end=request.POST.get('end',False)
+        # departure=request.POST.get('departure',False)
+        # end=request.POST.get('end',False)
+        tourdates=request.POST.get('tourdates',False)
         nights=request.POST.get('nights',False)
         roomid=request.POST.get('room',False)
         adult=request.POST.get('adult',False)
@@ -58,7 +60,22 @@ def staycationrequest(request):
         staycation=Staycation.objects.get(id=staycationid)
         room=StaycationRoom.objects.get(id=roomid)
         b = StaycationRequest(host_id=staycation.host_id,staycation=staycation,full_name=fullname,
-         user_email=email,user_number=phonenumber,checkin=departure,checkout=end,numberofnights=nights,room=room,adult=adult,child=child,occassion=specialrequest)
+         user_email=email,user_number=phonenumber,numberofnights=nights,room=room,adult=adult,child=child,occassion=specialrequest)
         b.save()
         ctx['msg']='Your message has been sent.'
     return render(request, 'staycation/staycationrequest.html',ctx)
+
+
+def staycationtheme(request):
+    ctx={}
+    if request.method =='GET':
+        country=request.GET.get('country',False)
+        theme=request.GET.get('theme',False)
+        ctx['country']=country
+        if theme:
+            ctx['theme']=theme
+            staycations=Staycation.objects.all().filter(country__slug=country,category=theme)
+        else:
+            staycations=Staycation.objects.all().filter(country__slug=country)
+        ctx['staycations']=staycations
+    return render(request, 'staycation/staycationtheme.html',ctx)

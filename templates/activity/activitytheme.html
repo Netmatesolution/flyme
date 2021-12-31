@@ -1,0 +1,155 @@
+{% extends 'base.html' %} {%block content%}
+
+
+<!-- Carousel wrapper -->
+<div
+  id="carouselBasicExample"
+  class="carousel slide carousel-fade mb-3"
+  data-mdb-ride="carousel"
+>
+  <!-- Indicators -->
+  <div class="carousel-indicators">
+    <button
+      type="button"
+      data-mdb-target="#carouselBasicExample"
+      data-mdb-slide-to="0"
+      class="active"
+      aria-current="true"
+      aria-label="Slide 1"
+    ></button>
+    <button
+      type="button"
+      data-mdb-target="#carouselBasicExample"
+      data-mdb-slide-to="1"
+      aria-label="Slide 2"
+    ></button>
+    <button
+      type="button"
+      data-mdb-target="#carouselBasicExample"
+      data-mdb-slide-to="2"
+      aria-label="Slide 3"
+    ></button>
+  </div>
+
+  <!-- Inner -->
+  <div class="carousel-inner">
+    <!-- Single item -->
+    <div class="carousel-item active">
+      <img
+        src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg"
+        class="d-block"
+        alt="..."
+      />
+    </div>
+
+    <!-- Single item -->
+    <div class="carousel-item">
+      <img
+        src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg"
+        class="d-block"
+        alt="..."
+      />
+    </div>
+
+    <!-- Single item -->
+    <div class="carousel-item">
+      <img
+        src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg"
+        class="d-block"
+        alt="..."
+      />
+    </div>
+  </div>
+  <div class="carousel-caption d-md-block">
+    <h1>To the world of an incredible {{country}}.</h1>
+    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+    <div class="input-group d-flex justify-content-center align-items-center">
+      <div class="form-outline carousel-search">
+        <select class="form-select form-select-lg bg-light rounded-0 select-activity-theme">
+          {%for category in categories%}
+          <option value="{{category.slug}}">{{category.category}}</option>
+          {%endfor%}
+        </select>
+      </div>
+      {%for item in categories%}
+        {%if forloop.first %}
+        <a
+        href="/activity/theme/?country={{country}}&theme={{item.slug}}"
+        id="search-button"
+        type="button"
+        class="btn btn-primary rounded-0 activitytheme-search"
+        style="height: 45px"
+        >
+            <i class="fas fa-search"></i>
+        </a>
+        {% endif %}   
+      {%endfor%}
+    </div>
+  </div>
+  <!-- Inner -->
+
+  <!-- Controls -->
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-mdb-target="#carouselBasicExample"
+    data-mdb-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-mdb-target="#carouselBasicExample"
+    data-mdb-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!-- Carousel wrapper -->
+
+
+<div class="container px-4 py-2">
+  <p class="pb-2">{{country}}</p>
+  <div class="row">
+    {% for item in activites %}
+    <div class="col-12 col-md-3 my-2">
+      <div class="card">
+        <div
+          class="bg-image hover-overlay ripple"
+          data-mdb-ripple-color="light"
+        >
+          <img
+            src="/media/{{item.image}}"
+            class="img-fluid"
+          />
+          <a href="{{item.slug}}">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.15)"
+            ></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <p>
+            <span class="badge rounded-pill bg-light text-dark"
+              >{{item.category}}</span
+            >
+          </p>
+          <p class="card-title">
+            {{item.activity_name}}
+          </p>
+          <!-- <small class=""> -->
+          <p><span class="badge bg-secondary">India</span></p>
+          <!-- </small> -->
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{%endblock%}

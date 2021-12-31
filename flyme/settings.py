@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -151,3 +152,10 @@ LOGOUT_REDIRECT_URL = "/"
 
 SUMMERNOTE_THEME = 'bs4'
 X_FRAME_OPTIONS = "SAMEORIGIN"
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Flyme",
+    "site_header": "Flyme",
+    "copyright": "Flyme",
+    # "show_ui_builder":'True',
+}

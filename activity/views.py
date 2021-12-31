@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from .models import Activity,Package, Packageprice,Cart,Order
+from .models import Activity,Package, Packageprice,Cart,Order,Category,FeatureImages
 from django.views.generic.detail import DetailView
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg, Count, Min,Max,Sum,F , Q
+from staycation.models import Staycation
 # Create your views here.
 
 def activitypage(request):
@@ -16,6 +17,7 @@ def activitypage(request):
     ctx['Japan']=Activity.objects.all().filter(country=4,verified=True)
     ctx['China']=Activity.objects.all().filter(country=5,verified=True)
     ctx['Taiwan']=Activity.objects.all().filter(country=6,verified=True)
+    ctx['staycations']=Staycation.objects.all().filter(recommended=True,verified=True)[:4]
     return render(request, 'activity/activity.html',ctx)
 
 
@@ -28,6 +30,7 @@ class ActivityDetailpage(DetailView):
         activity=Activity.objects.get(slug=self.kwargs.get("slug"))
         packagelist=Package.objects.all().filter(activity_name=activity).values('package_name','slug','id',)
         context['packages']=packagelist
+        context['featureimages']=FeatureImages.objects.all().filter(activity=activity.id)
         return context
 
 
@@ -116,3 +119,19 @@ def booknow(request):
             ctx['msg1'] = "Something went wrong! Try after few minutes"
             ctx["status"]="error"    
     return render(request, 'activity/book-now.html',ctx)
+
+
+def staycationtheme(request):
+    ctx={}
+    if request.method =='GET':
+        country=request.GET.get('country',False)
+        theme=request.GET.get('theme',False)
+        ctx['country']=country
+        ctx['categories']=Category.objects.all()
+        if theme:
+            ctx['theme']=theme
+            activites=Activity.objects.all().filter(country__slug=country,category__slug=theme)
+        else:
+            activites=Activity.objects.all().filter(country__slug=country)
+        ctx['activites']=activites
+    return render(request, 'activity/activitytheme.html',ctx)

@@ -30,6 +30,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
     />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
@@ -45,6 +46,7 @@
         <form class="" action="{% url 'search_results' %}" method="get">
         <input
           type="search" name="query" placeholder="Search..." required  pattern="[A-Za-z0-9_]{*}" title="query can't be empty. Can't contain any special character" class="form-control"
+          autocomplete="off"
         />
         </form>
         <!-- Toggle button -->
@@ -102,7 +104,7 @@
             </li>
             <li class="nav-item">
               <a
-                class="nav-link d-flex flex-column text-center"
+                class="nav-link d-flex flex-column text-center {% if 'Destination' in title %}active{% endif %}"
                 aria-current="page"
                 href="/destination/"
               >
@@ -171,8 +173,8 @@
                 class="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
-                <li><a class="dropdown-item" href="#">My profile</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="/dashboard/">My profile</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Settings</a></li> -->
                 <li><a class="dropdown-item" href="/accounts/logout/">Logout</a></li>
               </ul>
             </li>
@@ -327,10 +329,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
     <script src="{%static 'js/main.js' %}"></script>
     <script>
+      
       $(document).ready(function () {
+
+      $("#search-input").focusout(() => {
+
+        $(".suggestion-box").slideUp("fast");
+
+      });
+
+      $("#search-input").focusin(() => {
+
+        $(".suggestion-box").slideDown("fast");
+
+      });
+
         $(".owl-carousel").owlCarousel({
           responsiveClass: true,
           autoplay: true,

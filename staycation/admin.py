@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.db import models
-from .models import Staycation,StaycationRoom,RoomPrice , StaycationRequest
+from .models import Staycation,StaycationRoom,RoomPrice , StaycationRequest,FeatureImages
 from django_summernote.admin import SummernoteModelAdmin
 from django import forms
 from django.db import IntegrityError
@@ -9,9 +9,30 @@ from django.contrib import messages
 # Register your models here.
 
 
+class StaycationChoiceField(forms.ModelChoiceField):
+     def label_from_instance(self, obj):
+         return obj
+
+class FeatureImagesAdmin(admin.ModelAdmin):
+    list_display=('staycation',"image")
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if request.user.is_staff and not request.user.is_superuser:
+            if db_field.name == 'staycation':
+                return StaycationChoiceField(queryset=Staycation.objects.all().filter(host_id=request.user))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+
+class PageFileInline(admin.TabularInline):
+        model = FeatureImages
+        
+
 class StaycationAdmin(SummernoteModelAdmin,admin.ModelAdmin):
-    list_display = ('id','host_id','staycation_name')
+    list_display = ('id','host_id','staycation_name','country')
     summernote_fields = ('highlights',)
+    search_fields=['staycation_name','country__name']
+    inlines = [PageFileInline,]
 
     def get_form(self, request, obj=None, **kwargs):
         if request.user.is_staff and not request.user.is_superuser:
@@ -43,6 +64,7 @@ class StaycationChoiceField(forms.ModelChoiceField):
 
 class StaycationRoomAdmin(SummernoteModelAdmin,admin.ModelAdmin):
     list_display=('room_name','staycation','host_id',)
+    search_fields=['room_name','staycation__staycation_name']
 
     def get_form(self, request, obj=None, **kwargs):
         if request.user.is_staff and not request.user.is_superuser:
@@ -76,6 +98,7 @@ class RoomsChoiceField(forms.ModelChoiceField):
 
 class RoomPriceAdmin(admin.ModelAdmin):
     list_display=('room_name','staycation','number_of_nights','price')
+    search_fields = ['room_name__room_name','staycation__staycation_name']
 
     def get_form(self, request, obj=None, **kwargs):
         if request.user.is_staff and not request.user.is_superuser:
@@ -110,5 +133,7 @@ class RoomPriceAdmin(admin.ModelAdmin):
 
 admin.site.register(RoomPrice,RoomPriceAdmin)
 
+
 admin.site.register(StaycationRequest)
 
+# admin.site.register(FeatureImages , FeatureImagesAdmin)

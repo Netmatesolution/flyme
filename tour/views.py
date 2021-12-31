@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Tour,Days,TourRequest
+from .models import Tour,Days,TourRequest , FeatureImages
 from django.views.generic.detail import DetailView
 from django.contrib.auth.models import User
 from staycation.models import Staycation
@@ -30,6 +30,7 @@ class TourDetailpage(DetailView):
         tour=Tour.objects.get(slug=self.kwargs.get("slug"))
         context["days"] = Days.objects.all().filter(tour=tour.id) 
         context["daycount"] = Days.objects.all().filter(tour=tour.id).count() 
+        context['featureimages']=FeatureImages.objects.all().filter(tour=tour.id)
         return context
     # def get_object(self, queryset=None):
     #     return Days.objects.get(tour=self.kwargs.get("slug"))
@@ -42,11 +43,10 @@ def tourrequest(request):
         msg=Tour.objects.get(id=tour)
         ctx['tourname']=msg
         ctx['tourid']=tour
-    else:
+    elif request.method == 'POST':
         members=request.POST.get('members',False)
         tourid=request.POST.get('tourid',False)
-        departure=request.POST.get('departure',False)
-        end=request.POST.get('end',False)
+        tourdates=request.POST.get('tourdates',False)
         accomodation=request.POST.get('accomodation',False)
         fullname=request.POST.get('fullname',False)
         email=request.POST.get('email',False)
@@ -54,10 +54,24 @@ def tourrequest(request):
         arrivalairport=request.POST.get('arrivalairport',False)
         departureairport=request.POST.get('departureairport',False)
         specialrequest=request.POST.get('specialrequest',False)
-
         tour=Tour.objects.get(id=tourid)
-        b = TourRequest(host_id=tour.host_id,tour=tour,daparture_date=departure,end_date=end,participants=members,accomodation=accomodation,user_name=fullname,
+        b = TourRequest(host_id=tour.host_id,tour=tour,tour_dates=tourdates,participants=members,accomodation=accomodation,user_name=fullname,
          user_email=email,user_number=phonenumber,arrival_airport=arrivalairport,departure_airport=departureairport,special_request=specialrequest)
         b.save()
         ctx['msg']='Your message has been sent.'
     return render(request, 'tour/tourrequest.html',ctx)
+
+
+def tourtheme(request):
+    ctx={}
+    if request.method =='GET':
+        country=request.GET.get('country',False)
+        theme=request.GET.get('theme',False)
+        ctx['country']=country
+        if theme:
+            ctx['theme']=theme
+            tours=Tour.objects.all().filter(countries__slug=country,category__slug=theme)
+        else:
+            tours=Tour.objects.all().filter(countries__slug=country)
+        ctx['tours']=tours
+    return render(request, 'tour/tourtheme.html',ctx)

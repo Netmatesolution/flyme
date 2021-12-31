@@ -1,81 +1,123 @@
 {% extends 'base.html' %} {%block content%}
 
 <div class="container">
-    {%if msg %}
+  {%if msg %}
+  <div class="container py-5 my-5">
         <p class="text-success text-center">{{msg}}</p>
-    {%else%}
-    <div class="row">
-      <div class="col-12 offset-md-2 col-md-8 offset-lg-2 col-lg-6  my-5 py-5">
-          <small>Please inform us if you are willing to take kids or babies on this trip. You can add their age in the notes. It will help us to give you a more precise quote.</small>
-        <form class="mt-3" action="/tour/tourrequest/" method="POST">
-          {% csrf_token %}
-          <input type="hidden" value="{{tourid}}" name="tourid">
-          <div class="mb-3">
-            <label class="form-label">Number of members</label>
-            <input type="number" class="form-control" name="members" />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Departure Date</label>
-            <input type="Date" class="form-control" name="departure"/>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">End Date</label>
-            <input type="Date" class="form-control" name="end"/>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">What kind of accomodation do you prefer?</label>
-              <select class="form-select" name="accomodation">
-              <option selected value="Standard">Standard</option>
-              <option value="Superior">Superior</option>
-              <option value="Delux">Delux</option>
-              <option value="Luxury">Luxury</option>
-              </select>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Full Name</label>
-            <input type="text" class="form-control" name="fullname"/>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Business Email</label>
-            <input type="email" class="form-control" name="email"/>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Phone Number</label>
-            <input type="number" class="form-control" name="phonenumber"/>
-          </div>
-          <div class="mb-3">
-              <p>Do you already know the arrival and departure airports in the destination of your trip?</p>
-  
-              <div class="row">
-                  <div class="col-12 col-md-6">
-                      <label class="form-label">Arrival Airport</label>
-                      <input type="text" class="form-control" name="arrivalairport"/>
-                  </div>
-                  <div class="col-12 col-md-6">
-                       <label class="form-label">Departure Airport</label>
-                      <input type="text" class="form-control" name="departureairport"/>
-                  </div>
-              </div>
-          </div>
-          <div class="mb-3">
-              <label class="form-label">Do you have any special need or requests?</label>
-              <textarea cols="30" rows="5" class="form-control" name="specialrequest"></textarea>
-          </div>
-  
-          <div class="mb-3">
-              <button type="submit" class="btn btn-info">Send</button>
-          </div>
-  
-        </form>
       </div>
-      <div class="col-12 col-md-2 col-lg-4 my-5 py-5">
-          <div class="card p-2">
-              <p>{{tourname}}</p>
-              <p>{{tourname.category}}</p>
+  {%else%}
+  <div class="row">
+    <div class="col-12 offset-md-2 col-md-8 offset-lg-2 col-lg-6 my-5 py-5">
+      <small
+        >Please inform us if you are willing to take kids or babies on this
+        trip. You can add their age in the notes. It will help us to give you a
+        more precise quote.</small
+      >
+      <form class="mt-3" action="/tour/request/" method="POST">
+        {% csrf_token %}
+        <input type="hidden" value="{{tourid}}" name="tourid" />
+        <div class="mb-3">
+          <label class="form-label">Number of members</label>
+          <input type="number" class="form-control" name="members" required />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Trip Dates</label>
+          <input
+            class="form-control"
+            type="text"
+            name="tourdates"
+            id="tourdates"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label"
+            >What kind of accomodation do you prefer?</label
+          >
+          <select class="form-select" name="accomodation">
+            <option selected value="Standard">Standard</option>
+            <option value="Superior">Superior</option>
+            <option value="Delux">Delux</option>
+            <option value="Luxury">Luxury</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Full Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="fullname"
+            required
+            pattern="[A-Za-z]{*}"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Business Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            required
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="phonenumber"
+            required
+            pattern="[0-9]{10}"
+          />
+        </div>
+        <div class="mb-3">
+          <p>
+            Do you already know the arrival and departure airports in the
+            destination of your trip?
+          </p>
+
+          <div class="row">
+            <div class="col-12 col-md-6">
+              <label class="form-label">Arrival Airport</label>
+              <input type="text" class="form-control" name="arrivalairport" />
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label">Departure Airport</label>
+              <input type="text" class="form-control" name="departureairport" />
+            </div>
           </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"
+            >Do you have any special need or requests?</label
+          >
+          <textarea
+            cols="30"
+            rows="5"
+            class="form-control"
+            name="specialrequest"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <button type="submit" class="btn btn-info">Send</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-12 col-md-2 col-lg-4 my-5 py-5">
+      <div class="card p-2">
+        <img
+          src="/media/{{tourname.image}}"
+          class="img-thumbnail"
+          alt="Hollywood Sign on The Hill"
+        />
+        <p class="mb-0">{{tourname}}</p>
+        <p class="mb-0">{{tourname.category}}</p>
       </div>
     </div>
-    {%endif%}
+  </div>
+  {%endif%}
 </div>
 
 {%endblock%}

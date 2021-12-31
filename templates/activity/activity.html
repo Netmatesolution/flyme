@@ -64,23 +64,22 @@
     <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
     <div class="input-group d-flex justify-content-center align-items-center">
       <div class="form-outline carousel-search">
-        <select class="form-select form-select-lg bg-light rounded-0">
-          <option selected>Indonesia</option>
-          <option value="1">China</option>
-          <option value="1">Seychells</option>
-          <option value="1">Japan</option>
-          <option value="1">Taiwan</option>
-          <option value="1">South Korea</option>
+        <select class="form-select form-select-lg bg-light rounded-0 select-activity-country">
+          <option value="indonesia">Indonesia</option>
+          <option value="china">China</option>
+          <option value="seychelles">Seychells</option>
+          <option value="japan">Japan</option>
+          <option value="taiwan">Taiwan</option>
+          <option value="south-korea">South Korea</option>
         </select>
       </div>
-      <button
+      <a href="/activity/theme/?country=indonesia"
         id="search-button"
-        type="button"
-        class="btn btn-primary rounded-0"
+        class="btn btn-primary rounded-0 activitycountry-search"
         style="height: 45px"
       >
         <i class="fas fa-search"></i>
-      </button>
+    </a>
     </div>
   </div>
   <!-- Inner -->
@@ -148,7 +147,7 @@
     {% endfor %}
   </div>
   <a
-    href="./tourtheme.html"
+    href="/activity/theme/?country=indonesia"
     type="button"
     class="btn btn-outline-info py-3 my-3"
     data-mdb-ripple-color="dark"
@@ -198,7 +197,7 @@
     {% endfor %}
   </div>
   <a
-    href="./tourtheme.html"
+    href="/activity/theme/?country=seychelles"
     type="button"
     class="btn btn-outline-info py-3 my-3"
     data-mdb-ripple-color="dark"
@@ -248,7 +247,7 @@
     {% endfor %}
   </div>
   <a
-    href="./tourtheme.html"
+    href="/activity/theme/?country=south-korea"
     type="button"
     class="btn btn-outline-info py-3 my-3"
     data-mdb-ripple-color="dark"
@@ -298,7 +297,7 @@
     {% endfor %}
   </div>
   <a
-    href="./tourtheme.html"
+    href="/activity/theme/?country=japan"
     type="button"
     class="btn btn-outline-info py-3 my-3"
     data-mdb-ripple-color="dark"
@@ -348,7 +347,7 @@
     {% endfor %}
   </div>
   <a
-    href="./tourtheme.html"
+    href="/activity/theme/?country=china"
     type="button"
     class="btn btn-outline-info py-3 my-3"
     data-mdb-ripple-color="dark"
@@ -399,7 +398,7 @@
     {% endfor %}
   </div>
   <a
-    href="./tourtheme.html"
+    href="/activity/theme/?country=taiwan"
     type="button"
     class="btn btn-outline-info py-3 my-3"
     data-mdb-ripple-color="dark"
@@ -412,204 +411,69 @@
 
 <!-- feature staycation -->
 <div class="container px-4 py-5">
-  <h2 class="pb-2">Stylish Staycations</h2>
-  <div class="row">
-    <div class="col-12 col-md-3 my-2">
-      <div class="card">
-        <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
-          <img
-            src="http://www.shangri-la.com/uploadedImages/Corporate/about-us/our-brands/SL-Our-Brand-Shangri-La-Hotels.jpg?width=720&height=283&mode=crop&quality=80"
-            class="img-fluid"
-          />
-          <a href="#!">
-            <div
-              class="mask"
-              style="background-color: rgba(251, 251, 251, 0.15)"
-            ></div>
-          </a>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title font-weight-bold">
-            <a>La Sirena Hotel</a>
-          </h5>
-          <ul class="list-unstyled list-inline mb-0">
-            <li class="list-inline-item me-0">
-              <i class="fas fa-star text-warning fa-xs"> </i>
-            </li>
-            <li class="list-inline-item me-0">
-              <i class="fas fa-star text-warning fa-xs"></i>
-            </li>
-            <li class="list-inline-item me-0">
-              <i class="fas fa-star text-warning fa-xs"></i>
-            </li>
-            <li class="list-inline-item me-0">
-              <i class="fas fa-star text-warning fa-xs"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="fas fa-star-half-alt text-warning fa-xs"></i>
-            </li>
-            <li class="list-inline-item">
-              <p class="text-muted">4.5 (413)</p>
-            </li>
-          </ul>
-          <p class="mb-2">$ • American, Restaurant</p>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <p><span class="badge bg-secondary">India</span></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-3 my-2">
-      <div class="card">
-        <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
-          <img
-            src="https://images.moneycontrol.com/static-mcnews/2019/09/Samhi_Hotels-770x433.jpg?impolicy=website&width=770&height=431"
-            class="img-fluid"
-          />
-          <a href="#!">
-            <div
-              class="mask"
-              style="background-color: rgba(251, 251, 251, 0.15)"
-            ></div>
-          </a>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title font-weight-bold">
-            <a>Taj Lake Palace</a>
-          </h5>
-          <ul class="list-unstyled list-inline mb-0">
-            <li class="list-inline-item me-0">
-              <i class="fas fa-star text-warning fa-xs"> </i>
-            </li>
-            <li class="list-inline-item me-0">
-              <i class="fas fa-star text-warning fa-xs"></i>
-            </li>
-            <li class="list-inline-item me-0">
-              <i class="fas fa-star text-warning fa-xs"></i>
-            </li>
-            <li class="list-inline-item me-0">
-              <i class="fas fa-star text-warning fa-xs"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="fas fa-star-half-alt text-warning fa-xs"></i>
-            </li>
-            <li class="list-inline-item">
-              <p class="text-muted">4.5 (413)</p>
-            </li>
-          </ul>
-          <p class="mb-2">$ • American, Restaurant</p>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <p><span class="badge bg-secondary">India</span></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-3 my-2">
-      <div class="card">
-        <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
-          <img
-            src="https://pix10.agoda.net/hotelImages/124/1246280/1246280_16061017110043391702.jpg?s=1024x768"
-            class="img-fluid"
-          />
-          <a href="#!">
-            <div
-              class="mask"
-              style="background-color: rgba(251, 251, 251, 0.15)"
-            ></div>
-          </a>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title font-weight-bold">
-            <a>Umaid Bhavan</a>
-          </h5>
-          <ul class="list-unstyled list-inline mb-0">
-            <li class="list-inline-item me-0">
-              <i class="fas fa-star text-warning fa-xs"> </i>
-            </li>
-            <li class="list-inline-item me-0">
-              <i class="fas fa-star text-warning fa-xs"></i>
-            </li>
-            <li class="list-inline-item me-0">
-              <i class="fas fa-star text-warning fa-xs"></i>
-            </li>
-            <li class="list-inline-item me-0">
-              <i class="fas fa-star text-warning fa-xs"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="fas fa-star-half-alt text-warning fa-xs"></i>
-            </li>
-            <li class="list-inline-item">
-              <p class="text-muted">4.5 (413)</p>
-            </li>
-          </ul>
-          <p class="mb-2">$ • American, Restaurant</p>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <p><span class="badge bg-secondary">India</span></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-3 my-2">
-      <div class="card">
-        <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
-          <img
-            src="https://cdn.britannica.com/96/115096-050-5AFDAF5D/Bellagio-Hotel-Casino-Las-Vegas.jpg"
-            class="img-fluid"
-          />
-          <a href="#!">
-            <div
-              class="mask"
-              style="background-color: rgba(251, 251, 251, 0.15)"
-            ></div>
-          </a>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title font-weight-bold">
-            <a>Golden Tulip</a>
-          </h5>
-          <ul class="list-unstyled list-inline mb-0">
-            <li class="list-inline-item me-0">
-              <i class="fas fa-star text-warning fa-xs"> </i>
-            </li>
-            <li class="list-inline-item me-0">
-              <i class="fas fa-star text-warning fa-xs"></i>
-            </li>
-            <li class="list-inline-item me-0">
-              <i class="fas fa-star text-warning fa-xs"></i>
-            </li>
-            <li class="list-inline-item me-0">
-              <i class="fas fa-star text-warning fa-xs"></i>
-            </li>
-            <li class="list-inline-item">
-              <i class="fas fa-star-half-alt text-warning fa-xs"></i>
-            </li>
-            <li class="list-inline-item">
-              <p class="text-muted">4.5 (413)</p>
-            </li>
-          </ul>
-          <p class="mb-2">$ • American, Restaurant</p>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <p><span class="badge bg-secondary">India</span></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <button
-    type="button"
-    class="btn btn-outline-info py-3 my-3 hover-ripple"
-    data-mdb-ripple-color="dark"
+<h2 class="pb-2">Stylish Staycations</h2>
+<div class="row">
+{%for staycation in staycations %}
+<div class="col-12 col-md-3 my-2">
+<div class="card">
+  <div
+    class="bg-image hover-zoom ripple"
+    data-mdb-ripple-color="light"
   >
-    Discover All Staycation
-  </button>
+    <img
+      src="/media/{{staycation.feature_image}}"
+      class="img-fluid"
+    />
+    <a href="/staycation/{{staycation.slug}}">
+      <div
+        class="mask"
+        style="background-color: rgba(251, 251, 251, 0.15)"
+      ></div>
+    </a>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title font-weight-bold">
+      <a>{{staycation.staycation_name}}</a>
+    </h5>
+    <ul class="list-unstyled list-inline mb-0">
+      <li class="list-inline-item me-0">
+        <i class="fas fa-star text-warning fa-xs"> </i>
+      </li>
+      <li class="list-inline-item me-0">
+        <i class="fas fa-star text-warning fa-xs"></i>
+      </li>
+      <li class="list-inline-item me-0">
+        <i class="fas fa-star text-warning fa-xs"></i>
+      </li>
+      <li class="list-inline-item me-0">
+        <i class="fas fa-star text-warning fa-xs"></i>
+      </li>
+      <li class="list-inline-item">
+        <i class="fas fa-star-half-alt text-warning fa-xs"></i>
+      </li>
+      <li class="list-inline-item">
+        <p class="text-muted">4.5 (413)</p>
+      </li>
+    </ul>
+    <!-- <p class="mb-2">$ • American, Restaurant</p>
+    <p class="card-text">
+      Some quick example text to build on the card title and make up
+      the bulk of the card's content.
+    </p> -->
+    <p><span class="badge bg-secondary">{{staycation.country}}</span></p>
+  </div>
+</div>
+</div>
+{%endfor%}
+</div>
+<a
+href="/staycation/"
+type="button"
+class="btn btn-outline-info py-3 my-3"
+data-mdb-ripple-color="dark"
+>
+Discover All Staycation
+</a>
 </div>
 <!-- feature Staycation -->
 
