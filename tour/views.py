@@ -10,12 +10,12 @@ def tourpage(request):
     ctx={}
     ctx['title'] = 'Tour'
     ctx['description'] = 'HOME_PAGE_DESCRIPTION'
-    ctx['Indonesia']=Tour.objects.all().filter(countries=1)
-    ctx['Seychelles']=Tour.objects.all().filter(countries=2)
-    ctx['SouthKorea']=Tour.objects.all().filter(countries=3)
-    ctx['Japan']=Tour.objects.all().filter(countries=4)
-    ctx['China']=Tour.objects.all().filter(countries=5)
-    ctx['Taiwan']=Tour.objects.all().filter(countries=6)
+    ctx['Indonesia']=Tour.objects.all().filter(countries=1,verified=True)
+    ctx['Seychelles']=Tour.objects.all().filter(countries=2,verified=True)
+    ctx['SouthKorea']=Tour.objects.all().filter(countries=3,verified=True)
+    ctx['Japan']=Tour.objects.all().filter(countries=4,verified=True)
+    ctx['China']=Tour.objects.all().filter(countries=5,verified=True)
+    ctx['Taiwan']=Tour.objects.all().filter(countries=6,verified=True)
     ctx['staycations']=Staycation.objects.all().filter(recommended=True,verified=True)[:4]
     return render(request, 'tour/tour.html',ctx)
 

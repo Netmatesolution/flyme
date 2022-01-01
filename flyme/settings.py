@@ -25,7 +25,7 @@ SECRET_KEY = 'vwco(&&8(pzwap_s86icr&*)2ktkwjpb7%ud$@f37f#@sgmvwb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['5176-103-230-221-234.ngrok.io','localhost']
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'staycation',
     'activity',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -55,6 +56,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 ROOT_URLCONF = 'flyme.urls'
@@ -159,3 +162,20 @@ JAZZMIN_SETTINGS = {
     "copyright": "Flyme",
     # "show_ui_builder":'True',
 }
+
+
+
+#cors configurations
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8001",
+    'http://5176-103-230-221-234.ngrok.io',
+    'https://5176-103-230-221-234.ngrok.io',
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:8001',
+    'https://5176-103-230-221-234.ngrok.io',
+    'http://5176-103-230-221-234.ngrok.io',
+]
