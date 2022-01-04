@@ -67,6 +67,22 @@ $(document).ready(function () {
     }
   });
 
+
+  $(document).on("click", ".btn-num-product-down1", function () {
+    var numProduct = Number($(this).next().val());
+    if (numProduct > 1) {
+      $(this)
+        .next()
+        .val(numProduct - 1);
+      let itemnumber = $(this).attr("data-minusquantity");
+      let productprice = $(this).attr("data-price");
+      itemtotal(itemnumber, numProduct - 1, productprice);
+      let total = $(".cart-total").text();
+      let price = parseInt(total) - parseInt(productprice);
+      carttotal(price);
+    }
+  });
+
   $(document).on("click", ".btn-num-product-up", function () {
     var numProduct = Number($(this).prev().val());
     $(this)
@@ -79,6 +95,11 @@ $(document).ready(function () {
     let price = parseInt(total) + parseInt(productprice);
     carttotal(price);
   });
+
+
+
+
+
 
   let itemtotal = (count, quantity, price) => {
     $(".item-total-" + count).html(quantity * price);

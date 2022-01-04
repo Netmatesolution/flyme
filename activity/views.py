@@ -49,12 +49,12 @@ def addtocart(request):
     if request.method == "POST":
         data=request.POST
         for pid,qt in data.items():
-            print(f'id:{pid} quantity : {qt}')
-            
+            print(f'id:{pid} quantity : {qt}')            
             productobj=Packageprice.objects.get(id=pid)
             ctx[f'{productobj.name}']={}
             userid = request.user
             msg = Cart.objects.get_or_create(customer=userid,product=productobj,ordered=False)
+            print(msg)
             cartid=msg[0].id
             if int(qt) != 0:
                 Cart.objects.filter(id=cartid).update(quantity=qt)
@@ -69,12 +69,12 @@ def addtocart(request):
                 ctx[f'{productobj.name}'][f'packagename-{pid}']=productobj.package.package_name
                 ctx[f'{productobj.name}'][f"status-{pid}"]="error"
                 if int(qt)==0:
-                    # qty=Cart.objects.get(id=cartid)
-                    # if qty.quantity == 0:
-                    Cart.objects.filter(id=cartid).delete()
-                    ctx[f'{productobj.name}'][f'msg-{pid}'] = "Deleted from cart"
-
-            
+                    qty=Cart.objects.get(id=cartid)
+                    if qty.quantity == 0:
+                        Cart.objects.filter(id=cartid).delete()
+                        ctx[f'{productobj.name}'][f'msg-{pid}'] = "Deleted from cart"
+                    else:
+                        ctx[f'{productobj.name}'][f'msg-{pid}'] = "Already in cart,cart updated "
         return JsonResponse(ctx)
 
 

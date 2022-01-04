@@ -6,7 +6,7 @@
         <p class="text-success text-center">{{msg}}</p>
       </div>
     {%else%}
-    <div class="row">
+    <div class="row position-relative">
       <div class="col-12 offset-md-2 col-md-8 offset-lg-2 col-lg-6  my-5 py-5">
           <small>Please inform us if you are willing to take kids or babies on this staycation. You can add their age in the notes. It will help us to give you a more precise quote.</small>
         <form class="mt-3" action="/staycation/request/" method="POST">
@@ -72,12 +72,14 @@
         </form>
       </div>
       <div class="col-12 col-md-2 col-lg-4 my-5 py-5">
-          <div class="card p-2">
-            <img
-          src="/media/{{staycationname.feature_image}}"
-          class="img-thumbnail"
-          alt="Hollywood Sign on The Hill"
-        />
+          <div class="card p-2 position-sticky top-0">
+            <a href="/staycation/{{staycationname.slug}}/">
+              <img
+            src="/media/{{staycationname.feature_image}}"
+            class="img-thumbnail w-100"
+            alt="Hollywood Sign on The Hill"
+          />
+            </a>
               <p class="mb-1">{{staycationname}}</p>
               <p class="mb-1">{{staycationname.category}}</p>
               <p class="mb-1">{{staycationname.country}}</p>
