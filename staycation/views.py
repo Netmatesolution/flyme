@@ -1,20 +1,47 @@
 from django.shortcuts import render
 from .models import Staycation, StaycationRoom,RoomPrice,StaycationRequest,FeatureImages
 from django.views.generic.detail import DetailView
+from django.core.paginator import Paginator , PageNotAnInteger,EmptyPage
 # Create your views here.
 
 def hotelresortpage(request):
     ctx={}
     ctx['title'] = 'Hotels & Resorts'
     ctx['description'] = 'HOME_PAGE_DESCRIPTION'
-    ctx['hotelsresort']=Staycation.objects.all().filter(verified=True,category='Hotel-Resorts').order_by('-id')
+    hotelsresort=Staycation.objects.all().filter(verified=True,category='Hotel-Resorts').order_by('-id')
+    p = Paginator(hotelsresort,20)
+    page_number = request.GET.get('page')
+    try:
+        page_obj = p.get_page(page_number)
+    except PageNotAnInteger:
+        page_obj = p.page(1)
+    except EmptyPage:
+        page_obj = p.page(p.num_pages)
+    ctx['hotelsresort']=page_obj
+    pagelist=[]
+    for num in range(1,p.num_pages+1):
+        pagelist.append(num)
+    ctx['pages']=pagelist
     return render(request, 'staycation/hotels-resort.html',ctx)
 
 def homesvillaspage(request):
     ctx={}
     ctx['title'] = 'Home & Villas'
     ctx['description'] = 'HOME_PAGE_DESCRIPTION'
-    ctx['homesvillas']=Staycation.objects.all().filter(verified=True,category='Home-Villas').order_by('-id')
+    homesvillas=Staycation.objects.all().filter(verified=True,category='Home-Villas').order_by('-id')
+    p = Paginator(homesvillas,20)
+    page_number = request.GET.get('page')
+    try:
+        page_obj = p.get_page(page_number)
+    except PageNotAnInteger:
+        page_obj = p.page(1)
+    except EmptyPage:
+        page_obj = p.page(p.num_pages)
+    ctx['homesvillas']=page_obj
+    pagelist=[]
+    for num in range(1,p.num_pages+1):
+        pagelist.append(num)
+    ctx['pages']=pagelist
     return render(request, 'staycation/homes-villas.html',ctx)
 
 
@@ -77,5 +104,19 @@ def staycationtheme(request):
             staycations=Staycation.objects.all().filter(country__slug=country,category=theme)
         else:
             staycations=Staycation.objects.all().filter(country__slug=country)
-        ctx['staycations']=staycations
+
+        staycationlist=staycations
+        p = Paginator(staycationlist,20)
+        page_number = request.GET.get('page')    
+        try:
+            page_obj = p.get_page(page_number)
+        except PageNotAnInteger:
+            page_obj = p.page(1)
+        except EmptyPage:
+            page_obj = p.page(p.num_pages)
+        ctx['staycations']=page_obj
+        pagelist=[]
+        for num in range(1,p.num_pages+1):
+            pagelist.append(num)
+        ctx['pages']=pagelist
     return render(request, 'staycation/staycationtheme.html',ctx)

@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg, Count, Min,Max,Sum,F , Q
 from staycation.models import Staycation
+from django.core.paginator import Paginator , PageNotAnInteger,EmptyPage
 # Create your views here.
 
 def activitypage(request):
@@ -121,7 +122,7 @@ def booknow(request):
     return render(request, 'activity/book-now.html',ctx)
 
 
-def staycationtheme(request):
+def activitytheme(request):
     ctx={}
     if request.method =='GET':
         country=request.GET.get('country',False)
@@ -133,5 +134,29 @@ def staycationtheme(request):
             activites=Activity.objects.all().filter(country__slug=country,category__slug=theme)
         else:
             activites=Activity.objects.all().filter(country__slug=country)
-        ctx['activites']=activites
+        activitylist=activites
+        p = Paginator(activitylist,20)
+        page_number = request.GET.get('page')    
+        try:
+            page_obj = p.get_page(page_number)
+        except PageNotAnInteger:
+            page_obj = p.page(1)
+        except EmptyPage:
+            page_obj = p.page(p.num_pages)
+        ctx['activites']=page_obj
+        pagelist=[]
+        for num in range(1,p.num_pages+1):
+            pagelist.append(num)
+        ctx['pages']=pagelist
     return render(request, 'activity/activitytheme.html',ctx)
+
+@login_required
+def deleteitem(request):
+    ctx={}
+    if request.method == "POST":
+        cartid=request.POST.get('cartid',False)
+        msg = Cart.objects.filter(id=cartid).delete()
+        if msg:
+            ctx['msg']='Item deleted from cart'
+    return JsonResponse(ctx)
+        

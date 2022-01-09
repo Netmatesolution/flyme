@@ -97,10 +97,6 @@ $(document).ready(function () {
   });
 
 
-
-
-
-
   let itemtotal = (count, quantity, price) => {
     $(".item-total-" + count).html(quantity * price);
   };
@@ -244,5 +240,28 @@ $(document).ready(function () {
           format: "DD/MM/YYYY",
         },
       });
+
+
+
+      $(".delete-cart").on('click',function(){
+
+        let cartid = $(this).attr("data-cart-id");
+
+        // alert(cartid)
+         $.ajax({
+           data: { "cartid": cartid },
+           headers: { "X-CSRFToken": csrftoken },
+           type: "POST",
+           url: "/activity/deleteitem/",
+           success: function (response) {
+             console.log(response.msg);
+             swal(response.msg).then(()=>{
+               window.location.replace("/activity/cart/");
+             })
+
+           },
+         });
+
+      })
 
 });

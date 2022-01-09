@@ -102,14 +102,14 @@
                 <span class="small">Experience</span></a
               >
             </li>
-            <li class="nav-item">
+            <li class="nav-item d-block d-md-none">
               <a
                 class="nav-link d-flex flex-column text-center {% if 'Destination' in title %}active{% endif %}"
                 aria-current="page"
                 href="/destination/"
               >
-                <span class="small">Destinations</span></a
-              >
+                <span class="small">Destinations</span>
+              </a>
             </li>
             <li class="nav-item">
               <a
@@ -130,6 +130,36 @@
                 
                 <span class="small">Contact</span></a
               >
+            </li>
+            <li class="nav-item dropdown d-none d-md-block">
+                <a
+                  class="nav-link {% if 'Destination' in title %}active{% endif %}"
+                  href="/destination/"
+                  id="destinationDropdownMenuLink"
+                  role="button"
+                >
+                  Destinations
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="destinationDropdownMenuLink">
+                <li>
+                <a class="dropdown-item" href="/destination/indonesia/">Indonesia</a>
+                </li>
+                <li>
+                <a class="dropdown-item" href="/destination/seychelles/">Seychelles</a>
+                </li>
+                <li>
+                <a class="dropdown-item" href="/destination/south-korea/">South Korea</a>
+                </li>
+                <li>
+                <a class="dropdown-item" href="/destination/china/">China</a>
+                </li>
+                <li>
+                <a class="dropdown-item" href="/destination/japan/">Japan</a>
+                </li>
+                <li>
+                <a class="dropdown-item" href="/destination/taiwan/">Taiwan</a>
+                </li>
+                </ul>
             </li>
             {% if not request.user.is_authenticated %}
             <li class="nav-item">
@@ -152,9 +182,9 @@
                 <span class="small">Cart</span></a
               >
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown ">
               <a
-                class="nav-link dropdown-toggle d-flex align-items-center"
+                class="nav-link d-flex align-items-center"
                 href="#"
                 id="navbarDropdownMenuLink"
                 role="button"

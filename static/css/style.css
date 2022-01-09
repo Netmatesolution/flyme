@@ -130,6 +130,16 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   display: none;
 }
 
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; 
+}
+
+.dropdown-menu {
+    box-shadow: none;
+    border-radius: 0;
+    min-width: 8rem;
+}
 
 /* tab  */
 @media (min-width: 768px) {

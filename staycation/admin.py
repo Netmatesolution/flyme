@@ -26,6 +26,7 @@ class FeatureImagesAdmin(admin.ModelAdmin):
 
 class FeatureimageInline(admin.TabularInline):
         model = FeatureImages
+        extra=1
 
 
 class StaycationChoiceField(forms.ModelChoiceField):
@@ -70,20 +71,20 @@ class RoomPriceAdmin(admin.ModelAdmin):
             roomsprice_list=RoomPrice.objects.filter(host_id=request.user)
         return roomsprice_list
 
-# class RommpriceInline(admin.TabularInline):
-#     model=RoomPrice
-#     readonly_fields = ('host_id',)
+class RommpriceInline(admin.TabularInline):
+    model=RoomPrice
+    extra=1
 
-#     def formfield_for_foreignkey(self, db_field, request, **kwargs):
-#         if request.user.is_staff and not request.user.is_superuser:
-#             if db_field.name == 'staycation':
-#                 return StaycationChoiceField(queryset=Staycation.objects.all().filter(host_id=request.user))
-#         return super().formfield_for_foreignkey(db_field, request, **kwargs)
-
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if request.user.is_staff and not request.user.is_superuser:
+            if db_field.name == 'staycation':
+                return StaycationChoiceField(queryset=Staycation.objects.all().filter(host_id=request.user))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 class StaycationRoomAdmin(SummernoteModelAdmin,admin.ModelAdmin):
     list_display=('room_name','staycation','host_id',)
     search_fields=['room_name','staycation__staycation_name']
+    inlines = [RommpriceInline]
 
     def get_form(self, request, obj=None, **kwargs):
         if request.user.is_staff and not request.user.is_superuser:
@@ -112,7 +113,7 @@ class StaycationRoomAdmin(SummernoteModelAdmin,admin.ModelAdmin):
 
 
 class StaycationAdmin(SummernoteModelAdmin,admin.ModelAdmin):
-    list_display = ('id','host_id','staycation_name','country')
+    list_display = ('id','host_id','staycation_name','category','country','verified')
     summernote_fields = ('highlights',)
     search_fields=['staycation_name','country__name']
     inlines = [FeatureimageInline]

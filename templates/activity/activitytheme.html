@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {%block content%}
+{% extends 'base.html' %} 
+{% load staycation_filters %}
+{%block content%}
 
 
 <!-- Carousel wrapper -->
@@ -37,7 +39,7 @@
     <div class="carousel-item active">
       <img
         src="https://mdbootstrap.com/img/Photos/Slides/img%20(45).jpg"
-        class="d-block"
+        class="d-block w-100"
         alt="..."
       />
     </div>
@@ -46,7 +48,7 @@
     <div class="carousel-item">
       <img
         src="https://mdbootstrap.com/img/Photos/Slides/img%20(46).jpg"
-        class="d-block"
+        class="d-block w-100"
         alt="..."
       />
     </div>
@@ -55,7 +57,7 @@
     <div class="carousel-item">
       <img
         src="https://mdbootstrap.com/img/Photos/Slides/img%20(47).jpg"
-        class="d-block"
+        class="d-block w-100"
         alt="..."
       />
     </div>
@@ -149,6 +151,19 @@
     </div>
     {% endfor %}
   </div>
+
+  {% if activites %}
+  <div class="row">
+    <ul class="pagination pagination-circle d-flex justify-content-center">
+    {% for page in pages%}		
+    <li class="page-item {{request.GET.page| pagination:page}}">
+    <a class="page-link" href="?page={{page}}">{{page}}</a>
+    </li>
+    {%endfor%}
+    </ul>
+  </div>
+  {%endif%}
+
 </div>
 
 

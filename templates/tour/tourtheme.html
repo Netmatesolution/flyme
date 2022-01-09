@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {%block content%}
+{% extends 'base.html' %} 
+{% load staycation_filters %}
+{%block content%}
 
 
 <!-- Carousel wrapper -->
@@ -114,7 +116,7 @@
 
 
 <div class="container px-4 py-2" id="tourcountry">
-  <p class="pb-2">{{country}} {%if theme%} > {{theme}} {%endif%}</p>
+  <!-- <p class="pb-2">{{country}} {%if theme%} > {{theme}} {%endif%}</p> -->
   <div class="row">
     {% for item in tours %}
     <div class="col-12 col-md-3 my-2">
@@ -151,6 +153,17 @@
     </div>
     {% endfor %}
   </div>
+  {% if tours %}
+  <div class="row">
+    <ul class="pagination pagination-circle d-flex justify-content-center">
+    {% for page in pages%}		
+    <li class="page-item {{request.GET.page| pagination:page}}">
+    <a class="page-link" href="?page={{page}}">{{page}}</a>
+    </li>
+    {%endfor%}
+    </ul>
+  </div>
+  {%endif%}
 </div>
 
 

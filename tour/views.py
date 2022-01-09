@@ -3,6 +3,7 @@ from .models import Tour,Days,TourRequest , FeatureImages
 from django.views.generic.detail import DetailView
 from django.contrib.auth.models import User
 from staycation.models import Staycation
+from django.core.paginator import Paginator , PageNotAnInteger,EmptyPage
 # Create your views here.
 
 # homepage
@@ -68,10 +69,27 @@ def tourtheme(request):
         country=request.GET.get('country',False)
         theme=request.GET.get('theme',False)
         ctx['country']=country
+
         if theme:
             ctx['theme']=theme
             tours=Tour.objects.all().filter(countries__slug=country,category__slug=theme)
         else:
             tours=Tour.objects.all().filter(countries__slug=country)
-        ctx['tours']=tours
+
+        tourlist = tours
+        
+        p = Paginator(tourlist,20)
+        page_number = request.GET.get('page')    
+        try:
+            page_obj = p.get_page(page_number)
+        except PageNotAnInteger:
+            page_obj = p.page(1)
+        except EmptyPage:
+            page_obj = p.page(p.num_pages)
+        ctx['tours']=page_obj
+        pagelist=[]
+        for num in range(1,p.num_pages+1):
+            pagelist.append(num)
+        ctx['pages']=pagelist
+
     return render(request, 'tour/tourtheme.html',ctx)
