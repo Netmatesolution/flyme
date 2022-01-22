@@ -34,9 +34,10 @@ class Tour(models.Model):
 
 class Days(models.Model):
     tour = models.ForeignKey(to=Tour, on_delete=CASCADE)
-    title = models.CharField(max_length = 100)
+    title = models.CharField(max_length = 300)
     highlights= models.TextField(null=True , blank=True)
     visited_places = models.CharField(max_length = 1000)
+    slug = models.SlugField(null=True,blank=True,max_length=250)
 
     def __str__(self):
         return  f"{self.title}"

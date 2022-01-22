@@ -44,7 +44,7 @@
 
 <div class="container mt-1 pt-5">
       <div class="row tour-detail-row">
-        <div class="col-12 col-md-9">
+        <div class="col-12 col-md-8">
           <div>
             <h3>
               {{tour.tour_name}}
@@ -92,30 +92,36 @@
             </div>
           </div>
           <div class="mt-5">
-            <h5>Days</h5>
+            <p class="fs-4">Detailed itinerary</p>
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 {% for day in days %}
-                  <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-{{day.title}}">
-                  <button
-                    class="accordion-button collapsed"
-                    type="button"
-                    data-mdb-toggle="collapse"
-                    data-mdb-target="#{{day.title}}"
-                    aria-expanded="false"
-                    aria-controls="{{day.title}}"
-                  >
-                    {{day}}
-                  </button>
-                </h2>
+                <div class="accordion-item py-3 border border-start-0 border-end-0">
+                <p class="accordion-header d-flex" id="flush-{{day.slug}}">
+                    <span class="border rounded-circle d-flex justify-content-center align-items-center" style="width:60px;height: 60px;">{{forloop.counter}}</span>
+                    <!-- accordion-button -->
+                    <button
+                      class="collapsed btn w-100 text-start fs-6 shadow-0" 
+                      type="button"
+                      data-mdb-toggle="collapse"
+                      data-mdb-target="#{{day.slug}}"
+                      aria-expanded="false"
+                      aria-controls="{{day.slug}}"
+                    >
+                      <p>{{day.title}}</p>
+                      <p>Day {{forloop.counter}},Transfer By Car</p>
+
+                    </button>                  
+                </p>
                 <div
-                  id="{{day.title}}"
+                  id="{{day.slug}}"
                   class="accordion-collapse collapse"
-                  aria-labelledby="flush-{{day.title}}"
-                  data-mdb-parent="#accordionFlushExample"
+                  aria-labelledby="flush-{{day.slug}}"                 
                 >
                   <div class="accordion-body">
                    {{day.highlights | safe }}
+                   <div>
+                     <p class="my-2">Visited Places:{{day.visited_places}}</p>
+                   </div>
                   </div>
                 </div>
               </div>
@@ -176,22 +182,23 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-md-3">
+        <div class="col-12 col-md-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Book Your Tickets</h5>
-              <p class="card-text">International Flight :{{tour.flight}}</p>
+              <!-- <h5 class="card-title">Book Your Tickets</h5> -->
+              <p class="fs-6">International Flight :{{tour.flight}}</p>
+              <p class="fs-6">Duration : {{daycount}} days</p>
               <form method="GET" action="/tour/request/">
               <input  type="hidden" name="tour" value="{{tour.id}}">
-              <button type="submit" class="btn btn-primary">
-                Send Request
+              <button type="submit" class="btn btn-warning w-100 py-3 fs-6">
+                Request Estimate
               </button>
               </form>
             </div>
-            <div class="card-footer">Duration : {{daycount}} days</div>
           </div>
         </div>
       </div>
 </div>
+
 
 {% endblock %}

@@ -27,6 +27,7 @@ class DaysAdmin(SummernoteModelAdmin,admin.ModelAdmin):
     summernote_fields=('highlights')
     list_display = ('title','tour',)
     search_fields=['title','tour__tour_name']
+    readonly_fields=['slug']
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if request.user.is_staff and not request.user.is_superuser:
