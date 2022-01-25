@@ -31,7 +31,6 @@ class Tour(models.Model):
     def __str__(self):
         return  f"{self.tour_name}"
 
-
 class Days(models.Model):
     tour = models.ForeignKey(to=Tour, on_delete=CASCADE)
     title = models.CharField(max_length = 300)
