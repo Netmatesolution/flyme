@@ -29,7 +29,7 @@ class PageFileInline(admin.TabularInline):
 
 class ActivityAdmin(SummernoteModelAdmin,admin.ModelAdmin):
     list_display=('id','activity_name','verified')
-    summernote_fields = ('highlights','overview')
+    summernote_fields = ('highlights','overview','what_to_expect')
     inlines = [PageFileInline,]
     search_fields = ['activity_name']
 

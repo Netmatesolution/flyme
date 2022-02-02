@@ -66,7 +66,6 @@ def customtrip(request):
         adult=request.POST.get('adult',False)
         child=request.POST.get('child',False)
         specialrequest=request.POST.get('specialrequest',False)
-
         obj = Customtrip(country=country,budget=budget,tour_dates=tourdates,fullname=fullname,email=email,phonenumber=phonenumber,arrivalairport=arrivalairport,departureairport=departureairport,whom=whom,adult=adult,child=child,specialrequest=specialrequest)
         obj.save()
         ctx['msg']='Your message has been sent.'

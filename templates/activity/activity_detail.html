@@ -1,47 +1,52 @@
 {% extends 'base.html' %} {% block content %}
 <!-- carousel -->
 <div class="p-0 m-0">
-  <div id="carouselExampleControls" class="carousel slide" data-mdb-ride="carousel">
-  <div class="carousel-inner">
-    {%for item in featureimages%}
+  <div
+    id="carouselExampleControls"
+    class="carousel slide"
+    data-mdb-ride="carousel"
+  >
+    <div class="carousel-inner">
+      {%for item in featureimages%}
       <div class="carousel-item {%if forloop.first%}active{%endif%}">
-      <img
-        src="/media/{{item.image}}"
-        class="d-block w-100"
-        alt="Wild Landscape"
-      />
+        <img
+          src="/media/{{item.image}}"
+          class="d-block w-100"
+          alt="Wild Landscape"
+        />
+      </div>
+      {%endfor%}
     </div>
-    {%endfor%}
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-mdb-target="#carouselExampleControls"
+      data-mdb-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-mdb-target="#carouselExampleControls"
+      data-mdb-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
-  <button
-    class="carousel-control-prev"
-    type="button"
-    data-mdb-target="#carouselExampleControls"
-    data-mdb-slide="prev"
-  >
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button
-    class="carousel-control-next"
-    type="button"
-    data-mdb-target="#carouselExampleControls"
-    data-mdb-slide="next"
-  >
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
 </div>
 <!-- carousel -->
 
 <div class="container mt-5">
+  <div class="row">
+    <div>
+      <h3>{{activity.activity_name}}</h3>
+    </div>
+  </div>
   <div class="row position-relative">
     <div class="col-12 col-md-8">
-      <div>
-        <h3>{{activity.activity_name}}</h3>
-      </div>
       <hr />
       <div style="font-size: 1.5rem">{{activity.overview | safe }}</div>
       <hr />
@@ -49,14 +54,14 @@
       <hr />
     </div>
     <div class="col-12 col-md-4">
-      <div class="card text-center position-sticky top-0">
-        <div class="card-header">Best Price Guarantee</div>
-        <div class="card-body">
-          <!-- <h3 class="card-title initial-price">From 4,500</h3> -->
-          <a href="#packages" class="btn btn-primary">Select Options</a>
-        </div>
-        <div class="card-footer text-muted">Get rewards for exploring</div>
-      </div>
+      <iframe
+        width="420"
+        height="315"
+        src="https://www.youtube.com/embed/JQr1-VchonU?mute=1"
+        allowfullscreen
+        loop
+      >
+      </iframe>
     </div>
   </div>
 </div>
@@ -78,7 +83,7 @@
           {% for package in packages %}
           <button
             type="button"
-            class="btn m-1 package-btn"
+            class="btn btn-lg m-1 package-btn"
             data-mdb-ripple-color="primary"
             data-package_id="{{package.id}}"
           >
@@ -93,7 +98,7 @@
           </div>
           <div class="row my-3 addtocart d-none">
             <div class="col-md-6 d-flex align-items-center">
-              <p>Total Price: <span class="cart-total"></span></p>
+              <p>Total Price: ₹<span class="cart-total"></span></p>
             </div>
 
             {% if request.user.is_authenticated %}
@@ -101,7 +106,9 @@
               <button type="submit" class="btn btn-primary">Add to cart</button>
             </div>
             {% else %}
-            <div class="col-md-6 d-flex justify-content-end align-items-center cart-icon-nologin">
+            <div
+              class="col-md-6 d-flex justify-content-end align-items-center cart-icon-nologin"
+            >
               <button type="button" class="btn btn-primary">Add to cart</button>
             </div>
             {% endif %}
@@ -109,9 +116,16 @@
         </form>
       </div>
     </div>
-    <div class="col-12 col-md-4 bg-light">
-      <span>Selected package details</span>
-      <div class="bg-light package-description">
+    <div class="col-12 col-md-4 bg-light p-2">
+      <p class="text-center">Selected package details</p>
+      <div class="bg-light package-description"></div>
+    </div>
+  </div>
+  <div class="row py-5">
+    <div>
+      <h5 class="my-4">What to expect</h5>
+      <div>
+        {{activity.what_to_expect | safe }}
       </div>
     </div>
   </div>

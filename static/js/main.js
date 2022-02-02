@@ -6,9 +6,10 @@
 // });
 
 $(document).ready(function () {
+
   $(".package-btn").on("click", function (e) {
-    $(this).siblings().removeClass("btn-secondary");
-    $(this).addClass("btn-secondary");
+    $(this).siblings().removeClass("btn-primary");
+    $(this).addClass("btn-primary");
     $(".package-description").css("display", "block");
     $(".addtocart").removeClass("d-none");
     let id = $(this).attr("data-package_id");

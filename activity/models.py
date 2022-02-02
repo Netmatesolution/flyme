@@ -23,6 +23,7 @@ class Activity(models.Model):
     image = models.ImageField(upload_to = "featureimg", null=True , blank=True)
     video_link =  models.CharField( max_length=5000 , default='None')
     overview = models.TextField(null=True,blank=True)
+    what_to_expect = models.TextField(null=True,blank=True)
 
     def __str__(self):
         return  f"{self.activity_name}"

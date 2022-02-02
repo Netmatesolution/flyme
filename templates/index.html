@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {%block content%}
 
 
@@ -290,7 +290,7 @@
 
     <!-- feature activity -->
     <div class="container px-4 py-5">
-      <h2 class="pb-2">Elegent Experiences</h2>
+      <h2 class="pb-2 text-center">Elegent Experiences</h2>
       <div class="row">
         {%for activity in activites %}
           <div class="col-12 col-md-3 my-2">
@@ -340,8 +340,9 @@
 
     <!-- feature tour -->
     <div class="container px-4 py-5">
-      <h2 class="pb-2">Recommended Tours</h2>
+      <h2 class="pb-2 text-center">Recommended Tours</h2>
       <div class="row">
+
         {%for tour in tours %}
         <div class="col-12 col-md-3 my-2">
           <div class="card">
@@ -388,99 +389,100 @@
     </div>
     <!-- feature tour -->
 
-    <!-- call to action -->
-    <main class="container-fluid px-4 py-5">
-      <div
-        class="
-          p-5
-          shadow
-          rounded
-          mt-3
-          d-flex
-          flex-column
-          align-items-center
-          justify-content-center
-        "
-      >
-        <h1>Get Your Customize Tour</h1>
-        <p class="lead">Tell Us What Are You Planning</p>
-        <a
-          class="btn btn-lg btn-primary"
-          href="/tailormade/"
-          role="button"
-          >Contact Us &raquo;</a
-        >
-      </div>
-    </main>
-    <!-- call to action -->
+   
 
     <!-- feature staycation -->
-    <div class="container px-4 py-5">
-      <h2 class="pb-2">Stylish Staycations</h2>
-      <div class="row">
-        {%for staycation in staycations %}
-        <div class="col-12 col-md-3 my-2">
-          <div class="card">
-            <div
-              class="bg-image hover-zoom ripple"
-              data-mdb-ripple-color="light"
-            >
-              <img
-                src="/media/{{staycation.feature_image}}"
-                class="img-fluid"
-              />
-              <a href="/staycation/{{staycation.slug}}">
-                <div
-                  class="mask"
-                  style="background-color: rgba(251, 251, 251, 0.15)"
-                ></div>
-              </a>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title font-weight-bold">
-                <a>{{staycation.staycation_name}}</a>
-              </h5>
-              <ul class="list-unstyled list-inline mb-0">
-                <li class="list-inline-item me-0">
-                  <i class="fas fa-star text-warning fa-xs"> </i>
-                </li>
-                <li class="list-inline-item me-0">
-                  <i class="fas fa-star text-warning fa-xs"></i>
-                </li>
-                <li class="list-inline-item me-0">
-                  <i class="fas fa-star text-warning fa-xs"></i>
-                </li>
-                <li class="list-inline-item me-0">
-                  <i class="fas fa-star text-warning fa-xs"></i>
-                </li>
-                <li class="list-inline-item">
-                  <i class="fas fa-star-half-alt text-warning fa-xs"></i>
-                </li>
-                <li class="list-inline-item">
-                  <p class="text-muted">4.5 (413)</p>
-                </li>
-              </ul>
-              <!-- <p class="mb-2">$ • American, Restaurant</p>
-              <p class="card-text">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p> -->
-              <p><span class="badge bg-secondary">{{staycation.country}}</span></p>
+    <div style="background-color: #f9f9ff;">
+      <div class="container px-4 py-5">
+        <h2 class="pb-2 text-center">Stylish Staycations</h2>
+        <div class="row">
+          {%for staycation in staycations %}
+          <div class="col-12 col-md-3 my-2">
+            <div class="card">
+              <div
+                class="bg-image hover-zoom ripple"
+                data-mdb-ripple-color="light"
+              >
+                <img
+                  src="/media/{{staycation.feature_image}}"
+                  class="img-fluid"
+                />
+                <a href="/staycation/{{staycation.slug}}">
+                  <div
+                    class="mask"
+                    style="background-color: rgba(251, 251, 251, 0.15)"
+                  ></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title font-weight-bold">
+                  <a>{{staycation.staycation_name}}</a>
+                </h5>
+                <ul class="list-unstyled list-inline mb-0">
+                  <li class="list-inline-item me-0">
+                    <i class="fas fa-star text-warning fa-xs"> </i>
+                  </li>
+                  <li class="list-inline-item me-0">
+                    <i class="fas fa-star text-warning fa-xs"></i>
+                  </li>
+                  <li class="list-inline-item me-0">
+                    <i class="fas fa-star text-warning fa-xs"></i>
+                  </li>
+                  <li class="list-inline-item me-0">
+                    <i class="fas fa-star text-warning fa-xs"></i>
+                  </li>
+                  <li class="list-inline-item">
+                    <i class="fas fa-star-half-alt text-warning fa-xs"></i>
+                  </li>
+                  <li class="list-inline-item">
+                    <p class="text-muted">4.5 (413)</p>
+                  </li>
+                </ul>
+                <!-- <p class="mb-2">$ • American, Restaurant</p>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p> -->
+                <p><span class="badge bg-secondary">{{staycation.country}}</span></p>
+              </div>
             </div>
           </div>
+          {%endfor%}
         </div>
-        {%endfor%}
+        <a
+          href="/staycation/"
+          type="button"
+          class="btn btn-outline-info py-3 my-3"
+          data-mdb-ripple-color="dark"
+        >
+          Discover All Staycation
+        </a>
       </div>
-      <a
-        href="/staycation/"
-        type="button"
-        class="btn btn-outline-info py-3 my-3"
-        data-mdb-ripple-color="dark"
-      >
-        Discover All Staycation
-      </a>
     </div>
     <!-- feature Staycation -->
+
+    <!-- custom trip -->
+    <section class="home-about-area my-5">
+				<div class="container-fluid p-0">
+					<div class="row align-items-center justify-content-end p-0">
+						<div class="col-lg-6 col-md-12 home-about-left">
+							<h1>
+								Did not find your Package? <br>
+								Feel free to ask us. <br>
+								We‘ll make it for you
+							</h1>
+							<p>
+								inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women, our behavior on the job is beyond reproach. inappropriate behavior is often laughed.
+							</p>
+							<a href="/tailormade/" class="primary-btn text-uppercase p-3">request custom trip</a>
+						</div>
+						<div class="col-lg-6 col-md-12 home-about-right p-0">
+							<img class="img-fluid" src=" {% static '/images/about-img.jpeg/' %} " alt="">
+						</div>
+					</div>
+				</div>	
+			</section>
+    <!-- custom trip -->
 
     <!-- amazing Destinations -->
     <div class="container px-4 py-5 destination">
@@ -609,7 +611,7 @@
       </div>
     </div>
   </div>
-</div>
+  </div>
     <!-- amaxing Destinations -->
 
 

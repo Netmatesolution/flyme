@@ -206,3 +206,121 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   }
 }
 /*# sourceMappingURL=style.css.map */
+
+
+/* footer */
+.bg-bottom {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+.ftco-footer {
+    font-size: 16px;
+    padding: 7em 0;
+    z-index: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.ftco-no-pt {
+    padding-top: 0 !important;
+}
+
+.ftco-footer .ftco-footer-widget h2 {
+    font-weight: normal;
+    color: #000000;
+    margin-bottom: 40px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.ftco-footer-social li {
+    list-style: none;
+    margin: 0 10px 0 0;
+    display: inline-block;
+}
+
+.ftco-footer-social li a {
+    height: 40px;
+    width: 40px;
+    display: block;
+    float: left;
+    color: #f15d30;
+    border-radius: 50%;
+    position: relative;
+    background: #f15d30;
+}
+
+.ftco-footer-social li a span {
+    position: absolute;
+    font-size: 18px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: #fff !important;
+}
+
+.ftco-footer .ftco-footer-widget ul li a {
+    color: rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+}
+
+.block-23 ul li .icon {
+    width: 40px;
+    font-size: 18px;
+    padding-top: 2px;
+    color: #f15d30 !important;
+}
+
+
+.block-23 ul
+{
+    list-style-type: none;
+}
+
+.block-23 ul li .icon, .block-23 ul li .text {
+    display: table-cell;
+    vertical-align: top;
+    color: rgba(0, 0, 0, 0.5) !important;
+}
+.block-23 ul li .icon {
+    width: 40px;
+    font-size: 18px;
+    padding-top: 2px;
+    color: #f15d30 !important;
+}
+footer .border-left {
+    border-left: 1px solid #dee2e6 !important;
+}
+/* footer */
+
+
+/* customize trip */
+.home-about-area .home-about-left {
+    padding-left: 20%;
+}
+.home-about-area .home-about-left h1 {
+    max-width: 510px;
+}
+.home-about-area .home-about-left p {
+    max-width: 500px;
+    padding: 20px 0;
+}
+.home-about-area .home-about-left .primary-btn {
+    margin-top: 10px;
+    background: #222;
+    font-size: 14px;
+    text-decoration: none;
+    border: none;
+    color: #fff;
+    display: inline-block;
+}
+
+.home-about-area .home-about-left .primary-btn:hover {
+  background-color: orange;
+  transition: 0.2s;
+  outline: none;
+}
+/* customize trip */
