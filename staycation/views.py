@@ -8,7 +8,7 @@ def hotelresortpage(request):
     ctx={}
     ctx['title'] = 'Hotels & Resorts'
     ctx['description'] = 'HOME_PAGE_DESCRIPTION'
-    hotelsresort=Staycation.objects.all().filter(verified=True,category='Hotel-Resorts').order_by('-id')
+    hotelsresort=Staycation.objects.all().filter(verified=True).order_by('-id')
     p = Paginator(hotelsresort,20)
     page_number = request.GET.get('page')
     try:

@@ -68,7 +68,7 @@
       <div class="carousel-caption d-md-block">
         <h1>Make your next trip awesome</h1>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-        <div
+       <div
           class="
             d-none
             d-lg-flex
@@ -195,6 +195,11 @@
             </div>
           </div>
         </div>
+      
+        
+
+
+
       </div>
       <!-- Inner -->
 
@@ -221,7 +226,7 @@
     <!-- Carousel wrapper -->
 
     <!-- features -->
-    <div class="container py-5">
+    <!-- <div class="container py-5">
       <h2 class="pb-2 text-center">What Make Us Special</h2>
       <div class="owl-carousel my-0">
         <div class="d-flex align-items-start mx-2">
@@ -285,12 +290,41 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- features -->
+
+    <div class="container py-5">
+      <div class="row">
+        <h5 class="text-center">Why you should book with us</h5>
+      </div>
+      <div class="row py-5">
+        <div class="col-12 col-md-3 d-flex flex-column justify-content-center align-items-center text-center">
+            <img src="{% static 'images/chooseus1.png' %}" alt="" width="70px" height="70px">
+            <p>Best price guarantee</p>
+            <p>If you find a better price, we'll match it</p>
+        </div>
+        <div class="col-12 col-md-3 d-flex flex-column justify-content-center align-items-center text-center">
+          <img src="{% static 'images/chooseus2.png' %}" alt="" width="70px" height="70px">
+            <p>7-day ‘change of mind’ refund</p>
+            <p>Get a full refund on your booking (excludes flights and insurance)</p>
+        </div>
+        <div class="col-12 col-md-3 d-flex flex-column justify-content-center align-items-center text-center">
+          <img src="{% static 'images/chooseus3.png' %}" alt="" width="70px" height="70px">
+            <p>VIP Inclusions</p>
+            <p>You get a lot more than just a bed in a room</p>
+        </div>
+        <div class="col-12 col-md-3 d-flex flex-column justify-content-center align-items-center text-center">
+            <img src="{% static 'images/chooseus4.png' %}" alt="" width="70px" height="70px">
+            <p>Buy now, choose dates later</p>
+            <p>Lock in a deal today, choose dates when you're ready</p>
+        </div>
+
+      </div>
+    </div>
 
     <!-- feature activity -->
     <div class="container px-4 py-5">
-      <h2 class="pb-2 text-center">Elegent Experiences</h2>
+      <h5 class="pb-2 text-center">Elegent Experiences</h5>
       <div class="row">
         {%for activity in activites %}
           <div class="col-12 col-md-3 my-2">
@@ -308,7 +342,7 @@
                   class="mask"
                   style="background-color: rgba(251, 251, 251, 0.15)"
                 ></div>
-              </a>
+              </a>               
             </div>
             <div class="card-body">
               <p>
@@ -316,9 +350,9 @@
                   >{{activity.category}}</span
                 >
               </p>
-              <p class="card-title">
+              <small class="">
                 {{activity.activity_name}}
-              </p>
+              </small>
               <!-- <small class=""> -->
               <p><span class="badge bg-secondary">{{activity.country}}</span></p>
               <!-- </small> -->
@@ -340,7 +374,7 @@
 
     <!-- feature tour -->
     <div class="container px-4 py-5">
-      <h2 class="pb-2 text-center">Recommended Tours</h2>
+      <h5 class="pb-2 text-center">Recommended Tours</h5>
       <div class="row">
 
         {%for tour in tours %}
@@ -367,9 +401,9 @@
                   >{{tour.category}}</span
                 >
               </p>
-              <p class="card-title">
+              <small class="card-title">
                 {{tour.tour_name}}
-              </p>
+              </small>
               <!-- <small class=""> -->
               <p><span class="badge bg-secondary">{{tour.countries}}</span></p>
               <!-- </small> -->
@@ -394,7 +428,7 @@
     <!-- feature staycation -->
     <div style="background-color: #f9f9ff;">
       <div class="container px-4 py-5">
-        <h2 class="pb-2 text-center">Stylish Staycations</h2>
+        <h5 class="pb-2 text-center">Stylish Staycations</h5>
         <div class="row">
           {%for staycation in staycations %}
           <div class="col-12 col-md-3 my-2">
@@ -415,9 +449,9 @@
                 </a>
               </div>
               <div class="card-body">
-                <h5 class="card-title font-weight-bold">
-                  <a>{{staycation.staycation_name}}</a>
-                </h5>
+                <small class="card-title font-weight-bold">
+                  <a href="/staycation/{{staycation.slug}}">{{staycation.staycation_name}}</a>
+                </small>
                 <ul class="list-unstyled list-inline mb-0">
                   <li class="list-inline-item me-0">
                     <i class="fas fa-star text-warning fa-xs"> </i>

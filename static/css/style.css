@@ -324,3 +324,187 @@ footer .border-left {
   outline: none;
 }
 /* customize trip */
+
+
+
+/*Search auto complete*/
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+  
+}
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+}
+.autocomplete-items {
+  position: absolute;
+  /* border: 1px solid #d4d4d4; */
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+  overflow-y: scroll;
+  height: 200px;
+  text-align: start;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+/*Search auto complete*/
+
+
+
+
+/* popular deals */
+
+.rt-profile-card {
+	max-width: 400px;
+	background-color: #FFF;
+	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+	background-position: center;
+	overflow: hidden;
+	position: relative;
+	margin: 10px auto;
+	cursor: pointer;
+	border-radius: 10px;
+}
+
+.rt-profile-card img.full-width {
+	transition: all linear 0.25s;
+	width: 100%;
+	height: 400px;
+}
+
+.rt-profile-card .rt-profile-body {
+	position: absolute;
+	left: 30px;
+	right: 15px;
+	bottom: 0;
+	transition: all linear 0.25s;
+}
+
+.rt-profile-card .rt-profile-name {
+	font-size: 30px;
+	line-height: 1;
+	color: #FFF;
+	text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+	font-weight: bold;
+	position: relative;
+	transition: all 400ms ease-out;
+	text-transform: uppercase;
+}
+
+.rt-profile-card .rt-profile-text {
+	visibility: hidden;
+	opacity: 0;
+	font-size: 16px;
+	line-height: 1.4;
+	color: #FFF;
+	text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+	margin-top: 10px;
+	height: unset;
+	transition: all linear 0.25s;
+}
+
+.rt-profile-card:hover .rt-profile-body {
+	bottom: 30px;
+}
+
+.rt-profile-card:hover .rt-profile-name {
+	color: #ffc920;
+}
+
+.rt-profile-card .rt-profile-name::before,
+.rt-profile-card .rt-profile-name::after {
+	content: "";
+	display: inline-block;
+	background: #fff;
+	border-radius: 20px;
+	width: 120px;
+	height: 2px;
+	margin-right: 0;
+	margin-left: 0;
+	transition: all 250ms ease-in;
+}
+
+.rt-profile-card .rt-profile-name::before {
+	position: absolute;
+	left: 0;
+	top: -7px;
+	transform: translateX(0);
+}
+
+.rt-profile-card .rt-profile-name::after {
+	position: absolute;
+	left: 0;
+	bottom: -7px;
+	transform: translateX(-200px);
+}
+
+.rt-profile-card:hover .rt-profile-name::before {
+	content: "";
+	background: #ffc920;
+	transform: translateX(-200px);
+}
+
+.rt-profile-card:hover .rt-profile-name::after {
+	content: "";
+	background: #ffc920;
+	transform: translateX(0);
+}
+
+.rt-profile-card:hover .rt-profile-text {
+	visibility: visible;
+	opacity: 1;
+	transition: all 400ms ease-out;
+	height: initial;
+}
+
+@media (max-width: 768px) {
+	.rt-profile-card .rt-profile-body {
+		bottom: 30px;
+	}
+	.rt-profile-card .rt-profile-text {
+		visibility: visible;
+		opacity:1;
+		height: initial;
+	}
+	.rt-profile-card .rt-profile-name::before {
+		display: none;
+	}   
+	.rt-profile-card .rt-profile-name::after {
+		position: absolute;
+		left: 0;
+		bottom: -7px;
+		transform: translateX(0);
+	}
+}
+
+/* popular deals */
