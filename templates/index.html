@@ -67,8 +67,8 @@
       </div>
       <div class="carousel-caption d-md-block">
         <h1>Make your next trip awesome</h1>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-       <div
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> 
+       <!-- <div
           class="
             d-none
             d-lg-flex
@@ -91,8 +91,8 @@
             />
             </form>
           </div>
-        </div>
-        <div class="suggestion-box container">
+        </div> -->
+        <!-- <div class="suggestion-box container">
           <div class="border bg-light" style="width: 83%; margin: 0 auto">
             <div class="row m-3">
               <div class="col-md-6 d-flex align-items-start my-2">
@@ -194,9 +194,24 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       
-        
+        <div class="search_form form-outline">
+        <form autocomplete="off" class="" action="{% url 'search_results' %}" method="get">
+          <div class="d-flex">
+            <input
+            id="search-input"
+            type="search"
+            placeholder="Search by destination or hotel"
+            class="form-control bg-light rounded-0"
+            style="height: 48px"
+            name="query"
+            required
+          />
+          <button type="submit" class="btn btn-light rounded-0 shadow-none"><i class="fas fa-search search__icon"></i></button>
+          </div>
+        </form>
+      </div>
 
 
 

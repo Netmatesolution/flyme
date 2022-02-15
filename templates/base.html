@@ -35,20 +35,21 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark">
       <!-- Container wrapper -->
       <div class="container d-flex flex-row justify-content-start">
         <!-- Navbar brand -->
-        <a class="navbar-brand" href="#"
+        <!-- <a class="navbar-brand" href="#"
           ><i class="fab fa-linkedin fa-2x"></i
-        ></a>
+        ></a> -->
+        <img src="{% static 'images/logo.png' %}" alt="">
         <!-- Search form -->
-        <form class="" action="{% url 'search_results' %}" method="get">
+        <!-- <form class="" action="{% url 'search_results' %}" method="get">
         <input
           type="search" name="query" placeholder="Search..." required  pattern="[A-Za-z0-9_]{*}" title="query can't be empty. Can't contain any special character" class="form-control"
           autocomplete="off"
         />
-        </form>
+        </form> -->
         <!-- Toggle button -->
         <button
           class="navbar-toggler ms-auto"
@@ -175,7 +176,7 @@
             {% else %}
             <li class="nav-item">
               <a
-                class="nav-link d-flex flex-column text-center"
+                class="nav-link d-flex flex-column text-center {% if 'Cart' in title %}active{% endif %}"
                 aria-current="page"
                 href="/activity/cart/"
               >
@@ -344,17 +345,17 @@
       
       $(document).ready(function () {
 
-      $("#search-input").focusout(() => {
+      // $("#search-input1").focusout(() => {
 
-        $(".suggestion-box").slideUp("fast");
+      //   $(".suggestion-box").slideUp("fast");
 
-      });
+      // });
 
-      $("#search-input").focusin(() => {
+      // $("#search-input1").focusin(() => {
 
-        $(".suggestion-box").slideDown("fast");
+      //   $(".suggestion-box").slideDown("fast");
 
-      });
+      // });
 
         $(".owl-carousel").owlCarousel({
           responsiveClass: true,
