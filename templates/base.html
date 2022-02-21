@@ -21,16 +21,26 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
       rel="stylesheet"
     />
-    <!-- swiper js -->
+
+    <!-- daterangepicker -->
     <link
       rel="stylesheet"
-      href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-    />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <!-- animate on scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+
+    <!-- owlcarousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+
+
+    
+
+
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   </head>
   <body>
@@ -42,7 +52,7 @@
         <!-- <a class="navbar-brand" href="#"
           ><i class="fab fa-linkedin fa-2x"></i
         ></a> -->
-        <img src="{% static 'images/logo.png' %}" alt="">
+        <img src="{% static 'images/logo.png' %}" alt="" />
         <!-- Search form -->
         <!-- <form class="" action="{% url 'search_results' %}" method="get">
         <input
@@ -72,7 +82,7 @@
                 class="nav-link d-flex flex-column text-center {% if 'HOME' in title %}active{% endif %}"
                 aria-current="page"
                 href="/"
-              >               
+              >
                 <span class="small">Home</span></a
               >
             </li>
@@ -81,7 +91,7 @@
                 class="nav-link d-flex flex-column text-center {% if 'Tour' in title %}active{% endif %}"
                 aria-current="page"
                 href="/tour"
-              >                
+              >
                 <span class="small">Tours</span></a
               >
             </li>
@@ -118,7 +128,6 @@
                 aria-current="page"
                 href="/about"
               >
-               
                 <span class="small">About</span></a
               >
             </li>
@@ -128,39 +137,67 @@
                 aria-current="page"
                 href="#"
               >
-                
                 <span class="small">Contact</span></a
               >
             </li>
+            <li class="nav-item">
+              <a
+                class="nav-link d-flex flex-column text-center"
+                aria-current="page"
+                href="#"
+              >
+                <span class="small">Mice</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link d-flex flex-column text-center"
+                aria-current="page"
+                href="#"
+              >
+                <span class="small">Blog</span></a
+              >
+            </li>
             <li class="nav-item dropdown d-none d-md-block">
-                <a
-                  class="nav-link {% if 'Destination' in title %}active{% endif %}"
-                  href="/destination/"
-                  id="destinationDropdownMenuLink"
-                  role="button"
-                >
-                  Destinations
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="destinationDropdownMenuLink">
+              <a
+                class="nav-link {% if 'Destination' in title %}active{% endif %}"
+                href="/destination/"
+                id="destinationDropdownMenuLink"
+                role="button"
+              >
+                Destinations
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="destinationDropdownMenuLink"
+              >
                 <li>
-                <a class="dropdown-item" href="/destination/indonesia/">Indonesia</a>
+                  <a class="dropdown-item" href="/destination/indonesia/"
+                    >Indonesia</a
+                  >
                 </li>
                 <li>
-                <a class="dropdown-item" href="/destination/seychelles/">Seychelles</a>
+                  <a class="dropdown-item" href="/destination/seychelles/"
+                    >Seychelles</a
+                  >
                 </li>
                 <li>
-                <a class="dropdown-item" href="/destination/south-korea/">South Korea</a>
+                  <a class="dropdown-item" href="/destination/south-korea/"
+                    >South Korea</a
+                  >
                 </li>
                 <li>
-                <a class="dropdown-item" href="/destination/china/">China</a>
+                  <a class="dropdown-item" href="/destination/china/">China</a>
                 </li>
                 <li>
-                <a class="dropdown-item" href="/destination/japan/">Japan</a>
+                  <a class="dropdown-item" href="/destination/japan/">Japan</a>
                 </li>
                 <li>
-                <a class="dropdown-item" href="/destination/taiwan/">Taiwan</a>
+                  <a class="dropdown-item" href="/destination/taiwan/"
+                    >Taiwan</a
+                  >
                 </li>
-                </ul>
+              </ul>
             </li>
             {% if not request.user.is_authenticated %}
             <li class="nav-item">
@@ -169,7 +206,6 @@
                 aria-current="page"
                 href="/accounts/login/"
               >
-                
                 <span class="small">Login/Register</span></a
               >
             </li>
@@ -183,7 +219,7 @@
                 <span class="small">Cart</span></a
               >
             </li>
-            <li class="nav-item dropdown ">
+            <li class="nav-item dropdown">
               <a
                 class="nav-link d-flex align-items-center"
                 href="#"
@@ -204,12 +240,16 @@
                 class="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
-                <li><a class="dropdown-item" href="/dashboard/">My profile</a></li>
+                <li>
+                  <a class="dropdown-item" href="/dashboard/">My profile</a>
+                </li>
                 <!-- <li><a class="dropdown-item" href="#">Settings</a></li> -->
-                <li><a class="dropdown-item" href="/accounts/logout/">Logout</a></li>
+                <li>
+                  <a class="dropdown-item" href="/accounts/logout/">Logout</a>
+                </li>
               </ul>
             </li>
-            {% endif %}	
+            {% endif %}
           </ul>
           <!-- Left links -->
         </div>
@@ -221,14 +261,10 @@
 
     {%block content%} {%endblock%}
 
-   
-
-
     <!-- Footer -->
     <footer
       class="ftco-footer bg-bottom ftco-no-pt"
-      style="background-image: url({% static '/images/bg_3.jpeg'%})"
-      
+      style="background-image: url({%static '/images/bg_3.jpeg' %})"
     >
       <div class="container">
         <div class="row mb-5">
@@ -332,54 +368,55 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- <script src=”https://code.jquery.com/ui/1.12.1/jquery-ui.js”></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+    ></script>
+
+    <!-- animate on scroll -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- owlcarousel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
 
     <script src="{%static 'js/main.js' %}"></script>
     <script>
-      
+      AOS.init();
       $(document).ready(function () {
+        // $("#search-input1").focusout(() => {
 
-      // $("#search-input1").focusout(() => {
+        //   $(".suggestion-box").slideUp("fast");
 
-      //   $(".suggestion-box").slideUp("fast");
+        // });
 
-      // });
+        // $("#search-input1").focusin(() => {
 
-      // $("#search-input1").focusin(() => {
+        //   $(".suggestion-box").slideDown("fast");
 
-      //   $(".suggestion-box").slideDown("fast");
-
-      // });
-
-        $(".owl-carousel").owlCarousel({
-          responsiveClass: true,
-          autoplay: true,
-          autoplayTimeout: 2000,
-          loop: true,
-          responsive: {
-            0: {
-              items: 1,
-            },
-            600: {
-              items: 3,
-            },
-            1000: {
-              items: 3,
-            },
-          },
-        });
+        $("#news-slider").owlCarousel({
+        items : 4,
+        // itemsDesktop:[1199,4],
+        // itemsDesktopSmall:[980,2],
+        // itemsMobile : [425,1],
+        navigation:true,
+        navigationText:["",""],
+        pagination:true,
+        autoPlay:true
+    });
+        
       });
     </script>
     <script>
-    if ( window.history.replaceState ) {
-        window.history.replaceState( null, null, window.location.href );
-    }
-</script>
+      if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+      }
+    </script>
   </body>
 </html>

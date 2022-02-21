@@ -65,10 +65,10 @@
           
         </div>
       </div>
-      <div class="carousel-caption d-md-block">
+      <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
         <h1>Make your next trip awesome</h1>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> 
-       <!-- <div
+        <!-- <div
           class="
             d-none
             d-lg-flex
@@ -91,7 +91,7 @@
             />
             </form>
           </div>
-        </div> -->
+        </div>  -->
         <!-- <div class="suggestion-box container">
           <div class="border bg-light" style="width: 83%; margin: 0 auto">
             <div class="row m-3">
@@ -196,7 +196,7 @@
           </div>
         </div> -->
       
-        <div class="search_form form-outline">
+        <div class="search_form form-outline carousel-search">
         <form autocomplete="off" class="" action="{% url 'search_results' %}" method="get">
           <div class="d-flex">
             <input
@@ -219,7 +219,7 @@
       <!-- Inner -->
 
       <!-- Controls -->
-      <button
+      <!-- <button
         class="carousel-control-prev"
         type="button"
         data-mdb-target="#carouselBasicExample"
@@ -236,7 +236,7 @@
       >
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
-      </button>
+      </button> -->
     </div>
     <!-- Carousel wrapper -->
 
@@ -343,7 +343,7 @@
       <div class="row">
         {%for activity in activites %}
           <div class="col-12 col-md-3 my-2">
-          <div class="card">
+          <div class="card" data-aos="fade-up" data-aos-duration="1000">
             <div
               class="bg-image hover-zoom ripple"
               data-mdb-ripple-color="light"
@@ -394,7 +394,7 @@
 
         {%for tour in tours %}
         <div class="col-12 col-md-3 my-2">
-          <div class="card">
+          <div class="card" data-aos="fade-up" data-aos-duration="1000">
             <div
               class="bg-image hover-overlay ripple"
               data-mdb-ripple-color="light"
@@ -441,13 +441,13 @@
    
 
     <!-- feature staycation -->
-    <div style="background-color: #f9f9ff;">
+    <div>
       <div class="container px-4 py-5">
         <h5 class="pb-2 text-center">Stylish Staycations</h5>
         <div class="row">
           {%for staycation in staycations %}
           <div class="col-12 col-md-3 my-2">
-            <div class="card">
+            <div class="card" data-aos="fade-up" data-aos-duration="1000">
               <div
                 class="bg-image hover-zoom ripple"
                 data-mdb-ripple-color="light"
@@ -533,8 +533,433 @@
 			</section>
     <!-- custom trip -->
 
+
+
+<!-- travel highlights -->
+<div class="container my-5">
+  <h5 class="pb-2 text-center">Travel Highlights</h5>
+  <div class="row my-0">
+    <div class="col-md-12">
+      <div id="news-slider" class="owl-carousel">
+        <div class="post-slide">
+          <div class="post-img">
+            <img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">
+            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">
+              <a href="#">The Grand Dragon Ladakh</a>
+            </h3>
+            <!-- <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p> -->
+            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+            <a href="#" class="read-more">read more</a>
+          </div>
+        </div>
+        
+        <div class="post-slide">
+          <div class="post-img">
+            <img src="https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="">
+            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">
+              <a href="#">Fall Colors in Ladakh.</a>
+            </h3>
+            <!-- <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p> -->
+            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+            <a href="#" class="read-more">read more</a>
+          </div>
+        </div>
+        
+        <div class="post-slide">
+          <div class="post-img">
+            <img src="https://images.unsplash.com/photo-1491884662610-dfcd28f30cfb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="">
+            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">
+              <a href="#">Sariska Manor- A Beautiful Safari Lodge</a>
+            </h3>
+            <!-- <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p> -->
+            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+            <a href="#" class="read-more">read more</a>
+          </div>
+        </div>
+        
+        <div class="post-slide">
+          <div class="post-img">
+            <img src="https://images.unsplash.com/photo-1501179691627-eeaa65ea017c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">
+            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">
+              <a href="#">Rediscover Thailand</a>
+            </h3>
+            <!-- <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p> -->
+            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+            <a href="#" class="read-more">read more</a>
+          </div>
+        </div>
+        
+        <div class="post-slide">
+          <div class="post-img">
+            <img src="https://images.unsplash.com/photo-1533903655515-91fb3870be93?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="">
+            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">
+              <a href="#">Dress Code for Women in Vietnam</a>
+            </h3>
+            <!-- <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p> -->
+            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+            <a href="#" class="read-more">read more</a>
+          </div>
+        </div>
+
+        <div class="post-slide">
+          <div class="post-img">
+            <img src="https://images.unsplash.com/photo-1524675053444-52c3ca294ad2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="">
+            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">
+              <a href="#">10 Cool Experiences from Colombo, Sri Lanka</a>
+            </h3>
+            <!-- <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p> -->
+            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
+            <a href="#" class="read-more">read more</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- travel highlights -->
+
+
+<!-- Explore by intrest -->
+<div class="container my-5 explore_by_intrest">
+  <h5 class="pb-2 text-center">Explore By Intrest</h5>
+  <div class="row">
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1542359649-31e03cd4d909?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+        <p class="text-white mb-0">Adventure</p>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1542835435-4fa357baa00b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=791&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+        <p class="text-white mb-0">Art,History,Culture</p>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1549294413-26f195200c16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+        <p class="text-white mb-0">Luxury & Charme</p>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/reserve/Af0sF2OS5S5gatqrKzVP_Silhoutte.jpg?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+        <p class="text-white mb-0">Romance</p>
+        </div>
+        </div>
+        </div>
+    </div>
+  </div>
+
+   <div class="row">
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1496275068113-fff8c90750d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+        <p class="text-white mb-0">Family</p>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1554080353-321e452ccf19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+        <p class="text-white mb-0">Photographic</p>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+        <p class="text-white mb-0">Nature</p>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1519865241348-e0d7cd33a287?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+        <p class="text-white mb-0">Night life</p>
+        </div>
+        </div>
+        </div>
+    </div>
+  </div>
+
+   <div class="row">
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1602785164803-9a6cf611f3b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1154&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+        <p class="text-white mb-0">Relaxation</p>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1589622927507-9f9cc1359c36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+        <p class="text-white mb-0">Local Life</p>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1516018074042-bc17b7da5f6d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+        <p class="text-white mb-0">Special Day</p>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1498661694102-0a3793edbe74?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1104&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+        <p class="text-white mb-0">All Women</p>
+        </div>
+        </div>
+        </div>
+    </div>
+  </div>
+
+</div>
+<!-- Explore by intrest -->
+
+
+<!-- visitors photos -->
+<div class="container my-5 visitors_photo">
+  <h5 class="pb-2 text-center">Visitors Photos</h5>
+  <div class="row">
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1587465420095-0fb0d52c1b24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=775&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1558862127-9c4ba9794f31?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1602532769886-b2d169960426?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        
+        </div>
+    </div>
+  </div>
+
+   <div class="row">
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1593536032554-9f3e5bf0b9f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1167&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1604529509515-d4926500fd8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1629748418041-b91ff00a75d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=934&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1624324397831-f9d686f9bca6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        
+        </div>
+    </div>
+  </div>
+
+   <div class="row">
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1581439115292-0f0c104be09d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1642391326182-3b72644c48bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=923&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1635870523483-baa0f7b7e377?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        
+        </div>
+    </div>
+    <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
+        <div class="bg-image hover-zoom ripple rounded">
+        <img
+        src="https://images.unsplash.com/photo-1452687459977-921193bf89b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=846&q=80"
+        class="img-fluid"
+        alt="Sample"
+        />
+        
+        </div>
+    </div>
+  </div>
+
+</div>
+<!-- visitors photos -->
+
+
+
     <!-- amazing Destinations -->
-    <div class="container px-4 py-5 destination">
+<div class="container px-4 py-5 destination">
   <!-- <h2 class="pb-2 mb-4">Decent Destinations</h2> -->
   <div class="row">
     <div class="col-lg-4 col-md-12 mb-lg-0 p-0">
@@ -660,7 +1085,7 @@
       </div>
     </div>
   </div>
-  </div>
+</div>
     <!-- amaxing Destinations -->
 
 
