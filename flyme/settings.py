@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'staycation',
     'activity',
     "corsheaders",
+    "blog",
 ]
 
 MIDDLEWARE = [
