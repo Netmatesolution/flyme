@@ -6,7 +6,7 @@
      <!-- Carousel wrapper -->
     <div
       id="carouselBasicExample"
-      class="carousel slide carousel-fade mb-3"
+      class="carousel slide carousel-fade"
       data-mdb-ride="carousel"
     >
       <!-- Indicators -->
@@ -240,79 +240,11 @@
     </div>
     <!-- Carousel wrapper -->
 
-    <!-- features -->
-    <!-- <div class="container py-5">
-      <h2 class="pb-2 text-center">What Make Us Special</h2>
-      <div class="owl-carousel my-0">
-        <div class="d-flex align-items-start mx-2">
-          <div class="d-flex flex-column justify-content-center">
-            <h4>Local travel experts</h4>
-            <p>
-              Our experts live in the destination you are about to visit, they
-              know it thoroughly and are able to guide you to discover their
-              land!
-            </p>
-          </div>
-        </div>
-        <div class=" d-flex align-items-start mx-2">
-          <div class="d-flex flex-column justify-content-center">
-            <h4>100% tailormade trips</h4>
-            <p>
-              Tired of the usual tourist itineraries? viviTravels allows you to
-              create your dream trip step by step or customize one of those we
-              propose!
-            </p>
-          </div>
-        </div>
-        <div class="d-flex align-items-start mx-2">
-          <div class="d-flex flex-column justify-content-center">
-            <h4>Travel without worries</h4>
-            <p>
-              We only rely on certified and safe local operators, able to
-              provide assistance and advise you on the journey: travel without
-              worries!
-            </p>
-          </div>
-        </div>
-        <div class="d-flex align-items-start mx-2">
-          <div class="d-flex flex-column justify-content-center">
-            <h4>24/7 Support</h4>
-            <p>
-              Book with us and we’ll be alongside you from our first chat,
-              offering 24/7 assistance and local know-how from the right time
-              zone, whenever you need it.
-            </p>
-          </div>
-        </div>
-        <div class="d-flex align-items-start mx-2">
-          <div class="d-flex flex-column justify-content-center">
-            <h4>Our best price promise</h4>
-            <p>
-              Our size and trusted relationships with Africa’s top operators
-              give us access to the best possible rates. If you find a better
-              quote for your itinerary, let us know and we’ll match it.
-            </p>
-          </div>
-        </div>
-        <div class="d-flex align-items-start mx-2">
-          <div class="d-flex flex-column justify-content-center">
-            <h4>Complete Financial Protection</h4>
-            <p>
-              Your money is safe with us. All our clients are protected by our
-              supplier default insurance and our accreditation bond with the
-              Southern Africa Tourism Services Association.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- features -->
-
     <div class="container py-5">
       <div class="row">
-        <h5 class="text-center">Why you should book with us</h5>
+        <h5 class="section-title">Why you should book with us</h5>
       </div>
-      <div class="row py-5">
+      <div class="row py-1">
         <div class="col-12 col-md-3 d-flex flex-column justify-content-center align-items-center text-center">
             <img src="{% static 'images/chooseus1.png' %}" alt="" width="70px" height="70px">
             <p>Best price guarantee</p>
@@ -338,12 +270,12 @@
     </div>
 
     <!-- feature activity -->
-    <div class="container px-4 py-5">
-      <h5 class="pb-2 text-center">Elegent Experiences</h5>
-      <div class="row">
+    <div class="container py-5">
+      <h5 class="section-title">Elegent Experiences</h5>
+      <div class="card-group">
         {%for activity in activites %}
-          <div class="col-12 col-md-3 my-2">
-          <div class="card" data-aos="fade-up" data-aos-duration="1000">
+          <!-- <div class="col-12 col-md-3 my-2"> -->
+          <div class="card border rounded shadow-0 mx-1" data-aos="fade-up" data-aos-duration="1000">
             <div
               class="bg-image hover-zoom ripple"
               data-mdb-ripple-color="light"
@@ -360,21 +292,19 @@
               </a>               
             </div>
             <div class="card-body">
-              <p>
-                <span class="badge rounded-pill bg-light text-dark"
-                  >{{activity.category}}</span
-                >
-              </p>
-              <small class="">
+              <p class="card-title">
                 {{activity.activity_name}}
-              </small>
-              <!-- <small class=""> -->
-              <p><span class="badge bg-secondary">{{activity.country}}</span></p>
-              <!-- </small> -->
+              </p>
+            </div>
+            <div class="card-footer border-0">
+              <span class="badge bg-secondary">{{activity.country}}</span>
+              <span class="badge rounded-pill bg-light text-dark">{{activity.category}}</span>
             </div>
           </div>
-        </div>
+        <!-- </div> -->
         {%endfor%}
+
+         
         
       </div>
       <a
@@ -388,13 +318,13 @@
     <!-- feature activity -->
 
     <!-- feature tour -->
-    <div class="container px-4 py-5">
-      <h5 class="pb-2 text-center">Recommended Tours</h5>
-      <div class="row">
+    <div class="container py-5">
+      <h5 class="section-title">Recommended Tours</h5>
+      <div class="card-group">
 
         {%for tour in tours %}
-        <div class="col-12 col-md-3 my-2">
-          <div class="card" data-aos="fade-up" data-aos-duration="1000">
+        <!-- <div class="col-12 col-md-3 my-2"> -->
+          <div class="card border rounded shadow-0 mx-1" data-aos="fade-up" data-aos-duration="1000">
             <div
               class="bg-image hover-overlay ripple"
               data-mdb-ripple-color="light"
@@ -411,20 +341,18 @@
               </a>
             </div>
             <div class="card-body">
-              <p>
+              <p class="card-title">
+                {{tour.tour_name}}
+              </p>
+            </div>
+            <div class="card-footer border-0">
+                <span class="badge bg-secondary">{{tour.countries}}</span>
                 <span class="badge rounded-pill bg-light text-dark"
                   >{{tour.category}}</span
                 >
-              </p>
-              <small class="card-title">
-                {{tour.tour_name}}
-              </small>
-              <!-- <small class=""> -->
-              <p><span class="badge bg-secondary">{{tour.countries}}</span></p>
-              <!-- </small> -->
             </div>
           </div>
-        </div>
+        <!-- </div> -->
         {%endfor%}
       </div>
       <a
@@ -438,16 +366,14 @@
     </div>
     <!-- feature tour -->
 
-   
-
     <!-- feature staycation -->
     <div>
-      <div class="container px-4 py-5">
-        <h5 class="pb-2 text-center">Stylish Staycations</h5>
-        <div class="row">
+      <div class="container py-5">
+        <h5 class="section-title">Stylish Staycations</h5>
+        <div class="card-group">
           {%for staycation in staycations %}
-          <div class="col-12 col-md-3 my-2">
-            <div class="card" data-aos="fade-up" data-aos-duration="1000">
+          <!-- <div class="col-12 col-md-3 my-2"> -->
+            <div class="card border rounded shadow-0 mx-1" data-aos="fade-up" data-aos-duration="1000">
               <div
                 class="bg-image hover-zoom ripple"
                 data-mdb-ripple-color="light"
@@ -492,10 +418,12 @@
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </p> -->
-                <p><span class="badge bg-secondary">{{staycation.country}}</span></p>
+              </div>
+              <div class="card-footer border-0">
+                <span class="badge bg-secondary">{{staycation.country}}</span>
               </div>
             </div>
-          </div>
+          <!-- </div> -->
           {%endfor%}
         </div>
         <a
@@ -511,7 +439,7 @@
     <!-- feature Staycation -->
 
     <!-- custom trip -->
-    <section class="home-about-area my-5">
+    <section class="home-about-area py-5">
 				<div class="container-fluid p-0">
 					<div class="row align-items-center justify-content-end p-0">
 						<div class="col-lg-6 col-md-12 home-about-left">
@@ -536,11 +464,12 @@
 
 
 <!-- travel highlights -->
-<div class="container my-5">
-  <h5 class="pb-2 text-center">Travel Highlights</h5>
+<div class="container py-5">
+  <h5 class="section-title">Travel Highlights</h5>
   <div class="row my-0">
     <div class="col-md-12">
       <div id="news-slider" class="owl-carousel">
+        
         <div class="post-slide">
           <div class="post-img">
             <img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">
@@ -639,8 +568,8 @@
 
 
 <!-- Explore by intrest -->
-<div class="container my-5 explore_by_intrest">
-  <h5 class="pb-2 text-center">Explore By Intrest</h5>
+<div class="container py-5 explore_by_intrest">
+  <h5 class="section-title">Explore By Intrest</h5>
   <div class="row">
     <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
         <div class="bg-image hover-zoom ripple rounded">
@@ -823,8 +752,8 @@
 
 
 <!-- visitors photos -->
-<div class="container my-5 visitors_photo">
-  <h5 class="pb-2 text-center">Visitors Photos</h5>
+<div class="container py-5 visitors_photo">
+  <h5 class="section-title">Visitors Photos</h5>
   <div class="row">
     <div class="col-12 col-md-3 my-1 d-flex justify-content-center">
         <div class="bg-image hover-zoom ripple rounded">
@@ -959,7 +888,7 @@
 
 
     <!-- amazing Destinations -->
-<div class="container px-4 py-5 destination">
+<div class="container py-5 destination">
   <!-- <h2 class="pb-2 mb-4">Decent Destinations</h2> -->
   <div class="row">
     <div class="col-lg-4 col-md-12 mb-lg-0 p-0">

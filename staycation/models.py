@@ -16,6 +16,7 @@ class Staycation(models.Model):
     recommended = models.BooleanField(default=False)
     verified = models.BooleanField(default=False)
     highlights= models.TextField(null=True , blank=True)
+    video_id =  models.CharField( max_length=5000 , default='None')
     country= models.ForeignKey(to=Country, on_delete=models.SET_NULL,blank=True , null=True)
     feature_image = models.ImageField(upload_to = "staycation", null=True , blank=True)
     logo =models.ImageField(upload_to='staycation',null=True,blank=True)

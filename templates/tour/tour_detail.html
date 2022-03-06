@@ -8,7 +8,7 @@
 {% block content %}
 
 <div class="p-0 m-0">
-  <div id="carouselExampleControls" class="container carousel slide" data-mdb-ride="carousel">
+  <div id="carouselExampleControls" class="carousel slide" data-mdb-ride="carousel">
   <div class="carousel-inner">
     {%for item in featureimages%}
       <div class="carousel-item {%if forloop.first%}active{%endif%}">
@@ -16,6 +16,7 @@
         src="/media/{{item.image}}"
         class="d-block w-100"
         alt="Wild Landscape"
+        style="object-fit: cover;"
       />
     </div>
     {%endfor%}
@@ -42,7 +43,7 @@
 
 </div>
 
-<div class="container mt-1 pt-5">
+<div class="container mt-1 pt-5" style="width: 90%;">
       <div class="row tour-detail-row">
         <div class="col-12 col-md-8">
           <div>

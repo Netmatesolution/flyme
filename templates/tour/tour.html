@@ -108,12 +108,12 @@
 
 
 {% if Indonesia%}
-<div class="container px-4 py-2">
+<div class="container py-2">
   <h5 class="pb-2">Indonesia</h5>
-  <div class="row">
+  <div class="card-group">
     {% for item in Indonesia %}
-    <div class="col-12 col-md-3 my-2">
-      <div class="card">
+    <!-- <div class="col-12 col-md-3 my-2"> -->
+      <div class="card border rounded shadow-0 mx-1">
         <div
           class="bg-image hover-overlay ripple"
           data-mdb-ripple-color="light"
@@ -130,20 +130,18 @@
           </a>
         </div>
         <div class="card-body">
-          <p>
-            <span class="badge rounded-pill bg-light text-dark"
+          <span class="badge rounded-pill bg-light text-dark"
               >{{item.category}}</span
             >
-          </p>
-          <small class="card-title">
+          <p class="card-title">
             {{item.tour_name}}
-          </small>
-          <!-- <small class=""> -->
-          <p><span class="badge bg-secondary">{{item.countries}}</span></p>
-          <!-- </small> -->
+          </p>
+        </div>
+        <div class="card-footer border-0">
+          <span class="badge bg-secondary">{{item.countries}}</span>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
     {% endfor %}
   </div>
   <a
@@ -158,12 +156,12 @@
 {%endif%}
 
 {% if Seychelles%}
-<div class="container px-4 py-2">
+<div class="container py-2">
   <h5 class="pb-2">Seychelles</h5>
-  <div class="row">
+  <div class="card-group">
     {% for item in Seychelles %}
-    <div class="col-12 col-md-3 my-2">
-      <div class="card">
+    <!-- <div class="col-12 col-md-3 my-2"> -->
+      <div class="card border rounded shadow-0 mx-1">
         <div
           class="bg-image hover-overlay ripple"
           data-mdb-ripple-color="light"
@@ -180,20 +178,18 @@
           </a>
         </div>
         <div class="card-body">
-          <p>
-           <span class="badge rounded-pill bg-light text-dark"
+          <span class="badge rounded-pill bg-light text-dark"
               >{{item.category}}</span
             >
-          </p>
-          <small class="card-title">
+          <p class="card-title">
             {{item.tour_name}}
-          </small>
-          <!-- <small class=""> -->
-          <p><span class="badge bg-secondary">{{item.countries}}</span></p>
-          <!-- </small> -->
+          </p>
+        </div>
+        <div class="card-footer border-0">
+          <span class="badge bg-secondary">{{item.countries}}</span>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
     {% endfor %}
   </div>
   <a
@@ -208,12 +204,12 @@
 {%endif%}
 
 {% if SouthKorea %}
-<div class="container px-4 py-2">
+<div class="container py-2">
   <h5 class="pb-2">South Korea</h5>
-  <div class="row">
+  <div class="card-group">
     {% for item in SouthKorea %}
-    <div class="col-12 col-md-3 my-2">
-      <div class="card">
+    <!-- <div class="col-12 col-md-3 my-2"> -->
+      <div class="card border rounded shadow-0 mx-1">
         <div
           class="bg-image hover-overlay ripple"
           data-mdb-ripple-color="light"
@@ -230,20 +226,18 @@
           </a>
         </div>
         <div class="card-body">
-          <p>
-           <span class="badge rounded-pill bg-light text-dark"
+          <span class="badge rounded-pill bg-light text-dark"
               >{{item.category}}</span
             >
-          </p>
-          <small class="card-title">
+          <p class="card-title">
             {{item.tour_name}}
-          </small>
-          <!-- <small class=""> -->
-          <p><span class="badge bg-secondary">{{item.countries}}</span></p>
-          <!-- </small> -->
+          </p>
+        </div>
+        <div class="card-footer border-0">
+          <span class="badge bg-secondary">{{item.countries}}</span>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
     {% endfor %}
   </div>
   <a
@@ -258,12 +252,12 @@
 {%endif%}
 
 {% if Japan %}
-<div class="container px-4 py-2">
+<div class="container py-2">
   <h5 class="pb-2">Japan</h5>
-  <div class="row">
+  <div class="card-group">
     {% for item in Japan %}
-    <div class="col-12 col-md-3 my-2">
-      <div class="card">
+    <!-- <div class="col-12 col-md-3 my-2"> -->
+      <div class="card border rounded shadow-0 mx-1">
         <div
           class="bg-image hover-overlay ripple"
           data-mdb-ripple-color="light"
@@ -272,7 +266,7 @@
             src="/media/{{item.image}}"
             class="img-fluid"
           />
-         <a href="{{item.slug}}">
+          <a href="{{item.slug}}">
             <div
               class="mask"
               style="background-color: rgba(251, 251, 251, 0.15)"
@@ -280,20 +274,18 @@
           </a>
         </div>
         <div class="card-body">
-          <p>
-           <span class="badge rounded-pill bg-light text-dark"
+          <span class="badge rounded-pill bg-light text-dark"
               >{{item.category}}</span
             >
-          </p>
-          <small class="card-title">
+          <p class="card-title">
             {{item.tour_name}}
-          </small>
-          <!-- <small class=""> -->
-          <p><span class="badge bg-secondary">{{item.countries}}</span></p>
-          <!-- </small> -->
+          </p>
+        </div>
+        <div class="card-footer border-0">
+          <span class="badge bg-secondary">{{item.countries}}</span>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
     {% endfor %}
   </div>
   <a
@@ -308,12 +300,12 @@
 {%endif%}
 
 {% if China %}
-<div class="container px-4 py-2">
+<div class="container py-2">
   <h5 class="pb-2">China</h5>
-  <div class="row">
+  <div class="card-group">
     {% for item in China %}
-    <div class="col-12 col-md-3 my-2">
-      <div class="card">
+    <!-- <div class="col-12 col-md-3 my-2"> -->
+      <div class="card border rounded shadow-0 mx-1">
         <div
           class="bg-image hover-overlay ripple"
           data-mdb-ripple-color="light"
@@ -322,7 +314,7 @@
             src="/media/{{item.image}}"
             class="img-fluid"
           />
-         <a href="{{item.slug}}">
+          <a href="{{item.slug}}">
             <div
               class="mask"
               style="background-color: rgba(251, 251, 251, 0.15)"
@@ -330,20 +322,18 @@
           </a>
         </div>
         <div class="card-body">
-          <p>
-           <span class="badge rounded-pill bg-light text-dark"
+          <span class="badge rounded-pill bg-light text-dark"
               >{{item.category}}</span
             >
-          </p>
-          <small class="card-title">
+          <p class="card-title">
             {{item.tour_name}}
-          </small>
-          <!-- <small class=""> -->
-          <p><span class="badge bg-secondary">{{item.countries}}</span></p>
-          <!-- </small> -->
+          </p>
+        </div>
+        <div class="card-footer border-0">
+          <span class="badge bg-secondary">{{item.countries}}</span>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
     {% endfor %}
   </div>
   <a
@@ -359,12 +349,12 @@
 
 
 {% if Taiwan %}
-<div class="container px-4 py-2">
+<div class="container py-2">
   <h5 class="pb-2">Taiwan</h5>
-  <div class="row">
+  <div class="card-group">
     {% for item in Taiwan %}
-    <div class="col-12 col-md-3 my-2">
-      <div class="card">
+    <!-- <div class="col-12 col-md-3 my-2"> -->
+      <div class="card border rounded shadow-0 mx-1">
         <div
           class="bg-image hover-overlay ripple"
           data-mdb-ripple-color="light"
@@ -381,20 +371,18 @@
           </a>
         </div>
         <div class="card-body">
-          <p>
-            <span class="badge rounded-pill bg-light text-dark"
+          <span class="badge rounded-pill bg-light text-dark"
               >{{item.category}}</span
             >
-          </p>
-          <small class="card-title">
+          <p class="card-title">
             {{item.tour_name}}
-          </small>
-          <!-- <small class=""> -->
-         <p><span class="badge bg-secondary">{{item.countries}}</span></p>
-          <!-- </small> -->
+          </p>
+        </div>
+        <div class="card-footer border-0">
+          <span class="badge bg-secondary">{{item.countries}}</span>
         </div>
       </div>
-    </div>
+    <!-- </div> -->
     {% endfor %}
   </div>
   <a
@@ -410,62 +398,64 @@
 
 
 <!-- feature staycation -->
-<div class="container px-4 py-5">
+<div class="container py-5">
 <h5 class="pb-2">Stylish Staycations</h5>
-<div class="row">
-{%for staycation in staycations %}
-<div class="col-12 col-md-3 my-2">
-<div class="card">
-  <div
-    class="bg-image hover-zoom ripple"
-    data-mdb-ripple-color="light"
-  >
-    <img
-      src="/media/{{staycation.feature_image}}"
-      class="img-fluid"
-    />
-    <a href="/staycation/{{staycation.slug}}">
-      <div
-        class="mask"
-        style="background-color: rgba(251, 251, 251, 0.15)"
-      ></div>
-    </a>
-  </div>
-  <div class="card-body">
-    <small class="card-title font-weight-bold">
-      <a href="/staycation/{{staycation.slug}}">{{staycation.staycation_name}}</a>
-    </small>
-    <ul class="list-unstyled list-inline mb-0">
-      <li class="list-inline-item me-0">
-        <i class="fas fa-star text-warning fa-xs"> </i>
-      </li>
-      <li class="list-inline-item me-0">
-        <i class="fas fa-star text-warning fa-xs"></i>
-      </li>
-      <li class="list-inline-item me-0">
-        <i class="fas fa-star text-warning fa-xs"></i>
-      </li>
-      <li class="list-inline-item me-0">
-        <i class="fas fa-star text-warning fa-xs"></i>
-      </li>
-      <li class="list-inline-item">
-        <i class="fas fa-star-half-alt text-warning fa-xs"></i>
-      </li>
-      <li class="list-inline-item">
-        <p class="text-muted">4.5 (413)</p>
-      </li>
-    </ul>
-    <!-- <p class="mb-2">$ • American, Restaurant</p>
-    <p class="card-text">
-      Some quick example text to build on the card title and make up
-      the bulk of the card's content.
-    </p> -->
-    <p><span class="badge bg-secondary">{{staycation.country}}</span></p>
-  </div>
-</div>
-</div>
-{%endfor%}
-</div>
+<div class="card-group">
+          {%for staycation in staycations %}
+          <!-- <div class="col-12 col-md-3 my-2"> -->
+            <div class="card border rounded shadow-0 mx-1" data-aos="fade-up" data-aos-duration="1000">
+              <div
+                class="bg-image hover-zoom ripple"
+                data-mdb-ripple-color="light"
+              >
+                <img
+                  src="/media/{{staycation.feature_image}}"
+                  class="img-fluid"
+                />
+                <a href="/staycation/{{staycation.slug}}">
+                  <div
+                    class="mask"
+                    style="background-color: rgba(251, 251, 251, 0.15)"
+                  ></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <small class="card-title font-weight-bold">
+                  <a href="/staycation/{{staycation.slug}}">{{staycation.staycation_name}}</a>
+                </small>
+                <ul class="list-unstyled list-inline mb-0">
+                  <li class="list-inline-item me-0">
+                    <i class="fas fa-star text-warning fa-xs"> </i>
+                  </li>
+                  <li class="list-inline-item me-0">
+                    <i class="fas fa-star text-warning fa-xs"></i>
+                  </li>
+                  <li class="list-inline-item me-0">
+                    <i class="fas fa-star text-warning fa-xs"></i>
+                  </li>
+                  <li class="list-inline-item me-0">
+                    <i class="fas fa-star text-warning fa-xs"></i>
+                  </li>
+                  <li class="list-inline-item">
+                    <i class="fas fa-star-half-alt text-warning fa-xs"></i>
+                  </li>
+                  <li class="list-inline-item">
+                    <p class="text-muted">4.5 (413)</p>
+                  </li>
+                </ul>
+                <!-- <p class="mb-2">$ • American, Restaurant</p>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p> -->
+              </div>
+              <div class="card-footer border-0">
+                <span class="badge bg-secondary">{{staycation.country}}</span>
+              </div>
+            </div>
+          <!-- </div> -->
+          {%endfor%}
+        </div>
 <a
 href="/staycation/"
 type="button"

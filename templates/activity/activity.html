@@ -110,10 +110,10 @@
 {% if Indonesia%}
 <div class="container px-4 py-2">
   <h3 class="pb-2">Indonesia</h3>
-  <div class="row">
+  <div class="card-group">
     {% for item in Indonesia %}
-    <div class="col-12 col-md-3 my-2">
-      <div class="card">
+    <!-- <div class="col-12 col-md-3 my-2"> -->
+      <div class="card border rounded shadow-0 mx-1">
         <div
           class="bg-image hover-overlay ripple"
           data-mdb-ripple-color="light"
@@ -130,20 +130,18 @@
           </a>
         </div>
         <div class="card-body">
-          <p>
-            <span class="badge rounded-pill bg-light text-dark"
-              >{{item.category}}</span
-            >
-          </p>
           <p class="card-title">
             {{item.activity_name}}
           </p>
-          <!-- <small class=""> -->
-          <p><span class="badge bg-secondary">{{item.country}}</span></p>
-          <!-- </small> -->
+        </div>
+        <div class="card-footer border-0">
+            <span class="badge bg-secondary">{{item.country}}</span>
+            <span class="badge rounded-pill bg-light text-dark"
+              >{{item.category}}</span
+            >
         </div>
       </div>
-    </div>
+    <!-- </div> -->
     {% endfor %}
   </div>
   <a
@@ -160,10 +158,10 @@
 {% if Seychelles%}
 <div class="container px-4 py-2">
   <h3 class="pb-2">Seychelles</h3>
-  <div class="row">
+  <div class="card-group">
     {% for item in Seychelles %}
-    <div class="col-12 col-md-3 my-2">
-      <div class="card">
+    <!-- <div class="col-12 col-md-3 my-2"> -->
+      <div class="card border rounded shadow-0 mx-1">
         <div
           class="bg-image hover-overlay ripple"
           data-mdb-ripple-color="light"
@@ -180,20 +178,18 @@
           </a>
         </div>
         <div class="card-body">
-          <p>
-           <span class="badge rounded-pill bg-light text-dark"
-              >{{item.category}}</span
-            >
-          </p>
           <p class="card-title">
             {{item.activity_name}}
           </p>
-          <!-- <small class=""> -->
-          <p><span class="badge bg-secondary">{{item.country}}</span></p>
-          <!-- </small> -->
+        </div>
+        <div class="card-footer border-0">
+            <span class="badge bg-secondary">{{item.country}}</span>
+            <span class="badge rounded-pill bg-light text-dark"
+              >{{item.category}}</span
+            >
         </div>
       </div>
-    </div>
+    <!-- </div> -->
     {% endfor %}
   </div>
   <a
@@ -212,8 +208,8 @@
   <h3 class="pb-2">South Korea</h3>
   <div class="row">
     {% for item in SouthKorea %}
-    <div class="col-12 col-md-3 my-2">
-      <div class="card">
+    <!-- <div class="col-12 col-md-3 my-2"> -->
+     <div class="card border rounded shadow-0 mx-1">
         <div
           class="bg-image hover-overlay ripple"
           data-mdb-ripple-color="light"
@@ -230,20 +226,18 @@
           </a>
         </div>
         <div class="card-body">
-          <p>
-           <span class="badge rounded-pill bg-light text-dark"
-              >{{item.category}}</span
-            >
-          </p>
           <p class="card-title">
             {{item.activity_name}}
           </p>
-          <!-- <small class=""> -->
-          <p><span class="badge bg-secondary">{{item.country}}</span></p>
-          <!-- </small> -->
+        </div>
+        <div class="card-footer border-0">
+            <span class="badge bg-secondary">{{item.country}}</span>
+            <span class="badge rounded-pill bg-light text-dark"
+              >{{item.category}}</span
+            >
         </div>
       </div>
-    </div>
+    <!-- </div> -->
     {% endfor %}
   </div>
   <a
@@ -262,8 +256,8 @@
   <h3 class="pb-2">Japan</h3>
   <div class="row">
     {% for item in Japan %}
-    <div class="col-12 col-md-3 my-2">
-      <div class="card">
+    <!-- <div class="col-12 col-md-3 my-2"> -->
+     <div class="card border rounded shadow-0 mx-1">
         <div
           class="bg-image hover-overlay ripple"
           data-mdb-ripple-color="light"
@@ -272,7 +266,7 @@
             src="/media/{{item.image}}"
             class="img-fluid"
           />
-         <a href="{{item.slug}}">
+          <a href="{{item.slug}}">
             <div
               class="mask"
               style="background-color: rgba(251, 251, 251, 0.15)"
@@ -280,20 +274,18 @@
           </a>
         </div>
         <div class="card-body">
-          <p>
-           <span class="badge rounded-pill bg-light text-dark"
-              >{{item.category}}</span
-            >
-          </p>
           <p class="card-title">
             {{item.activity_name}}
           </p>
-          <!-- <small class=""> -->
-          <p><span class="badge bg-secondary">{{item.country}}</span></p>
-          <!-- </small> -->
+        </div>
+        <div class="card-footer border-0">
+            <span class="badge bg-secondary">{{item.country}}</span>
+            <span class="badge rounded-pill bg-light text-dark"
+              >{{item.category}}</span
+            >
         </div>
       </div>
-    </div>
+    <!-- </div> -->
     {% endfor %}
   </div>
   <a
@@ -312,8 +304,8 @@
   <h3 class="pb-2">China</h3>
   <div class="row">
     {% for item in China %}
-    <div class="col-12 col-md-3 my-2">
-      <div class="card">
+    <!-- <div class="col-12 col-md-3 my-2"> -->
+      <div class="card border rounded shadow-0 mx-1">
         <div
           class="bg-image hover-overlay ripple"
           data-mdb-ripple-color="light"
@@ -322,7 +314,7 @@
             src="/media/{{item.image}}"
             class="img-fluid"
           />
-         <a href="{{item.slug}}">
+          <a href="{{item.slug}}">
             <div
               class="mask"
               style="background-color: rgba(251, 251, 251, 0.15)"
@@ -330,20 +322,18 @@
           </a>
         </div>
         <div class="card-body">
-          <p>
-           <span class="badge rounded-pill bg-light text-dark"
-              >{{item.category}}</span
-            >
-          </p>
           <p class="card-title">
             {{item.activity_name}}
           </p>
-          <!-- <small class=""> -->
-          <p><span class="badge bg-secondary">{{item.country}}</span></p>
-          <!-- </small> -->
+        </div>
+        <div class="card-footer border-0">
+            <span class="badge bg-secondary">{{item.country}}</span>
+            <span class="badge rounded-pill bg-light text-dark"
+              >{{item.category}}</span
+            >
         </div>
       </div>
-    </div>
+    <!-- </div> -->
     {% endfor %}
   </div>
   <a
@@ -363,8 +353,8 @@
   <h3 class="pb-2">Taiwan</h3>
   <div class="row">
     {% for item in Taiwan %}
-    <div class="col-12 col-md-3 my-2">
-      <div class="card">
+    <!-- <div class="col-12 col-md-3 my-2"> -->
+     <div class="card border rounded shadow-0 mx-1">
         <div
           class="bg-image hover-overlay ripple"
           data-mdb-ripple-color="light"
@@ -381,20 +371,18 @@
           </a>
         </div>
         <div class="card-body">
-          <p>
-            <span class="badge rounded-pill bg-light text-dark"
-              >{{item.category}}</span
-            >
-          </p>
           <p class="card-title">
             {{item.activity_name}}
           </p>
-          <!-- <small class=""> -->
-          <p><span class="badge bg-secondary">{{item.country}}</span></p>
-          <!-- </small> -->
+        </div>
+        <div class="card-footer border-0">
+            <span class="badge bg-secondary">{{item.country}}</span>
+            <span class="badge rounded-pill bg-light text-dark"
+              >{{item.category}}</span
+            >
         </div>
       </div>
-    </div>
+    <!-- </div> -->
     {% endfor %}
   </div>
   <a
@@ -411,61 +399,63 @@
 
 <!-- feature staycation -->
 <div class="container px-4 py-5">
-<h2 class="pb-2">Stylish Staycations</h2>
-<div class="row">
-{%for staycation in staycations %}
-<div class="col-12 col-md-3 my-2">
-<div class="card">
-  <div
-    class="bg-image hover-zoom ripple"
-    data-mdb-ripple-color="light"
-  >
-    <img
-      src="/media/{{staycation.feature_image}}"
-      class="img-fluid"
-    />
-    <a href="/staycation/{{staycation.slug}}">
-      <div
-        class="mask"
-        style="background-color: rgba(251, 251, 251, 0.15)"
-      ></div>
-    </a>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title font-weight-bold">
-      <a>{{staycation.staycation_name}}</a>
-    </h5>
-    <ul class="list-unstyled list-inline mb-0">
-      <li class="list-inline-item me-0">
-        <i class="fas fa-star text-warning fa-xs"> </i>
-      </li>
-      <li class="list-inline-item me-0">
-        <i class="fas fa-star text-warning fa-xs"></i>
-      </li>
-      <li class="list-inline-item me-0">
-        <i class="fas fa-star text-warning fa-xs"></i>
-      </li>
-      <li class="list-inline-item me-0">
-        <i class="fas fa-star text-warning fa-xs"></i>
-      </li>
-      <li class="list-inline-item">
-        <i class="fas fa-star-half-alt text-warning fa-xs"></i>
-      </li>
-      <li class="list-inline-item">
-        <p class="text-muted">4.5 (413)</p>
-      </li>
-    </ul>
-    <!-- <p class="mb-2">$ • American, Restaurant</p>
-    <p class="card-text">
-      Some quick example text to build on the card title and make up
-      the bulk of the card's content.
-    </p> -->
-    <p><span class="badge bg-secondary">{{staycation.country}}</span></p>
-  </div>
-</div>
-</div>
-{%endfor%}
-</div>
+<h2 class="section-title">Stylish Staycations</h2>
+<div class="card-group">
+          {%for staycation in staycations %}
+          <!-- <div class="col-12 col-md-3 my-2"> -->
+            <div class="card border rounded shadow-0 mx-1" data-aos="fade-up" data-aos-duration="1000">
+              <div
+                class="bg-image hover-zoom ripple"
+                data-mdb-ripple-color="light"
+              >
+                <img
+                  src="/media/{{staycation.feature_image}}"
+                  class="img-fluid"
+                />
+                <a href="/staycation/{{staycation.slug}}">
+                  <div
+                    class="mask"
+                    style="background-color: rgba(251, 251, 251, 0.15)"
+                  ></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <small class="card-title font-weight-bold">
+                  <a href="/staycation/{{staycation.slug}}">{{staycation.staycation_name}}</a>
+                </small>
+                <ul class="list-unstyled list-inline mb-0">
+                  <li class="list-inline-item me-0">
+                    <i class="fas fa-star text-warning fa-xs"> </i>
+                  </li>
+                  <li class="list-inline-item me-0">
+                    <i class="fas fa-star text-warning fa-xs"></i>
+                  </li>
+                  <li class="list-inline-item me-0">
+                    <i class="fas fa-star text-warning fa-xs"></i>
+                  </li>
+                  <li class="list-inline-item me-0">
+                    <i class="fas fa-star text-warning fa-xs"></i>
+                  </li>
+                  <li class="list-inline-item">
+                    <i class="fas fa-star-half-alt text-warning fa-xs"></i>
+                  </li>
+                  <li class="list-inline-item">
+                    <p class="text-muted">4.5 (413)</p>
+                  </li>
+                </ul>
+                <!-- <p class="mb-2">$ • American, Restaurant</p>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up
+                  the bulk of the card's content.
+                </p> -->
+              </div>
+              <div class="card-footer border-0">
+                <span class="badge bg-secondary">{{staycation.country}}</span>
+              </div>
+            </div>
+          <!-- </div> -->
+          {%endfor%}
+        </div>
 <a
 href="/staycation/"
 type="button"

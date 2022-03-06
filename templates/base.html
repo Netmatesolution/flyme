@@ -49,10 +49,11 @@
       <!-- Container wrapper -->
       <div class="container d-flex flex-row justify-content-start">
         <!-- Navbar brand -->
-        <!-- <a class="navbar-brand" href="#"
-          ><i class="fab fa-linkedin fa-2x"></i
-        ></a> -->
-        <img src="{% static 'images/logo.png' %}" alt="" />
+        <a class="navbar-brand" href="/"
+          >
+          <img src="{% static 'images/logo.png' %}" alt="" />
+        </a>
+        
         <!-- Search form -->
         <!-- <form class="" action="{% url 'search_results' %}" method="get">
         <input
@@ -77,42 +78,6 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Left links -->
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a
-                class="nav-link d-flex flex-column text-center {% if 'HOME' in title %}active{% endif %}"
-                aria-current="page"
-                href="/"
-              >
-                <span class="small">Home</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link d-flex flex-column text-center {% if 'Tour' in title %}active{% endif %}"
-                aria-current="page"
-                href="/tour"
-              >
-                <span class="small">Tours</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link d-flex flex-column text-center {% if 'Hotels & Resorts' in title %}active{% endif %}"
-                aria-current="page"
-                href="/staycation"
-              >
-                <span class="small">Staycation</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link d-flex flex-column text-center {% if 'Activity' in title %}active{% endif %}"
-                aria-current="page"
-                href="/activity"
-              >
-                <span class="small">Experience</span></a
-              >
-            </li>
             <li class="nav-item d-block d-md-none">
               <a
                 class="nav-link d-flex flex-column text-center {% if 'Destination' in title %}active{% endif %}"
@@ -121,42 +86,6 @@
               >
                 <span class="small">Destinations</span>
               </a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link d-flex flex-column text-center {% if 'About' in title %}active{% endif %}"
-                aria-current="page"
-                href="/about"
-              >
-                <span class="small">About</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link d-flex flex-column text-center"
-                aria-current="page"
-                href="#"
-              >
-                <span class="small">Contact</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link d-flex flex-column text-center"
-                aria-current="page"
-                href="#"
-              >
-                <span class="small">Mice</span></a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link d-flex flex-column text-center"
-                aria-current="page"
-                href="#"
-              >
-                <span class="small">Blog</span></a
-              >
             </li>
             <li class="nav-item dropdown d-none d-md-block">
               <a
@@ -199,6 +128,83 @@
                 </li>
               </ul>
             </li>
+            <li class="nav-item">
+              <a
+                class="nav-link d-flex flex-column text-center {% if 'Activity' in title %}active{% endif %}"
+                aria-current="page"
+                href="/activity"
+              >
+                <span class="small">Experience</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link d-flex flex-column text-center {% if 'Tour' in title %}active{% endif %}"
+                aria-current="page"
+                href="/tour"
+              >
+                <span class="small">Tours</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link d-flex flex-column text-center {% if 'Hotels & Resorts' in title %}active{% endif %}"
+                aria-current="page"
+                href="/staycation"
+              >
+                <span class="small">Staycation</span></a
+              >
+            </li>
+            <!-- <li class="nav-item">
+              <a
+                class="nav-link d-flex flex-column text-center {% if 'HOME' in title %}active{% endif %}"
+                aria-current="page"
+                href="/"
+              >
+                <span class="small">Home</span></a
+              >
+            </li> -->
+            
+             <li class="nav-item">
+              <a
+                class="nav-link d-flex flex-column text-center"
+                aria-current="page"
+                href="#"
+              >
+                <span class="small">Mice</span></a
+              >
+            </li>
+            
+            <li class="nav-item">
+              <a
+                class="nav-link d-flex flex-column text-center {% if 'About' in title %}active{% endif %}"
+                aria-current="page"
+                href="/about"
+              >
+                <span class="small">About</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link d-flex flex-column text-center"
+                aria-current="page"
+                href="#"
+              >
+                <span class="small">Blog</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link d-flex flex-column text-center"
+                aria-current="page"
+                href="#"
+              >
+                <span class="small">Contact</span></a
+              >
+            </li>
+           
+            
+            
             {% if not request.user.is_authenticated %}
             <li class="nav-item">
               <a
@@ -389,29 +395,6 @@
     <script src="{%static 'js/main.js' %}"></script>
     <script>
       AOS.init();
-      $(document).ready(function () {
-        // $("#search-input1").focusout(() => {
-
-        //   $(".suggestion-box").slideUp("fast");
-
-        // });
-
-        // $("#search-input1").focusin(() => {
-
-        //   $(".suggestion-box").slideDown("fast");
-
-        $("#news-slider").owlCarousel({
-        items : 4,
-        // itemsDesktop:[1199,4],
-        // itemsDesktopSmall:[980,2],
-        // itemsMobile : [425,1],
-        navigation:true,
-        navigationText:["",""],
-        pagination:true,
-        autoPlay:true
-    });
-        
-      });
     </script>
     <script>
       if (window.history.replaceState) {

@@ -21,7 +21,7 @@ class Activity(models.Model):
     category = models.ForeignKey(to=Category,to_field='category', on_delete=CASCADE,blank=True , null=True)
     highlights= models.TextField(null=True , blank=True)
     image = models.ImageField(upload_to = "featureimg", null=True , blank=True)
-    video_link =  models.CharField( max_length=5000 , default='None')
+    video_id =  models.CharField( max_length=5000 , default='None')
     overview = models.TextField(null=True,blank=True)
     what_to_expect = models.TextField(null=True,blank=True)
 

@@ -1,6 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
 body
 {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  font-family: 'Poppins', sans-serif;
 }
 
 .navbar
@@ -154,6 +155,22 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     min-width: 8rem;
 }
 
+.section-title
+{
+  font-size: 18px;
+  text-align: center;
+}
+ .card img{
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .form-check-input[type=radio]:after 
+  {
+    display: none;
+  }
+
 /* tab  */
 @media (min-width: 768px) {
   #sidebar-wrapper {
@@ -179,6 +196,10 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
 
 /* desktop */
 @media only screen and (min-width: 1200px) {
+  .container
+  {
+    width: 80%;
+  }
   .carousel-item {
     height: 80vh;
   }
@@ -191,8 +212,10 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   .destination-carousel .carousel-item img {
     height: 100%;
   }
-  .card img {
+  .card img{
     height: 200px;
+    width: 100%;
+    object-fit: cover;
   }
   .destination img {
     height: 300px;
@@ -211,6 +234,11 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   }
   .login-form {
     width: 50%;
+  }
+  .section-title
+  {
+    font-size: 28px;
+    text-align: left;
   }
 }
 /*# sourceMappingURL=style.css.map */
@@ -620,11 +648,13 @@ input[type=submit] {
     text-align:center;
     margin-top:20px;
 }
-.owl-controls .owl-buttons .owl-prev{
+.owl-controls .owl-buttons .owl-prev
+/* .owl-carousel button.owl-dot */
+{
     background: #fff;
-    /* position: absolute; */
-    /* top:-13%; */
-    /* left:15px; */
+    position: absolute;
+    top:-13%;
+    left:15px;
     padding: 0 18px 0 15px;
     border-radius: 50px;
     box-shadow: 3px 14px 25px -10px #92b4d0;
@@ -632,9 +662,9 @@ input[type=submit] {
 }
 .owl-controls .owl-buttons .owl-next{
     background: #fff;
-    /* position: absolute; */
-    /* top:-13%; */
-    /* right: 15px; */
+    position: absolute;
+    top:-13%;
+    right: 15px;
     padding: 0 15px 0 18px;
     border-radius: 50px;
     box-shadow: -3px 14px 25px -10px #92b4d0;
@@ -649,7 +679,7 @@ input[type=submit] {
 }
 .owl-controls .owl-buttons .owl-next:after{
     content:"\f105";
-} 
+}
 @media only screen and (max-width:1280px) {
     .post-slide .post-content{
         padding: 0px 15px 25px 15px;

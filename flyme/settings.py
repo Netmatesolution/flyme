@@ -25,7 +25,7 @@ SECRET_KEY = 'vwco(&&8(pzwap_s86icr&*)2ktkwjpb7%ud$@f37f#@sgmvwb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec40-103-230-221-234.ngrok.io','localhost']
+ALLOWED_HOSTS = ['af36-103-230-221-234.ngrok.io','localhost']
 
 
 # Application definition
@@ -166,16 +166,16 @@ JAZZMIN_SETTINGS = {
 
 
 #cors configurations
-CORS_ORIGIN_ALLOW_ALL = False
+# CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8001",
-    'http://ec40-103-230-221-234.ngrok.io',
-    'https://ec40-103-230-221-234.ngrok.io',
+    "http://localhost:8000",
+    'http://af36-103-230-221-234.ngrok.io',
+    'https://af36-103-230-221-234.ngrok.io',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:8001',
-    'http://ec40-103-230-221-234.ngrok.io',
-    'https://ec40-103-230-221-234.ngrok.io',
+    'http://localhost:8000',
+    'http://af36-103-230-221-234.ngrok.io',
+    'https://af36-103-230-221-234.ngrok.io',
 ]

@@ -1,20 +1,16 @@
 {% extends 'base.html' %} {%block content%}
 
-
 <!-- tours -->
 <div class="container my-4">
-    <div class="row">
-        {%for item in tours %}
-            <div class="col-12 col-md-3 my-2">
-      <div class="card">
+  <div class="card-group">
+    {%for item in tours %}
+    <!-- <div class="col-12 col-md-3 my-2"> -->
+      <div class="card border rounded shadow-0 mx-1">
         <div
           class="bg-image hover-overlay ripple"
           data-mdb-ripple-color="light"
         >
-          <img
-            src="/media/{{item.image}}"
-            class="img-fluid"
-          />
+          <img src="/media/{{item.image}}" class="img-fluid" />
           <a href="/tour/{{item.slug}}">
             <div
               class="mask"
@@ -23,30 +19,26 @@
           </a>
         </div>
         <div class="card-body">
-          <p>
-            <span class="badge rounded-pill bg-light text-dark"
-              >{{item.category}}</span>
-          </p>
-          <p class="card-title">
-            {{item.tour_name}}
-          </p>
-          <!-- <small class=""> -->
-          <p><span class="badge bg-secondary">India</span></p>
-          <!-- </small> -->
+          <span class="badge rounded-pill bg-light text-dark"
+            >{{item.category}}</span
+          >
+          <p class="card-title">{{item.tour_name}}</p>
+        </div>
+        <div class="card-footer border-0">
+          <span class="badge bg-secondary">{{item.countries}}</span>
         </div>
       </div>
-            </div>
-        {%endfor%}
-    </div>
+    <!-- </div> -->
+    {%endfor%}
+  </div>
 </div>
-
 
 <!-- activity -->
 <div class="container my-4">
-    <div class="row">
-        {%for item in activites %}
-        <div class="col-12 col-md-3 my-2">
-      <div class="card">
+  <div class="card-group">
+    {%for item in activites %}
+    <!-- <div class="col-12 col-md-3 my-2"> -->
+      <div class="card border rounded shadow-0 mx-1">
         <div
           class="bg-image hover-overlay ripple"
           data-mdb-ripple-color="light"
@@ -63,90 +55,75 @@
           </a>
         </div>
         <div class="card-body">
-          <p>
-            <span class="badge rounded-pill bg-light text-dark"
-              >{{item.category}}</span
-            >
-          </p>
           <p class="card-title">
             {{item.activity_name}}
           </p>
-          <!-- <small class=""> -->
-          <p><span class="badge bg-secondary">{{item.country}}</span></p>
-          <!-- </small> -->
+        </div>
+        <div class="card-footer border-0">
+            <span class="badge bg-secondary">{{item.country}}</span>
+            <span class="badge rounded-pill bg-light text-dark"
+              >{{item.category}}</span
+            >
         </div>
       </div>
-    </div>
-        {%endfor%}
-    </div>
+    <!-- </div> -->
+    {%endfor%}
+  </div>
 </div>
-
 
 <!-- staycations -->
 <div class="container my-4">
-    <div class="row">
-        {%for item in staycations%}
-             <div class="col-12 col-md-3 my-2">
-          <div class="card">
+  <div class="row">
+    {%for item in staycations%}
+    <div class="col-12 col-md-3 my-2">
+      <div class="card">
+        <div class="bg-image hover-zoom ripple" data-mdb-ripple-color="light">
+          <img src="/media/{{item.feature_image}}" class="img-fluid" />
+          <a href="/staycation/{{item.slug}}">
             <div
-              class="bg-image hover-zoom ripple"
-              data-mdb-ripple-color="light"
-            >
-              <img
-                src="/media/{{item.feature_image}}"
-                class="img-fluid"
-              />
-              <a href="/staycation/{{item.slug}}">
-                <div
-                  class="mask"
-                  style="background-color: rgba(251, 251, 251, 0.15)"
-                ></div>
-              </a>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title font-weight-bold">
-                <a>{{item.staycation_name}}</a>
-              </h5>
-              <ul class="list-unstyled list-inline mb-0">
-                <li class="list-inline-item me-0">
-                  <i class="fas fa-star text-warning fa-xs"> </i>
-                </li>
-                <li class="list-inline-item me-0">
-                  <i class="fas fa-star text-warning fa-xs"></i>
-                </li>
-                <li class="list-inline-item me-0">
-                  <i class="fas fa-star text-warning fa-xs"></i>
-                </li>
-                <li class="list-inline-item me-0">
-                  <i class="fas fa-star text-warning fa-xs"></i>
-                </li>
-                <li class="list-inline-item">
-                  <i class="fas fa-star-half-alt text-warning fa-xs"></i>
-                </li>
-                <li class="list-inline-item">
-                  <p class="text-muted">4.5 (413)</p>
-                </li>
-              </ul>
-              <!-- <p class="mb-2">$ • American, Restaurant</p>
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.15)"
+            ></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold">
+            <a>{{item.staycation_name}}</a>
+          </h5>
+          <ul class="list-unstyled list-inline mb-0">
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"> </i>
+            </li>
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item me-0">
+              <i class="fas fa-star text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item">
+              <i class="fas fa-star-half-alt text-warning fa-xs"></i>
+            </li>
+            <li class="list-inline-item">
+              <p class="text-muted">4.5 (413)</p>
+            </li>
+          </ul>
+          <!-- <p class="mb-2">$ • American, Restaurant</p>
               <p class="card-text">
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </p> -->
-              <p><span class="badge bg-secondary">{{item.country}}</span></p>
-            </div>
-          </div>
+          <p><span class="badge bg-secondary">{{item.country}}</span></p>
         </div>
-        {%endfor%}
+      </div>
     </div>
+    {%endfor%}
+  </div>
 </div>
-
-
-
 
 <!-- {{tours}}
 {{staycation}} -->
-
-
-
 
 {%endblock%}
