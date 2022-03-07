@@ -252,6 +252,8 @@ $(document).ready(function () {
   $("#news-slider").owlCarousel({
     loop: true,
     margin: 10,
+    autoplay:true,
+    autoplaySpeed:500,
     // nav: true,
     responsiveClass: true,
     responsive: {

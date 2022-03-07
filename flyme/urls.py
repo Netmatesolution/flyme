@@ -8,6 +8,7 @@ urlpatterns = [
     path('dashboard/', admin.site.urls),
     path('',include('core.urls')),
     path('tour/',include('tour.urls')),
+    path('blog/',include('blog.urls')),
     path('staycation/',include('staycation.urls')),
     path('activity/',include('activity.urls')),
     path('accounts/',include('registration.backends.default.urls')),
