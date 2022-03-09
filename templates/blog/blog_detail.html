@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<section class="container my-5">
+  <img
+    src="/media/{{blog.img}}"
+    class="img-fluid shadow-1-strong rounded-5 mb-4"
+    alt=""
+    aria-controls="#picker-editor"
+    draggable="false"
+  />
+  <div class="row align-items-center mb-4">
+    <div class="col-lg-7">
+      <img
+        src="https://mdbootstrap.com/img/Photos/Avatars/img%20(23).jpg"
+        class="rounded-circle me-2"
+        height="35"
+        alt=""
+        loading="lazy"
+        aria-controls="#picker-editor"
+        draggable="false"
+      />
+      <span> Published <u>15.07.2020</u> by</span>
+      <a
+        href="undefined"
+        class="text-dark"
+        aria-controls="#picker-editor"
+        draggable="false"
+        >Anna Maria Doe</a
+      >
+    </div>
+  </div>
+  <h1 class="fw-bold mb-4">{{blog.title}}</h1>
+  <p>
+   {{blog.content | safe}}
+  </p>
+</section>
+
+{% endblock %}

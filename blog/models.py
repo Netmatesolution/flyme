@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
+import datetime
 
 # Create your models here.
 class Category(models.Model):
@@ -20,6 +21,8 @@ class Blog(models.Model):
     last_edit = models.DateField(auto_now_add=True)
     status = models.CharField(max_length = 100 , default='publish',  choices=(('publish','publish'), ('draft','draft')))
     img=models.ImageField(upload_to = "blogs", null=True)
+    date = models.DateField(default=datetime.date.today)
+
     
     def __str__(self):
         return  f"{self.title}"

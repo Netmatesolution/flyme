@@ -303,9 +303,7 @@
           </div>
         <!-- </div> -->
         {%endfor%}
-
-         
-        
+                 
       </div>
       <a
         href="/activity/"
@@ -470,95 +468,24 @@
     <div class="col-md-12">
       <div id="news-slider" class="owl-carousel">
         
+        {% for blog in blogs %}
         <div class="post-slide">
           <div class="post-img">
-            <img src="https://images.unsplash.com/photo-1524413840807-0c3cb6fa808d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">
-            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
+            <img src="/media/{{blog.img}}" alt="">
+            <a href="/blog/{{blog.slug}}" class="over-layer"><i class="fa fa-link"></i></a>
           </div>
           <div class="post-content">
             <h3 class="post-title">
-              <a href="#">The Grand Dragon Ladakh</a>
+              <a href="/blog/{{blog.slug}}">{{blog.title}}</a>
             </h3>
             <!-- <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p> -->
-            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">read more</a>
+            <span class="post-date"><i class="fa fa-clock-o"></i>{{blog.date}}</span>
+            <a href="/blog/{{blog.slug}}" class="read-more">read more</a>
           </div>
         </div>
+        {%endfor%}
         
-        <div class="post-slide">
-          <div class="post-img">
-            <img src="https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="">
-            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-          </div>
-          <div class="post-content">
-            <h3 class="post-title">
-              <a href="#">Fall Colors in Ladakh.</a>
-            </h3>
-            <!-- <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p> -->
-            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">read more</a>
-          </div>
-        </div>
         
-        <div class="post-slide">
-          <div class="post-img">
-            <img src="https://images.unsplash.com/photo-1491884662610-dfcd28f30cfb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="">
-            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-          </div>
-          <div class="post-content">
-            <h3 class="post-title">
-              <a href="#">Sariska Manor- A Beautiful Safari Lodge</a>
-            </h3>
-            <!-- <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p> -->
-            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">read more</a>
-          </div>
-        </div>
-        
-        <div class="post-slide">
-          <div class="post-img">
-            <img src="https://images.unsplash.com/photo-1501179691627-eeaa65ea017c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="">
-            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-          </div>
-          <div class="post-content">
-            <h3 class="post-title">
-              <a href="#">Rediscover Thailand</a>
-            </h3>
-            <!-- <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p> -->
-            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">read more</a>
-          </div>
-        </div>
-        
-        <div class="post-slide">
-          <div class="post-img">
-            <img src="https://images.unsplash.com/photo-1533903655515-91fb3870be93?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="">
-            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-          </div>
-          <div class="post-content">
-            <h3 class="post-title">
-              <a href="#">Dress Code for Women in Vietnam</a>
-            </h3>
-            <!-- <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p> -->
-            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">read more</a>
-          </div>
-        </div>
-
-        <div class="post-slide">
-          <div class="post-img">
-            <img src="https://images.unsplash.com/photo-1524675053444-52c3ca294ad2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="">
-            <a href="#" class="over-layer"><i class="fa fa-link"></i></a>
-          </div>
-          <div class="post-content">
-            <h3 class="post-title">
-              <a href="#">10 Cool Experiences from Colombo, Sri Lanka</a>
-            </h3>
-            <!-- <p class="post-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum, ex incidunt ipsa laudantium necessitatibus neque quae tempora......</p> -->
-            <span class="post-date"><i class="fa fa-clock-o"></i>Out 27, 2019</span>
-            <a href="#" class="read-more">read more</a>
-          </div>
-        </div>
 
       </div>
     </div>

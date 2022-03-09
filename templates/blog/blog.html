@@ -140,6 +140,8 @@
             <section class="mb-10 text-center container">
               <h2 class="fw-bold mb-7 text-center">Latest articles</h2>
               <div class="row gx-lg-5">
+
+                {% for blog in latest_article %}
                 <div class="col-lg-4 col-md-12 mb-6 mb-lg-0">
                   <div class="card shadow-2-strong">
                     <div
@@ -147,22 +149,25 @@
                       data-mdb-ripple-color="light"
                       style="margin-top: -15px"
                     >
+                    <a href="/blog/{{blog.slug}}">
                       <img
-                        src="https://mdbcdn.b-cdn.net/img/new/standard/city/022.webp"
+                        src="/media/{{blog.img}}"
                         class="img-fluid"
                         alt=""
                         aria-controls="#picker-editor"
                       />
+                    </a>
+                      
                     </div>
                     <div class="card-body">
-                      <h5 class="card-title">My paradise</h5>
+                      <h5 class="card-title">{{blog.title}}</h5>
                       <p class="card-text">
                         Ut pretium ultricies dignissim. Sed sit amet mi eget
                         urna placerat vulputate. Ut vulputate est non quam
                         dignissim elementum. Donec a ullamcorper diam.
                       </p>
                       <a
-                        href="#!"
+                        href="/blog/{{blog.slug}}"
                         class="btn btn-primary btn-rounded"
                         aria-controls="#picker-editor"
                         >Read more</a
@@ -170,66 +175,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-4 mb-6 mb-lg-0">
-                  <div class="card shadow-2-strong">
-                    <div
-                      class="bg-image hover-overlay ripple shadow-4-strong rounded mx-3"
-                      data-mdb-ripple-color="light"
-                      style="margin-top: -15px"
-                    >
-                      <img
-                        src="https://mdbcdn.b-cdn.net/img/new/standard/city/031.webp"
-                        class="img-fluid"
-                        alt=""
-                        aria-controls="#picker-editor"
-                      />
-                    </div>
-                    <div class="card-body">
-                      <h5 class="card-title">Travel to Italy</h5>
-                      <p class="card-text">
-                        Suspendisse in volutpat massa. Nulla facilisi. Sed
-                        aliquet diam orci, nec ornare metus semper sed. Integer
-                        volutpat ornare erat sit amet rutrum.
-                      </p>
-                      <a
-                        href="#!"
-                        class="btn btn-primary btn-rounded"
-                        aria-controls="#picker-editor"
-                        >Read more</a
-                      >
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 mb-6 mb-lg-0">
-                  <div class="card shadow-2-strong">
-                    <div
-                      class="bg-image hover-overlay ripple shadow-4-strong rounded mx-3"
-                      data-mdb-ripple-color="light"
-                      style="margin-top: -15px"
-                    >
-                      <img
-                        src="https://mdbcdn.b-cdn.net/img/new/standard/city/081.webp"
-                        class="img-fluid"
-                        alt=""
-                        aria-controls="#picker-editor"
-                      />
-                    </div>
-                    <div class="card-body">
-                      <h5 class="card-title">Chasing the sun</h5>
-                      <p class="card-text">
-                        Curabitur tristique, mi a mollis sagittis, metus felis
-                        mattis arcu, non vehicula nisl dui quis diam. Mauris ut
-                        risus eget massa volutpat feugiat. Donec.
-                      </p>
-                      <a
-                        href="#!"
-                        class="btn btn-primary btn-rounded"
-                        aria-controls="#picker-editor"
-                        >Read more</a
-                      >
-                    </div>
-                  </div>
-                </div>
+                {%endfor%}
+                
               </div>
             </section>
 
@@ -237,7 +184,7 @@
         
         
           <!----><!---->
-          
+<!--           
             <section class="mb-10 container">
               
               <div class="row mb-4">
@@ -301,7 +248,7 @@
 
               
 
-            </section>
+            </section> -->
           
           <!---->
         

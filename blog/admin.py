@@ -5,7 +5,7 @@ from .models import *
 # Register your models here.
 class BlogModelAdmin(SummernoteModelAdmin):
     summernote_fields = ('content',)
-    readonly_fields=('slug',)
+    readonly_fields=('slug','date')
 
 admin.site.register(Blog,BlogModelAdmin)
 
