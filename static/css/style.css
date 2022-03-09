@@ -171,6 +171,11 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     display: none;
   }
 
+  .carousel-item img
+  {
+    object-fit: cover;
+  }
+
 /* tab  */
 @media (min-width: 768px) {
   #sidebar-wrapper {
@@ -188,7 +193,7 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   }
   .carousel-search
 {
-  width: 75% !important;
+  width: 80% !important;
 }
 
 }
@@ -543,6 +548,11 @@ input[type=submit] {
 		bottom: -7px;
 		transform: translateX(0);
 	}
+}
+
+.rt-profile-card img
+{
+  object-fit: cover;
 }
 
 /* popular deals */

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'activity',
     "corsheaders",
     "blog",
+    'django_cleanup.apps.CleanupConfig', # this should be at last of the list
 ]
 
 MIDDLEWARE = [
