@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load staycation_filters %}
 {%block content%}
 
@@ -64,7 +64,7 @@
   </div>
   <div class="carousel-caption d-md-block">
     <h1>To the world of an incredible {{country}}.</h1>
-    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+    <!--<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>-->
     <div class="input-group d-flex justify-content-center align-items-center">
       <div class="form-outline carousel-search">
         <select class="form-select form-select-lg bg-light rounded-0 select-country-theme">
@@ -120,7 +120,7 @@
   <div class="row">
     {% for item in tours %}
     <div class="col-12 col-md-3 my-2">
-      <div class="card">
+      <div class="card border rounded shadow-0 mx-1">
         <div
           class="bg-image hover-overlay ripple"
           data-mdb-ripple-color="light"
@@ -129,7 +129,7 @@
             src="/media/{{item.image}}"
             class="img-fluid"
           />
-          <a href="/tour/{{item.slug}}">
+          <a href="{{item.slug}}">
             <div
               class="mask"
               style="background-color: rgba(251, 251, 251, 0.15)"
@@ -137,17 +137,15 @@
           </a>
         </div>
         <div class="card-body">
-          <p>
-            <span class="badge rounded-pill bg-light text-dark"
+          <span class="badge rounded-pill bg-light text-dark"
               >{{item.category}}</span
             >
-          </p>
           <p class="card-title">
             {{item.tour_name}}
           </p>
-          <!-- <small class=""> -->
-          <p><span class="badge bg-secondary">{{item.countries}}</span></p>
-          <!-- </small> -->
+        </div>
+        <div class="card-footer border-0">
+          <span class="badge bg-secondary">{{item.countries}}</span>
         </div>
       </div>
     </div>
@@ -156,7 +154,7 @@
   {% if tours %}
   <div class="row">
     <ul class="pagination pagination-circle d-flex justify-content-center">
-    {% for page in pages%}		
+    {% for page in pages%}
     <li class="page-item {{request.GET.page| pagination:page}}">
     <a class="page-link" href="?page={{page}}">{{page}}</a>
     </li>

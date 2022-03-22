@@ -101,7 +101,7 @@
                     <span class="border rounded-circle d-flex justify-content-center align-items-center" style="width:60px;height: 60px;">{{forloop.counter}}</span>
                     <!-- accordion-button -->
                     <button
-                      class="collapsed btn w-100 text-start fs-6 shadow-0" 
+                      class="collapsed btn w-100 text-start fs-6 shadow-0"
                       type="button"
                       data-mdb-toggle="collapse"
                       data-mdb-target="#{{day.slug}}"
@@ -109,14 +109,14 @@
                       aria-controls="{{day.slug}}"
                     >
                       <p>{{day.title}}</p>
-                      <p>Day {{forloop.counter}},Transfer By Car</p>
+                      <!--<p>Day {{forloop.counter}},Transfer By Car</p>-->
 
-                    </button>                  
+                    </button>
                 </p>
                 <div
                   id="{{day.slug}}"
                   class="accordion-collapse collapse"
-                  aria-labelledby="flush-{{day.slug}}"                 
+                  aria-labelledby="flush-{{day.slug}}"
                 >
                   <div class="accordion-body">
                    {{day.highlights | safe }}

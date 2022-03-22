@@ -111,7 +111,7 @@
             role="tabpanel"
           >
             <p class="mb-1">Total for {{price.number_of_nights}} nights from</p>
-            <p class="mb-1"><b>${{price.price}}</b></p>
+            <p class="mb-1"><b>₹{{price.price}}</b></p>
             <small class="mb-0">Includes taxes & fees</small>
             <form method="GET" action="/staycation/request/">
                 <input  type="hidden" name=  "staycation" value="{{staycation.id}}">
@@ -160,6 +160,6 @@
   </div>
 </div>
 
-{%endfor%} 
+{%endfor%}
 
 {% endblock %}
