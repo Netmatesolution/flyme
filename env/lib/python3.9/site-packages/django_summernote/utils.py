@@ -5,13 +5,14 @@ from django.apps import apps
 from django.core.exceptions import ImproperlyConfigured
 from django.core.files.storage import default_storage
 from django.utils.translation import get_language
-from functools import wraps
 from importlib import import_module
 
-# A conversion table from language to locale
+# Conversion table from language to locale
 LANG_TO_LOCALE = {
     'ar': 'ar-AR',
+    'az': 'az-AZ',
     'bg': 'bg-BG',
+    'bn': 'bn-BD',
     'ca': 'ca-ES',
     'cs': 'cs-CZ',
     'da': 'da-DK',
@@ -51,6 +52,15 @@ LANG_TO_LOCALE = {
     'zh': 'zh-CN',
 }
 
+# Use this for customizing the above table
+LANG_TO_LOCALE_ALTERNATIVES = {
+    'pt': 'pt-PT',
+    'es': 'es-EU',
+    'lt': 'lt-LV',
+    'de': 'de-CH',
+    'zh': 'zh-TW',
+}
+
 # Theme files dictionary
 SUMMERNOTE_THEME_FILES = {
     'bs3': {
@@ -62,7 +72,7 @@ SUMMERNOTE_THEME_FILES = {
             '//stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js',
         ),
         'default_css': (
-            'summernote/summernote.css',
+            'summernote/summernote.min.css',
             'summernote/django_summernote.css',
         ),
         'default_js': (
@@ -78,11 +88,11 @@ SUMMERNOTE_THEME_FILES = {
             '//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',
         ),
         'base_js': (
-            '//code.jquery.com/jquery-3.3.1.min.js',
+            '//code.jquery.com/jquery-3.5.1.min.js',
             '//stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js',
         ),
         'default_css': (
-            'summernote/summernote-bs4.css',
+            'summernote/summernote-bs4.min.css',
             'summernote/django_summernote.css',
         ),
         'default_js': (
@@ -93,10 +103,30 @@ SUMMERNOTE_THEME_FILES = {
             'summernote/ResizeSensor.js',
         ),
     },
+    'bs5': {
+        'base_css': (
+            '//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css',
+        ),
+        'base_js': (
+            '//code.jquery.com/jquery-3.6.0.min.js',
+            '//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js',
+        ),
+        'default_css': (
+            'summernote/summernote-bs5.min.css',
+            'summernote/django_summernote.css',
+        ),
+        'default_js': (
+            'summernote/jquery.ui.widget.js',
+            'summernote/jquery.iframe-transport.js',
+            'summernote/jquery.fileupload.js',
+            'summernote/summernote-bs5.min.js',
+            'summernote/ResizeSensor.js',
+        ),
+    },
     'lite': {
         'base_css': (),
         'base_js': (
-            '//code.jquery.com/jquery-3.3.1.min.js',
+            '//code.jquery.com/jquery-3.6.0.min.js',
         ),
         'default_css': (
             'summernote/summernote-lite.css',
@@ -113,38 +143,8 @@ SUMMERNOTE_THEME_FILES = {
 }
 
 
-def using_config(_func=None):
-    """
-    This allows a function to use Summernote configuration
-    as a global variable, temporarily.
-    """
-
-    def decorator(func):
-        @wraps(func)
-        def inner_dec(*args, **kwargs):
-            g = func.__globals__
-            var_name = 'config'
-            sentinel = object()
-
-            oldvalue = g.get(var_name, sentinel)
-            g[var_name] = apps.get_app_config('django_summernote').config
-
-            try:
-                res = func(*args, **kwargs)
-            finally:
-                if oldvalue is sentinel:
-                    del g[var_name]
-                else:
-                    g[var_name] = oldvalue
-
-            return res
-
-        return inner_dec
-
-    if _func is None:
-        return decorator
-    else:
-        return decorator(_func)
+def get_config():
+    return apps.get_app_config('django_summernote').config
 
 
 def uploaded_filepath(instance, filename):
@@ -168,11 +168,11 @@ def example_test_func(request):
     return True
 
 
-@using_config
 def get_proper_language():
     """
     Return the proper language by get_language()
     """
+    config = get_config()
     lang = config['summernote'].get('lang')
 
     if not lang:
@@ -181,11 +181,11 @@ def get_proper_language():
     return lang
 
 
-@using_config
 def get_attachment_model():
     """
     Returns the Attachment model that is active in this project.
     """
+    config = get_config()
 
     try:
         from .models import AbstractAttachment
@@ -205,19 +205,17 @@ def get_attachment_model():
         )
 
 
-@using_config
 def get_attachment_upload_to():
     """
     Return 'attachment_upload_to' from configuration
     """
-    return config['attachment_upload_to']
+    return get_config()['attachment_upload_to']
 
 
-@using_config
 def get_attachment_storage():
     # module importer code comes from
     # https://github.com/django-debug-toolbar/django-debug-toolbar/
-    config = apps.get_app_config('django_summernote').config
+    config = get_config()
 
     if config['attachment_storage_class']:
         storage_path = config['attachment_storage_class']
@@ -248,7 +246,8 @@ def get_attachment_storage():
     else:
         return default_storage
 
-@using_config
+
 def has_codemirror_config():
+    config = get_config()
     return 'summernote' in config and \
         'codemirror' in config['summernote']

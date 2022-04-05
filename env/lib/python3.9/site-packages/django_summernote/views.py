@@ -1,34 +1,26 @@
 import logging
-from django import VERSION as django_version
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.templatetags.static import static
 from django.http import HttpResponse, JsonResponse
 from django.template.loader import render_to_string
-if django_version >= (3, 0):
-    from django.utils.translation import gettext as _
-else:
-    from django.utils.translation import ugettext as _
-from django.views.generic import TemplateView
+from django.utils.translation import gettext as _
+from django.views.generic import TemplateView, View
+from django.utils.decorators import method_decorator
+from django.views.decorators.clickjacking import xframe_options_sameorigin
 
 from django_summernote.forms import UploadForm
-from django_summernote.utils import get_attachment_model, using_config, \
+from django_summernote.utils import get_attachment_model, get_config, \
     has_codemirror_config
 
 logger = logging.getLogger(__name__)
-
-try:
-    # Django >= 1.10
-    from django.views import View
-except ImportError:
-    from django.views.generic import View
 
 
 class SummernoteEditor(TemplateView):
     template_name = 'django_summernote/widget_iframe_editor.html'
 
-    @using_config
     def __init__(self):
-        super(SummernoteEditor, self).__init__()
+        super().__init__()
+        config = get_config()
 
         static_default_css = tuple(static(x) for x in config['default_css'])
         static_default_js = tuple(static(x) for x in config['default_js'])
@@ -44,26 +36,35 @@ class SummernoteEditor(TemplateView):
             + static_default_js \
             + config['js']
 
-    @using_config
+        self.config = config
+
+    @method_decorator(xframe_options_sameorigin)
+    def dispatch(self, *args, **kwargs):
+        return super(SummernoteEditor, self).dispatch(*args, **kwargs)
+
     def get_context_data(self, **kwargs):
-        context = super(SummernoteEditor, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
 
         context['id'] = self.kwargs['id']
         context['id_safe'] = self.kwargs['id'].replace('-', '_')
         context['css'] = self.css
         context['js'] = self.js
-        context['config'] = config
+        context['config'] = get_config()
 
         return context
 
 
 class SummernoteUploadAttachment(UserPassesTestMixin, View):
-    @using_config
     def test_func(self):
-        return config['test_func_upload_view'](self.request)
+        return get_config()['test_func_upload_view'](self.request)
 
     def __init__(self):
-        super(SummernoteUploadAttachment, self).__init__()
+        super().__init__()
+        self.config = get_config()
+
+    @method_decorator(xframe_options_sameorigin)
+    def dispatch(self, *args, **kwargs):
+        return super(SummernoteUploadAttachment, self).dispatch(*args, **kwargs)
 
     def get(self, request, *args, **kwargs):
         return JsonResponse({
@@ -71,11 +72,10 @@ class SummernoteUploadAttachment(UserPassesTestMixin, View):
             'message': _('Only POST method is allowed'),
         }, status=400)
 
-    @using_config
     def post(self, request, *args, **kwargs):
         authenticated = request.user.is_authenticated
 
-        if config['disable_attachment']:
+        if self.config['disable_attachment']:
             logger.error(
                 'User<%s:%s> tried to use disabled attachment module.',
                 getattr(request.user, 'pk', None),
@@ -86,7 +86,7 @@ class SummernoteUploadAttachment(UserPassesTestMixin, View):
                 'message': _('Attachment module is disabled'),
             }, status=403)
 
-        if config['attachment_require_authentication'] and \
+        if self.config['attachment_require_authentication'] and \
                 not authenticated:
             return JsonResponse({
                 'status': 'false',
@@ -134,7 +134,7 @@ class SummernoteUploadAttachment(UserPassesTestMixin, View):
                 attachment = klass()
                 attachment.file = file
 
-                if file.size > config['attachment_filesize_limit']:
+                if file.size > self.config['attachment_filesize_limit']:
                     return JsonResponse({
                         'status': 'false',
                         'message': _('File size exceeds the limit allowed and cannot be saved'),
@@ -146,7 +146,7 @@ class SummernoteUploadAttachment(UserPassesTestMixin, View):
                 # choose relative/absolute url by config
                 attachment.url = attachment.file.url
 
-                if config['attachment_absolute_uri']:
+                if self.config['attachment_absolute_uri']:
                     attachment.url = request.build_absolute_uri(attachment.url)
 
                 attachments.append(attachment)

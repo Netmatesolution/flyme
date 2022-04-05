@@ -24,6 +24,14 @@ def aboutpage(request):
     ctx['description'] = 'HOME_PAGE_DESCRIPTION'  
     return render(request, 'about.html',ctx)
 
+
+def goguidepage(request):
+    ctx={}
+    ctx['title'] = 'Go Guide'
+    ctx['description'] = 'HOME_PAGE_DESCRIPTION'  
+    return render(request,'core/goguide.html',ctx)
+
+
 def destination(request):
     ctx={}
     ctx['title'] = 'Destination'
