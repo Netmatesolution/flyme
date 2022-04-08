@@ -1,3 +1,4 @@
+from multiprocessing.dummy import JoinableQueue
 from django.shortcuts import render
 from .models import Activity,Package, Packageprice,Cart,Order,Category,FeatureImages
 from django.views.generic.detail import DetailView
@@ -12,13 +13,14 @@ def activitypage(request):
     ctx={}
     ctx['title'] = 'Activity'
     ctx['description'] = 'HOME_PAGE_DESCRIPTION'
-    ctx['Indonesia']=Activity.objects.all().filter(country=1,verified=True)
-    ctx['Seychelles']=Activity.objects.all().filter(country=2,verified=True)
-    ctx['SouthKorea']=Activity.objects.all().filter(country=3,verified=True)
-    ctx['Japan']=Activity.objects.all().filter(country=4,verified=True)
-    ctx['China']=Activity.objects.all().filter(country=5,verified=True)
-    ctx['Taiwan']=Activity.objects.all().filter(country=6,verified=True)
-    ctx['staycations']=Staycation.objects.all().filter(recommended=True,verified=True)[:4]
+    ctx['activites']=Activity.objects.all().filter(verified=True)[:20]
+    ctx['categories']=Category.objects.all()
+    # ctx['Seychelles']=Activity.objects.all().filter(country=2,verified=True)
+    # ctx['SouthKorea']=Activity.objects.all().filter(country=3,verified=True)
+    # ctx['Japan']=Activity.objects.all().filter(country=4,verified=True)
+    # ctx['China']=Activity.objects.all().filter(country=5,verified=True)
+    # ctx['Taiwan']=Activity.objects.all().filter(country=6,verified=True)
+    # ctx['staycations']=Staycation.objects.all().filter(recommended=True,verified=True)[:4]
     return render(request, 'activity/activity.html',ctx)
 
 
@@ -42,6 +44,12 @@ def packagedescription(request):
     packageprice=Packageprice.objects.all().filter(package=packageid).values()
     ctx['description']=packagedesc.description
     ctx['packageprice']=list(packageprice)
+    return JsonResponse(ctx,safe=False)
+
+def loadactivity(request):
+    ctx={}
+    category=request.POST.get('category',False)
+    ctx['activites']=list(Activity.objects.all().filter(category__slug=category).values('activity_name','slug','image','cities','category'))
     return JsonResponse(ctx,safe=False)    
 
 @login_required

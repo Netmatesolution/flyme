@@ -162,6 +162,8 @@ JAZZMIN_SETTINGS = {
     "site_title": "Flyme",
     "site_header": "Flyme",
     "copyright": "Flyme",
+    "site_brand": "Flyme",
+    # "site_logo": "images/logo.png",
     # "show_ui_builder":'True',
 }
 

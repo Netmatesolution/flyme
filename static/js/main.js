@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
   $(".package-btn").on("click", function (e) {
     $(this).siblings().removeClass("btn-primary");
@@ -215,6 +214,58 @@ $(document).ready(function () {
     );
   });
 
+  $("#select-activity-theme").on("change", function () {
+    category = this.value;
+    if (category != "") {
+      $("#activitylist").html("loading...");
+      $.ajax({     
+        headers: { "X-CSRFToken": csrftoken },
+        type: "POST",
+        url: "/activity/loadactivity/",
+        data: { category: category },
+        success: function (response) {
+          activity_list = response.activites;
+          var output = ``;
+          activity_list.map((item) => {
+            output += `
+              <div class="col-12 col-md-3 my-2">
+      <div class="card border rounded shadow-0 m-1 w-100">
+        <div
+          class="bg-image hover-overlay ripple"
+          data-mdb-ripple-color="light"
+        >
+          <img
+            src="/media/${item.image}"
+            class="img-fluid"
+          />
+          <a href="${item.slug}">
+            <div
+              class="mask"
+              style="background-color: rgba(251, 251, 251, 0.15)"
+            ></div>
+          </a>
+        </div>
+        <div class="card-body">
+          <p class="card-title">
+            ${item.activity_name}
+          </p>
+        </div>
+        <div class="card-footer border-0">
+            <span class="badge bg-secondary">${item.cities}</span>
+            <span class="badge rounded-pill bg-light text-dark"
+              >${item.category}</span
+            >
+        </div>
+      </div>
+    </div>
+            `;
+          });
+          $("#activitylist").html(output);
+        },
+      });
+    }
+  });
+
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, "0");
   var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
@@ -252,8 +303,8 @@ $(document).ready(function () {
   $("#news-slider").owlCarousel({
     loop: true,
     margin: 10,
-    autoplay:true,
-    autoplaySpeed:500,
+    autoplay: true,
+    autoplaySpeed: 500,
     // nav: true,
     responsiveClass: true,
     responsive: {
@@ -268,9 +319,7 @@ $(document).ready(function () {
       },
     },
   });
-
 });
-
 
 var countries = [
   "Jakarta",
@@ -395,4 +444,3 @@ function autocomplete(inp, arr) {
 }
 
 autocomplete(document.getElementById("search-input"), countries);
-
