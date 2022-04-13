@@ -115,3 +115,15 @@ class FeatureImages(models.Model):
     def __str__(self):
         return  f"{self.activity}"
 
+
+
+class Reviews(models.Model):
+    customer = models.ForeignKey(to=User,on_delete=CASCADE,null=True, blank=True)
+    verified = models.BooleanField(default=False,)
+    firstname=models.CharField(max_length=500,default='')
+    lastname=models.CharField(max_length=500,default='')
+    activity_name = models.ForeignKey(to=Activity, on_delete=CASCADE,blank=True , null=True)
+    message=models.TextField(null=True,blank=True)
+
+    def __str__(self):
+        return f"{self.customer}"

@@ -1,6 +1,6 @@
 from multiprocessing.dummy import JoinableQueue
 from django.shortcuts import render
-from .models import Activity,Package, Packageprice,Cart,Order,Category,FeatureImages
+from .models import Activity,Package, Packageprice,Cart,Order,Category,FeatureImages,Reviews
 from django.views.generic.detail import DetailView
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
@@ -13,6 +13,7 @@ def activitypage(request):
     ctx={}
     ctx['title'] = 'Activity'
     ctx['description'] = 'HOME_PAGE_DESCRIPTION'
+    ctx['count']=Activity.objects.all().filter(verified=True).count()
     ctx['activites']=Activity.objects.all().filter(verified=True)[:20]
     ctx['categories']=Category.objects.all()
     # ctx['Seychelles']=Activity.objects.all().filter(country=2,verified=True)
@@ -34,6 +35,7 @@ class ActivityDetailpage(DetailView):
         packagelist=Package.objects.all().filter(activity_name=activity).values('package_name','slug','id',)
         context['packages']=packagelist
         context['featureimages']=FeatureImages.objects.all().filter(activity=activity.id)
+        context['reviews']=Reviews.objects.all().filter(activity_name=activity.id)
         return context
 
 
@@ -49,8 +51,16 @@ def packagedescription(request):
 def loadactivity(request):
     ctx={}
     category=request.POST.get('category',False)
-    ctx['activites']=list(Activity.objects.all().filter(category__slug=category).values('activity_name','slug','image','cities','category'))
-    return JsonResponse(ctx,safe=False)    
+    ctx['activites']=list(Activity.objects.all().filter(verified=True,category__slug=category).values('activity_name','slug','image','cities','category')[:20])
+    ctx['count']=Activity.objects.all().filter(verified=True,category__slug=category).count()
+    return JsonResponse(ctx,safe=False)
+
+def loadmoredata(request):
+    ctx={}    
+    start = int(request.POST.get('row',False))
+    end = start+20
+    ctx['activites']=list(Activity.objects.all().filter(verified=True).values('activity_name','slug','image','cities','category')[start:end])
+    return JsonResponse(ctx,safe=False)
 
 @login_required
 def addtocart(request):
@@ -168,3 +178,21 @@ def deleteitem(request):
             ctx['msg']='Item deleted from cart'
     return JsonResponse(ctx)
         
+
+
+def reviews(request):
+    ctx={}
+    if request.method =='POST':
+        message=request.POST.get('message',False)
+        id=int(request.POST.get('id',False))
+        activity = Activity.objects.get(id=id)
+        firstname=request.user.first_name
+        lastname=request.user.last_name
+        msg=Reviews.objects.get_or_create(customer=request.user,message=message,activity_name=activity,firstname=firstname,lastname=lastname)
+        if msg[1]:
+            ctx['msg1'] = "Thanks for your feedback."
+            ctx['status']="success"
+        else:
+            ctx['msg1'] = "Something went wrong! Try after few minutes"
+            ctx["status"]="error"    
+    return JsonResponse(ctx)

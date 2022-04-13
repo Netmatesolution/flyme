@@ -42,7 +42,9 @@
 <div class="container mt-5">
   <div class="row">
     <div>
-      <h3>{{activity.activity_name}}</h3>
+      <h3 data-activity-id="{{activity.id}}" id="activity-name">
+        {{activity.activity_name}}
+      </h3>
     </div>
   </div>
   <div class="row position-relative">
@@ -124,10 +126,87 @@
   <div class="row py-5">
     <div>
       <h5 class="my-4">What to expect</h5>
-      <div>
-        {{activity.what_to_expect | safe }}
-      </div>
+      <div>{{activity.what_to_expect | safe }}</div>
     </div>
   </div>
+</div>
+
+<div class="container">
+
+  
+  <div class="row py-2">
+    <p>Reviews</p>
+    <div class="form-outline">
+      <textarea class="form-control" {% if  not request.user.is_authenticated %} disabled {%endif%} id="activity-review" rows="4"></textarea>
+      <label class="form-label" for="activity-review"
+        >Add your review here...</label
+      >
+    </div>
+    
+    {% if request.user.is_authenticated %}
+    <div class="form-outline my-2">
+      <button type="button" id="add-activity-review" class="btn btn-success">
+        Add review
+      </button>
+      <small id="activity-review-msg"></small>
+    </div>
+    {%else%}
+      <div class="form-outline my-2">
+      <button type="button" id="add-activity-review" class="btn btn-success">
+        login to add review
+      </button>
+      <small id="activity-review-msg"></small>
+    </div>
+    {% endif %}
+
+  </div>
+  
+
+  <!-- testmonials -->
+  <section class="text-center my-4">
+    <!-- <h2 class="fw-bold mb-5">Testimonial</h2> -->
+    <!-- Carousel wrapper -->
+    <div
+      id="carouselExampleControls"
+      class="carousel slide carousel-dark carousel-fade"
+      data-mdb-ride="carousel"
+    >
+      <div class="carousel-inner px-5 px-md-0">
+        {%for review in reviews%}
+        <div class="carousel-item {%if forloop.counter == 1 %}active{%endif%}" style="height: auto">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-8">
+              <h5 class="mb-3">{{review.firstname}} {{review.lastname}}</h5>
+              <p class="text-muted">
+                <i class="fas fa-quote-left pe-2"></i>
+                <span>{{review.message}}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+      </div>
+      <!-- <button
+        class="carousel-control-prev"
+        type="button"
+        data-mdb-target="#carouselExampleControls"
+        data-mdb-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-mdb-target="#carouselExampleControls"
+        data-mdb-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button> -->
+    </div>
+    <!-- Carousel wrapper -->
+  </section>
+  <!-- testmonials -->
 </div>
 {%endblock%}

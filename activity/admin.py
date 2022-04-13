@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Activity,Category,Package, Packageprice,Cart,Order,FeatureImages
+from .models import Activity,Category,Package, Packageprice,Cart,Order,FeatureImages,Reviews
 from django_summernote.admin import SummernoteModelAdmin
 from django import forms
 from django.db import IntegrityError
@@ -162,4 +162,8 @@ class CartAdmin(admin.ModelAdmin):
 admin.site.register(Cart,CartAdmin)
 
 
-# admin.site.register(FeatureImages,FeatureImagesAdmin)
+class ReviewsAdmin(admin.ModelAdmin):
+    list_display=['activity_name','verified']
+
+
+admin.site.register(Reviews,ReviewsAdmin)
