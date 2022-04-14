@@ -35,7 +35,7 @@ class ActivityDetailpage(DetailView):
         packagelist=Package.objects.all().filter(activity_name=activity).values('package_name','slug','id',)
         context['packages']=packagelist
         context['featureimages']=FeatureImages.objects.all().filter(activity=activity.id)
-        context['reviews']=Reviews.objects.all().filter(activity_name=activity.id)
+        context['reviews']=Reviews.objects.all().filter(activity_name=activity.id,verified=True)
         return context
 
 

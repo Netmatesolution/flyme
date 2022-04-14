@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% load social_share %}
+{% block content %}
 <!-- carousel -->
 <div class="p-0 m-0">
   <div
@@ -41,6 +43,12 @@
 
 <div class="container mt-5">
   <div class="row">
+    <div class="d-flex">
+      {% post_to_telegram "New Experience: {{object.title}}" object_or_url "<span class='fab fa-telegram fa-2x m-1'></span>"  %}
+      {% post_to_whatsapp object_or_url  "<span class='fab fa-whatsapp fa-2x m-1'></span>"%}
+      {% post_to_twitter "New Experience: {{object.title}}" object_or_url "<span class='fab fa-twitter fa-2x m-1'></span>" %}
+      {% post_to_facebook object_or_url  "<span class='fab fa-facebook fa-2x m-1'></span>"%}
+    </div>
     <div>
       <h3 data-activity-id="{{activity.id}}" id="activity-name">
         {{activity.activity_name}}
