@@ -20,6 +20,8 @@ class Staycation(models.Model):
     country= models.ForeignKey(to=Country, on_delete=models.SET_NULL,blank=True , null=True)
     feature_image = models.ImageField(upload_to = "staycation", null=True , blank=True)
     logo =models.ImageField(upload_to='staycation',null=True,blank=True)
+    latitude=models.CharField(max_length = 100 , unique=True,null=True,blank=True)
+    longitude=models.CharField(max_length = 100 , unique=True,null=True,blank=True)
 
     def __str__(self):
         return  f"{self.staycation_name}"

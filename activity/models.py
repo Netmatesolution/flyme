@@ -24,6 +24,8 @@ class Activity(models.Model):
     video_id =  models.CharField( max_length=5000 , default='None')
     overview = models.TextField(null=True,blank=True)
     what_to_expect = models.TextField(null=True,blank=True)
+    latitude=models.CharField(max_length = 100 , unique=True,null=True,blank=True)
+    longitude=models.CharField(max_length = 100 , unique=True,null=True,blank=True)
 
     def __str__(self):
         return  f"{self.activity_name}"

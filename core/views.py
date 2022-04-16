@@ -5,6 +5,8 @@ from .models import Country,Customtrip
 from staycation.models import Staycation
 from blog.models import Blog
 from django.db.models import Q
+from django.http import JsonResponse
+from .serializers import *
 # Create your views here.
 
 # homepage
@@ -80,3 +82,37 @@ def customtrip(request):
         obj.save()
         ctx['msg']='Your message has been sent.'
     return render(request,'customtrip.html',ctx)
+
+
+# view for Api
+def globalSearch(request):
+    type = request.GET.get("type",None)
+    activity=Activity.objects.all().filter(verified=True)
+    tour=Tour.objects.all().filter(verified=True)
+    staycation = Staycation.objects.all().filter(verified=True)
+
+    if type =='hotels':
+        return JsonResponse(
+            StaycationListSerializer(staycation,many=True).data
+        ,safe=False)
+    elif type == 'activity':
+        return JsonResponse(ActivityListSerializer(activity,many=True).data
+        ,safe=False)
+    elif type == "tours":
+        return JsonResponse(
+            TourListSerializer(tour,many=True).data
+        ,safe=False)
+
+    if type is None:
+    #     return JsonResponse([
+    #         {"hotels":StaycationListSerializer(staycation,many=True).data},
+    #         {"activites":ActivityListSerializer(activity,many=True).data},
+    #         {"tours":TourListSerializer(tour,many=True).data},
+    #     ],safe=False)
+        data=StaycationListSerializer(staycation,many=True).data + ActivityListSerializer(activity,many=True).data + TourListSerializer(tour,many=True).data
+        return JsonResponse(data,safe=False)
+
+
+
+    
+

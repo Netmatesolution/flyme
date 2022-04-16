@@ -11,13 +11,13 @@ def tourpage(request):
     ctx={}
     ctx['title'] = 'Tour'
     ctx['description'] = 'HOME_PAGE_DESCRIPTION'
-    ctx['Indonesia']=Tour.objects.all().filter(countries=1,verified=True)
-    ctx['Seychelles']=Tour.objects.all().filter(countries=2,verified=True)
-    ctx['SouthKorea']=Tour.objects.all().filter(countries=3,verified=True)
-    ctx['Japan']=Tour.objects.all().filter(countries=4,verified=True)
-    ctx['China']=Tour.objects.all().filter(countries=5,verified=True)
-    ctx['Taiwan']=Tour.objects.all().filter(countries=6,verified=True)
-    ctx['staycations']=Staycation.objects.all().filter(recommended=True,verified=True)[:4]
+    ctx['tours']=Tour.objects.all().filter(verified=True)[:20]
+    # ctx['Seychelles']=Tour.objects.all().filter(countries=2,verified=True)
+    # ctx['SouthKorea']=Tour.objects.all().filter(countries=3,verified=True)
+    # ctx['Japan']=Tour.objects.all().filter(countries=4,verified=True)
+    # ctx['China']=Tour.objects.all().filter(countries=5,verified=True)
+    # ctx['Taiwan']=Tour.objects.all().filter(countries=6,verified=True)
+    # ctx['staycations']=Staycation.objects.all().filter(recommended=True,verified=True)[:4]
     return render(request, 'tour/tour.html',ctx)
 
 
