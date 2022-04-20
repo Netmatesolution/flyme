@@ -214,6 +214,9 @@ $(document).ready(function () {
     );
   });
 
+
+  
+
   $("#select-activity-theme").on("change", function () {
     category = this.value;
     if (category != "") {
@@ -354,6 +357,15 @@ $(document).ready(function () {
       });
     }
   });
+
+
+
+
+
+
+
+
+
 
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, "0");

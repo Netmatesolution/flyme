@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Tour,Days,TourRequest , FeatureImages
+from .models import Tour,Days,TourRequest , FeatureImages , Category
 from django.views.generic.detail import DetailView
 from django.contrib.auth.models import User
 from staycation.models import Staycation
@@ -12,6 +12,8 @@ def tourpage(request):
     ctx['title'] = 'Tour'
     ctx['description'] = 'HOME_PAGE_DESCRIPTION'
     ctx['tours']=Tour.objects.all().filter(verified=True)[:20]
+    ctx['categories']=Category.objects.all()
+    ctx['count']=Tour.objects.all().filter(verified=True).count()
     # ctx['Seychelles']=Tour.objects.all().filter(countries=2,verified=True)
     # ctx['SouthKorea']=Tour.objects.all().filter(countries=3,verified=True)
     # ctx['Japan']=Tour.objects.all().filter(countries=4,verified=True)

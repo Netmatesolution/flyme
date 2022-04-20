@@ -1,45 +1,66 @@
 {% extends 'base.html' %} {%block content%}
 
-
-
-{% if tours %}
-<div class="container py-2">
-  <div class="card-group">
-    {% for item in tours %}
-    <!-- <div class="col-12 col-md-3 my-2"> -->
-      <div class="card border rounded shadow-0 mx-1">
-        <div
-          class="bg-image hover-overlay ripple"
-          data-mdb-ripple-color="light"
-        >
-          <img
-            src="/media/{{item.image}}"
-            class="img-fluid"
-          />
-          <a href="{{item.slug}}">
-            <div
-              class="mask"
-              style="background-color: rgba(251, 251, 251, 0.15)"
-            ></div>
-          </a>
-        </div>
-        <div class="card-body">
-          <span class="badge rounded-pill bg-light text-dark"
-              >{{item.category}}</span
-            >
-          <p class="card-title">
-            {{item.tour_name}}
-          </p>
-        </div>
-        <div class="card-footer border-0">
-          <span class="badge bg-secondary">{{item.countries}}</span>
+<div class="container-fluid">
+  <div class="row position-relative">
+    <div class="col-md-2">
+      <div class="position-sticky" style="top: 10px">
+        <div class="my-2">
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            id="select-activity-theme"
+            style="font-size: 14px"
+          >
+            <option value="">Select Category</option>
+            {%for category in categories%}
+            <option value="{{category.slug}}">{{category.category}}</option>
+            {%endfor%}
+          </select>
         </div>
       </div>
-    <!-- </div> -->
-    {% endfor %}
     </div>
-</div>
-{%endif%}
 
+    <div class="col-md-10">
+      <div class="row" id="tourlist">
+        <div class="row" id="loadmorelist">
+          {% for item in tours %}
+          <div class="col-12 col-md-3 my-2">
+            <div class="card border rounded shadow-0 mx-1">
+              <div
+                class="bg-image hover-overlay ripple"
+                data-mdb-ripple-color="light"
+              >
+                <img src="/media/{{item.image}}" class="img-fluid" />
+                <a href="{{item.slug}}">
+                  <div
+                    class="mask"
+                    style="background-color: rgba(251, 251, 251, 0.15)"
+                  ></div>
+                </a>
+              </div>
+              <div class="card-body">
+                <span class="badge rounded-pill bg-light text-dark"
+                  >{{item.category}}</span
+                >
+                <p class="card-title">{{item.tour_name}}</p>
+              </div>
+              <div class="card-footer border-0">
+                <span class="badge bg-secondary">{{item.countries}}</span>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="row my-3 d-flex justify-content-center">
+          <button class="btn btn-success w-auto" id="loadBtntour">
+            View More
+          </button>
+          <input type="hidden" id="row" value="0" />
+          <input type="hidden" id="postCount" value="{{count}}" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {%endblock%}

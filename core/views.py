@@ -17,7 +17,7 @@ def homepage(request):
     ctx['activites']=Activity.objects.all().filter(recommended=True,verified=True)[:4]
     ctx['tours']=Tour.objects.all().filter(recommended=True,verified=True)[:4]
     ctx['staycations']=Staycation.objects.all().filter(recommended=True,verified=True)[:4]
-    ctx['blogs']=Blog.objects.all().filter(recommended=True)[:8]
+    ctx['blogs']=Blog.objects.all().filter(recommended=True,category__category='Travel Highlights')[:8]
     return render(request, 'index.html',ctx)
 
 def aboutpage(request):
