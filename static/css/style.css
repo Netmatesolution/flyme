@@ -216,10 +216,10 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
     width: 80%;
   }
   .carousel-item {
-    height: 80vh;
+    height: 40vh;
   }
   .carousel-item img {
-    height: 80vh;
+    height: 40vh;
   }
   .destination-carousel .carousel-item {
     height: 100%;

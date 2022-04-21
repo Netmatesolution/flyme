@@ -435,7 +435,7 @@ $(document).ready(function () {
     // stopOnHover : true,
     responsive: {
       0: {
-        items: 1,
+        items: 4,
       },
       600: {
         items: 2,
