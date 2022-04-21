@@ -1,0 +1,262 @@
+<html>
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+      <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+      <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+      <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-core.js"></script>
+      <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-service.js"></script>
+      <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"></script>
+      <script type="text/javascript" src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+   </head>
+   <style>
+      .container {
+		width: 50%;
+		height: 50%;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-size: 13px;
+		position: relative;
+      }
+	  
+      .box {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0.7;
+      }
+	  
+      .overlay {
+		z-index: 9;
+      }
+	  
+      ul.ks-cboxtags {
+		list-style: none;
+		margin-left: -37px;
+		margin-top: 2px;
+		width: 0%;
+      }
+      ul.ks-cboxtags li{
+		display: inline;
+      }
+	  
+      ul.ks-cboxtags li label{
+		display: inline-block;
+		background-color: rgba(255, 255, 255, .9);
+		border: 2px solid rgba(139, 139, 139, .3);
+		color: #adadad;
+		border-radius: 25px;
+		white-space: nowrap;
+		margin: 3px 0px;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		-webkit-tap-highlight-color: transparent;
+		transition: all .2s;
+      }
+      ul.ks-cboxtags li label {
+		padding: 8px 12px;
+		cursor: pointer;
+      }
+	  
+      ul.ks-cboxtags li label::before {
+		display: inline-block;
+		font-style: normal;
+		font-variant: normal;
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		font-family: "Font Awesome 5 Free";
+		font-weight: 900;
+		font-size: 12px;
+		padding: 2px 6px 2px 2px;
+		content: "\f067";
+		transition: transform .3s ease-in-out;
+      }
+	  
+      ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
+		content: "\f00c";
+		transform: rotate(-360deg);
+		transition: transform .3s ease-in-out;
+      }
+	  
+      ul.ks-cboxtags li input[type="checkbox"]:checked + label {
+		border: 2px solid #1bdbf8;
+		background-color: #12bbd4;
+		color: #fff;
+		transition: all .2s;
+      }
+	  
+      ul.ks-cboxtags li input[type="checkbox"] {
+		display: absolute;
+      }
+	  
+      ul.ks-cboxtags li input[type="checkbox"] {
+		position: absolute;
+		opacity: 0;
+      }
+	  
+      ul.ks-cboxtags li input[type="checkbox"]:focus + label {
+		border: 2px solid #e9a1ff;
+      }
+	  
+      .H_ib {
+		width: 30%;
+		height: 20%;
+      }
+   </style>
+   <body id="markers-on-the-map">
+      <div class="container">
+         <ul class="ks-cboxtags box overlay">
+            <li><input type="checkbox" id="hotel" value="hotel"><label for="hotel">Hotel</label></li>
+            <li><input type="checkbox" id="activity" value="activity"><label for="activity">Activity</label></li>
+            <li><input type="checkbox" id="tour" value="tour"><label for="tour">Tour</label></li>
+         </ul>
+         <div id="map"class="box"></div>
+      </div>
+      <script>
+         var group;
+         
+		 /**
+		 * Moves the map to display
+		 */
+         function moveMap(position){
+           map.setCenter({lat:position.coords.latitude, lng:position.coords.longitude});
+           map.setZoom(14);
+         }
+         
+         // initialize communication with the platform
+         var platform = new H.service.Platform({
+           apikey: 'T54bkhTK-fKj2KqHyeTkz_7U3k1UQhs1lnaTkTjjWuM'
+         });
+         
+         var defaultLayers = platform.createDefaultLayers();
+         
+         // initialize a map - this map is centered over Bali
+         var map = new H.Map(document.getElementById('map'),
+           defaultLayers.vector.normal.map,{
+           center: {lat:-8.409518, lng:115.188919},
+           pixelRatio: window.devicePixelRatio || 1
+         });
+         
+         // add a resize listener to make sure that the map occupies the whole container
+         window.addEventListener('resize', () => map.getViewPort().resize());
+         
+         // MapEvents enables the event system
+         // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+         var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+         
+         // create default UI with layers provided by the platform
+         var ui = H.ui.UI.createDefault(map, defaultLayers);
+         
+         // Now use the map as required...
+         window.onload = function () {
+         	moveMap({'coords':{'latitude':-8.409518, 'longitude':115.188919}});
+         	  
+         	$('input[type=checkbox]').change(function() {
+         		clearMapContents();
+         						
+         		if ($(this).is(':checked')) {
+         			requestData(`${this.value}`);
+         		}
+         	});
+         }
+         
+         function showError(error) {
+         	moveMap({'coords':{'latitude':-8.409518, 'longitude':115.188919}});
+         }
+         
+         /**
+         * Requesting data for hotels, activities, tours
+         * @param  {String} search
+         */
+         function requestData(search) {
+         	var data = [{'title': 'JW Marriot', 'coordinate':{'lat':-8.409518, 'lng':115.188919}}];
+         	
+         	$.ajax({
+         			type: "GET",
+         			url: "http://localhost:8000/data/",
+         			success: function (result, status, xhr) {						
+         				addInfoBubble();
+         				
+         				$.each(result[1].activites, function(i, item) {
+         					addMarkersToMap(item);
+         				});
+         			},
+         			error: function (xhr, status, error) {				
+         			 data = [{"id": 12, "name": "Mount Batur Sunrise Experience by 4WD Jeep", "image": "https://media.timeout.com/images/105240189/image.jpg", "latitude": "-8.409518", "longitude": "115.188919", "type": "activity"}];
+         			 
+         			 addInfoBubble();
+         			 						
+         			 $.each(data, function(i, item) {
+         				if(item.type==search)
+         					addMarkersToMap(item);
+         			 });
+         			}
+         		});
+         }
+         
+         /**
+         * Adds markers to the map highlighting the location
+         */
+         function addMarkersToMap(item) {
+         	var marker = new H.map.Marker({lat:item.latitude, lng:item.longitude});
+         	
+         	if(distance(item.latitude, item.longitude, -8.409518, 115.188919) < 100) {
+         		marker.setData('<div style="white-space: nowrap;"><b>' + item.name + '</b></div><hr><div><img src="' + item.image + '" style="width:100%;height:100%"></div>');
+         		
+         		group.addObject(marker);
+         	}
+         }
+         
+         /**
+         * This routine calculates the distance between two points
+         * @param  {Double} lat1,  {Double} lng1,  {Double} lat2,  {Double} lng2 
+         */
+         function distance(lat1, lon1, lat2, lon2,) {
+         	if ((lat1 == lat2) && (lon1 == lon2)) {
+         		return 0;
+         	}
+         	else {
+         		var radlat1 = Math.PI * lat1/180;
+         		var radlat2 = Math.PI * lat2/180;
+         		var theta = lon1-lon2;
+         		var radtheta = Math.PI * theta/180;
+         		var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+         		if (dist > 1) {
+         			dist = 1;
+         		}
+         		dist = Math.acos(dist);
+         		dist = dist * 180/Math.PI;
+         		dist = dist * 60 * 1.1515;
+         		dist = dist * 1.609344 
+         		
+         		return dist;
+         	}
+         }
+         
+         /**
+         * Clicking on a marker opens an infobubble which holds HTML content related to the marker.
+         */
+         function addInfoBubble() {
+           group = new H.map.Group();
+         
+           map.addObject(group);
+         
+           group.addEventListener('tap', function (evt) {
+         	var bubble = new H.ui.InfoBubble(evt.target.getGeometry(), {
+         	  content: evt.target.getData()
+         	});
+         	ui.addBubble(bubble);
+           }, false);
+         }
+         
+         function clearMapContents() {
+         	if(group)
+         		map.removeObject(group);
+         }
+      </script>
+   </body>
+</html>

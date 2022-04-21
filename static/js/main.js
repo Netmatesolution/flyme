@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
   $(".package-btn").on("click", function (e) {
     $(this).siblings().removeClass("btn-primary");
     $(this).addClass("btn-primary");
@@ -217,65 +218,69 @@ $(document).ready(function () {
 
   
 
-  $("#select-activity-theme").on("change", function () {
-    category = this.value;
-    if (category != "") {
-      $("#activitylist").html("loading...");
-      $.ajax({
-        headers: { "X-CSRFToken": csrftoken },
-        type: "POST",
-        url: "/activity/loadactivity/",
-        data: { category: category },
-        success: function (response) {
-          activity_list = response.activites;
-          var output = `<div class="row" id="loadmorelist" >`;
-          activity_list.map((item) => {
-            output += `
-              <div class="col-12 col-md-3 my-2">
-      <div class="card border rounded shadow-0 m-1 w-100">
-        <div
-          class="bg-image hover-overlay ripple"
-          data-mdb-ripple-color="light"
-        >
-          <img
-            src="/media/${item.image}"
-            class="img-fluid"
-          />
-          <a href="${item.slug}">
-            <div
-              class="mask"
-              style="background-color: rgba(251, 251, 251, 0.15)"
-            ></div>
-          </a>
-        </div>
-        <div class="card-body">
-          <p class="card-title">
-            ${item.activity_name}
-          </p>
-        </div>
-        <div class="card-footer border-0">
-            <span class="badge bg-secondary">${item.cities}</span>
-            <span class="badge rounded-pill bg-light text-dark"
-              >${item.category}</span
-            >
+  // $("#select-activity-theme").on("change", function () {
+
+    $(".activity-category-img").on('click',function(){
+      category = $(this).attr("data-cat-slug");
+      if (category != "") {
+        $("#activitylist").html("loading...");
+        $.ajax({
+          headers: { "X-CSRFToken": csrftoken },
+          type: "POST",
+          url: "/activity/loadactivity/",
+          data: { category: category },
+          success: function (response) {
+            activity_list = response.activites;
+            var output = `<div class="row" id="loadmorelist" >`;
+            activity_list.map((item) => {
+              output += `
+                <div class="col-12 col-md-3 my-2">
+        <div class="card border rounded shadow-0 m-1 w-100">
+          <div
+            class="bg-image hover-overlay ripple"
+            data-mdb-ripple-color="light"
+          >
+            <img
+              src="/media/${item.image}"
+              class="img-fluid"
+            />
+            <a href="${item.slug}">
+              <div
+                class="mask"
+                style="background-color: rgba(251, 251, 251, 0.15)"
+              ></div>
+            </a>
+          </div>
+          <div class="card-body">
+            <p class="card-title">
+              ${item.activity_name}
+            </p>
+          </div>
+          <div class="card-footer border-0">
+              <span class="badge bg-secondary">${item.cities}</span>
+              <span class="badge rounded-pill bg-light text-dark"
+                >${item.category}</span
+              >
+          </div>
         </div>
       </div>
-    </div>
-            `;
-          });
-          output += `
+              `;
+            });
+            output += `
+            </div>
+          <div class="row my-3 d-flex justify-content-center">
+            <button class="btn btn-success w-auto" id="loadBtnactivity">View More</button>
+            <input type="hidden" id="row" value="0">
+            <input type="hidden" id="postCount" value="${response.count}">
           </div>
-        <div class="row my-3 d-flex justify-content-center">
-          <button class="btn btn-success w-auto" id="loadBtnactivity">View More</button>
-          <input type="hidden" id="row" value="0">
-          <input type="hidden" id="postCount" value="${response.count}">
-        </div>
-          `;
-          $("#activitylist").html(output);
-        },
-      });
-    }
-  });
+            `;
+            $("#activitylist").html(output);
+          },
+        });
+      }
+    })
+
+  // });
 
   $(document).on("click", "#loadBtnactivity", function () {
     var row = Number($("#row").val());
@@ -420,6 +425,29 @@ $(document).ready(function () {
       },
     },
   });
+
+  $(".owl-carousel").owlCarousel({
+    // loop: true,
+    margin: 4,
+    autoplay: true,
+    rewind:true,
+    // autoplaySpeed: 500,
+    // stopOnHover : true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 2,
+      },
+      1000: {
+        items: 6,
+      },
+    },
+  });
+
+
+
 });
 
 var countries = [

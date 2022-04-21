@@ -7,6 +7,7 @@ from core.models import Country
 class Category(models.Model):
     category = models.CharField(max_length=100,unique=True)
     slug = models.SlugField(null=True,blank=True,max_length=250)
+    image = models.ImageField(upload_to = "featureimg", null=True , blank=True)
     def __str__(self):
         return  f"{self.category}"
 

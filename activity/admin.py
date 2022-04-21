@@ -57,7 +57,11 @@ class ActivityAdmin(SummernoteModelAdmin,admin.ModelAdmin):
 
 
 admin.site.register(Activity,ActivityAdmin)
-admin.site.register(Category)
+
+class CategoryAdmin(admin.ModelAdmin):
+    list_display=("category","image")
+
+admin.site.register(Category,CategoryAdmin)
 
 
 class ActivityChoiceField(forms.ModelChoiceField):
